@@ -172,18 +172,18 @@ function imgError (ele, type) {
       if (ele.src.includes('https://cn.gravatar.com/avatar')) {
         ele.src = ele.src.replace('https://cn.gravatar.com/avatar/', 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/gravatar.jpg')
       } else {
-        ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/default_avatar.jpg'
+        ele.src = 'https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/header/allWrong.jpg'
       }
       break
     case 2:
-      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/default_gavatar.jpg'
+      ele.src = 'https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/header/allWrong2.jpg'
       break
     case 3:
 
-      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/image-404.png'
+      ele.src = 'https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/header/allWrong.jpg'
       break
     default:
-      ele.src = 'https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/image-404.png'
+      ele.src = 'https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/header/allWrong2.jpg'
   }
 }
 mashiro_global.post_list_show_animation = new function () {
