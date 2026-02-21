@@ -350,6 +350,23 @@
 
       <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<style>
+  /* 针对 Hexo 默认的代码块结构 */
+  .entry-content .highlight,
+  .entry-content pre,
+  .entry-content code {
+    color: #ffffff !important;
+    /* 强制设为白色 */
+  }
+
+  /* 针对某些特定主题或插件生成的代码行 */
+  .entry-content .highlight .code pre {
+    color: #ffffff !important;
+  }
+
+  /* 如果有具体的语法高亮使得某些文字变黑，可以使用以下通配符（可选，视情况而定） */
+  /* .entry-content .highlight span { color: #ffffff !important; } */
+</style>
 <div class="pattern-center-blank"></div>
 
 <div id="content" class="site-content">
@@ -383,26 +400,7 @@
 
         </div>
         <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@mainnull"></li>
-                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@mainnull"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
       </article>
       <!-- #post-## -->
       <div class="toc" style="background: none;"></div>
@@ -410,74 +408,21 @@
         
         
       </section>
-      
-
-
-    <!-- <script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
-    <div id="waline"></div>
-    <style>
-    #waline textarea {
-        box-sizing: border-box;
-        background: url("https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich2.gif") 100% 100% no-repeat;
-    }
-    </style>
-    <script>
-        Waline({
-              el: '#waline',
-              serverURL: 'https://waline.flashkyogre.cn',
-              pageSize: '10',
-              lang: 'zh-CN',
-              requiredFields: ['nick','mail'], //设置必填项
-              placeholder: '别感冒！',
-              visitor: 'false',
-              emoji: [
-                  'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
-                  'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
-                  'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
-              ],
-              avatar: 'mp',
-              dark: 'auto',
-            });
-    </script> -->
-    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
-
-    <div id="waline"></div>
-
-    <script type="module">
-      import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
-
-      init({
-        el: '#waline',
-        // 这里保留了 EJS 标签，自动读取你在主题配置文件里填写的 serverURL
-        serverURL: 'https://waline.flashkyogre.cn', 
-        // 自动适配语言
-        lang: 'zh-CN',
-        // 开启浏览量统计
-        visitor: false,
-        // 如果你需要表情包，可以在这里添加，或者去 config 里配置
-      });
-    </script>
-    
-    <style>
-      #waline textarea {
-          box-sizing: border-box;
-          background: url("https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich2.gif") 100% 100% no-repeat;
-      }
-    </style>
-
-
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="" class="profile gravatar"><img src="" itemprop="image" alt="" height="70" width="70"></a>
+          <a href="http://flashkyogre.cn/" class="profile gravatar">
+            <img src="/avatar/avatar.jpg" itemprop="image" alt=""
+              height="70" width="70">
+          </a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="" itemprop="url" rel="author"></a>
+              <a href="http://flashkyogre.cn/" itemprop="url" rel="author">FlashKyogre</a>
             </h3>
           </div>
         </div>
         <hr>
-        <p><i class="iconfont icon-write"></i></p>
+        <p><i class="iconfont icon-write"></i>日月无眠，人间又是一天</p>
       </section>
     </main><!-- #main -->
   </div><!-- #primary -->
