@@ -413,7 +413,7 @@
       
 
 
-    <script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
     <div id="waline"></div>
     <style>
     #waline textarea {
@@ -438,7 +438,32 @@
               avatar: 'mp',
               dark: 'auto',
             });
+    </script> -->
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css" />
+
+    <div id="waline"></div>
+
+    <script type="module">
+      import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+
+      init({
+        el: '#waline',
+        // 这里保留了 EJS 标签，自动读取你在主题配置文件里填写的 serverURL
+        serverURL: 'https://waline.flashkyogre.cn', 
+        // 自动适配语言
+        lang: 'zh-CN',
+        // 开启浏览量统计
+        visitor: false,
+        // 如果你需要表情包，可以在这里添加，或者去 config 里配置
+      });
     </script>
+    
+    <style>
+      #waline textarea {
+          box-sizing: border-box;
+          background: url("https://gitee.com/cungudafa/source/raw/master/img/gif/Sitich/Sitich2.gif") 100% 100% no-repeat;
+      }
+    </style>
 
 
       <section class="author-profile">
