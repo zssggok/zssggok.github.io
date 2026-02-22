@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">archive_a | Kyogre&#39;s Ocean</title>
+  <title itemprop="name">我挥一挥衣袖，作别OO的云彩 | Kyogre&#39;s Ocean</title>
   
     <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/favicon.ico">
   
@@ -283,65 +283,137 @@
   </div>
 </header>
 
-      <div class="blank" style="padding-top: 75px;">
-</div>
-<div id="content" class="site-content">
-  <div id="main">
-    <header class="page-header">
-      <h1 class="cat-title">
-      归档</h1>
-      <span class="cat-des">
-        <p>
-        Archives</p>
-      </span>
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<style>
+  /* 针对 Hexo 默认的代码块结构 */
+  .entry-content .highlight,
+  .entry-content pre,
+  .entry-content code {
+    color: #ffffff !important;
+    /* 强制设为白色 */
+  }
+
+  /* 针对某些特定主题或插件生成的代码行 */
+  .entry-content .highlight .code pre {
+    color: #ffffff !important;
+  }
+
+  /* 如果有具体的语法高亮使得某些文字变黑，可以使用以下通配符（可选，视情况而定） */
+  /* .entry-content .highlight span { color: #ffffff !important; } */
+</style>
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      我挥一挥衣袖，作别OO的云彩</h1>
+      <p class="entry-census">
+        <span>
+          <a href="www.flashkyogre.cn">
+            <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="www.flashkyogre.cn">FlashKyogre</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2026-2-22<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
-    <div id="main-part">
-      <article class="art">
-        <div class="art-main">
-          <div class="art-content">
-            <div id="archives">
-              <p style="text-align:right;">
-                [<span id="al_expand_collapse" style="cursor: s-resize;">
-                全部展开/收缩</span>
-              ]</p>
-              
-              
-              
-              
-              
-                
-                <h3 class="al_year">2026年</h3>
-              
-              
-                
-                <ul class="al_mon_list">
-                  <li class="al_li">
-                    <span class="al_mon" style="cursor: s-resize;">
-                      02月(<span id="post-num">
-                      3</span>
-                    篇文章)</span>
-                    <ul class="al_post_list" style="">
-              
-                      <li>
-                        <a href="/2026/02/22/oopre_conclusion/">
-                          <span style="color:#0bf;">
-                          22日00:00:00</span>
-                          我挥一挥衣袖，作别OO的云彩
-                        </a>
-                      </li>
-                      
-                    </ul>
-                  </li>
-                </ul>
-              
-              
-            </div>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="一、作业架构设计"><a href="#一、作业架构设计" class="headerlink" title="一、作业架构设计"></a>一、作业架构设计</h1><h2 id="1、作业最终架构"><a href="#1、作业最终架构" class="headerlink" title="1、作业最终架构"></a>1、作业最终架构</h2><h3 id="（1）指令处理模块"><a href="#（1）指令处理模块" class="headerlink" title="（1）指令处理模块"></a>（1）指令处理模块</h3><p>​    指令处理模块由三个类构成：</p>
+<p>​    <code>MainClass</code>类(以下简称<code>MC</code>)。<code>MC</code>的唯一功能是读取指令并且根据空白符划分为多个部分，存储于二维数组中，然后将这个二维数组传给指令处理模块。</p>
+<p>   <code>CommandProcessor</code>类（单例模式，以下简称<code>CP</code>)。<code>CP</code>的作用便是解读各个代码，并向各个冒险者个体发放命令（为了方便，我选择让CP来管理所有冒险者）。我将指令划分为四类：</p>
+<pre><code>a)单体命令，即单独一个冒险者可以执行的命令；
+b)use类指令，该指令存在使用者与被使用者；
+C)fight类指令，该指令存在攻击发出者与被攻击者；
+d)relation类指令，主要负责关系的构建与解除。
+</code></pre>
+<p>​    需要强调的是，每一条指令都仅仅是一种通知，真正的指令执行者是冒险者本身。</p>
+<p>   <code>Lexer</code>类(以下简称<code>LE</code>)。因为关系构建存在文法解析的部分，我创建了它来辅助<code>CP</code>。<code>LE</code>负责识别下一个语料的种类并将其整体返回给<code>CP</code>，<code>CP</code>中的递归下降方法将根据文法规则构建不同冒险者之间的关系。</p>
+<hr>
+<h3 id="（2）冒险者模块"><a href="#（2）冒险者模块" class="headerlink" title="（2）冒险者模块"></a>（2）冒险者模块</h3><p>   <code>Adventurer</code>类是本此任务中活动最频繁，也是最为重要的类，他是一切命令的实际执行者。我的冒险者拥由<strong>指令执行区</strong>、<strong>状态调整区</strong>、<strong>所属物管理区</strong></p>
+<p>​    指令执行区：<code>Adventurer</code>的执行区同样被我划分为四个部分，与上文中的<code>CP</code>指令类型一一对应</p>
+<pre><code>a)单元命令执行区
+b)use命令执行区
+c)fight命令执行区
+d)relation命令执行区
+</code></pre>
+<p>​    在执行指令的前后，冒险者还会检测指令的成功性。如果出现了违规操作（如攻击BOSS），那么冒险者会输出相应警告信息；如果操作成功，冒险者则会<del>大肆炫耀</del>，根据输出规则将自己做的事公之于众。</p>
+<p>​    状态调整区：冒险者在某一动作（<code>use</code>、<code>fight</code>、<code>relation</code>）执行时会做出相应的反应（主动会被迫），如相关参数的改变，求助信号的发出等等。与此同时，该区域也负责输出冒险者变化后的状态。</p>
+<p>​    所属物管理区：管理物品与关系。冒险者拥有三种“物品”——药水、装备与法术，以及两种“关系”——老板与手下，他们的管理都被放在这一个区域。有关“物品”的功能有加入背包、移除背包、随身携带等等；有关“关系”的功能有寻找下级、判断是否为同盟，判断是否为上级等等。</p>
+<hr>
+<h3 id="（3）物品模块"><a href="#（3）物品模块" class="headerlink" title="（3）物品模块"></a>（3）物品模块</h3><p>​    该模块由药水、装备与法术构成（我将这三种类型成为大类）。三者并无共同父类，因为在我看来三者的功能有很大不同，放在同一个父级之下并不能简化我的工作。三者各自衍生，诞生了许多子类（将其成为小类），同样有着不同的功能。</p>
+<p>​    三者的产生都来源于工厂（抽象工厂模式），冒险者在调用工厂时需要知道物品的大类，工厂内部负责判断小类并生成相应对象返回给冒险者。</p>
+<p>​    药水和法术都可以当作被use的道具，因此我引入了接口<code>usable</code>，该接口内部方法<code>useTo</code>有最终执行<code>use</code>指令的能力，对use的被使用者造成实质性地影响，并返回布尔值给发出者，以反馈执行结果。</p>
+<h2 id="2、迭代中的架构调整和考虑"><a href="#2、迭代中的架构调整和考虑" class="headerlink" title="2、迭代中的架构调整和考虑"></a>2、迭代中的架构调整和考虑</h2><h3 id="（1）有关容器的使用"><a href="#（1）有关容器的使用" class="headerlink" title="（1）有关容器的使用"></a>（1）有关容器的使用</h3><p>​	<code>Java</code>中的<code>Arraylist</code>作为非常智能的容器，一定程度上实现了队列的功能，这使得它天生拥有“后进后出”的时序性（即后加入的元素一定拥有最大的标），同时它能释放被删除元素的内存，极大的节省了空间。于是我一开始便将所有容器都定义为<code>ArrayList</code>类型。但是后来学习了有关<code>HashMap</code>的知识，并决定将<code>CP</code>中管理冒险者的容器改为<code>HashMap</code>类型，这样可以减少很多<code>for</code>循环找人的过程，提高效率的同时降低了代码量。类似的，我也将冒险者的药水、装备、法术背包更改为此类型。我并未更改“被携带的药水”的容器类型，主要是考虑到上文中提到的时序性。</p>
+<hr>
+<h3 id="（2）有关工厂模式"><a href="#（2）有关工厂模式" class="headerlink" title="（2）有关工厂模式"></a>（2）有关工厂模式</h3><p>​	因为没有接触过工厂模式的思想，我起初选择让冒险者自身来创建新的对象，在这个过程中，冒险者需要自己判断对象的具体类型（精确到小类），然后进行类型转换放入容器中，这极大程度上增添了代码的复杂性。于是在学习工厂模式之后，我果断采用了抽象工厂，创建了<code>Factory</code>类，冒险者只需要将信息传递给工厂，工厂会自动判断类型然后以“大类”<br>的方式将指针返回给冒险者。</p>
+<hr>
+<h3 id="（3）有关单例模式"><a href="#（3）有关单例模式" class="headerlink" title="（3）有关单例模式"></a>（3）有关单例模式</h3><p>​	类似于工厂模式，单例模式的学习比较靠后，所以我一开始并未采用。后来随着命令种类的不断增加，<code>main</code>不再能容许更多的代码来进行种类识别于任务发放，于是单例的<code>CP</code>应运而生。对于单例模式，我认为最重要的是保证其存在的单一性，不然很容易产生错误解读指令的现象。</p>
+<hr>
+<h3 id="（4）有关继承"><a href="#（4）有关继承" class="headerlink" title="（4）有关继承"></a>（4）有关继承</h3><p>​    根据题目描述，药水与装备都应该是<code>item</code>类的子类，因为他们拥有共同的性质——有ID、可以被加入背包<del>（其实也就这些了）</del>。很不幸的是，越往后期迭代，他们的共性越来越小，分歧越来越大，管理方式也不尽相同，此时我认为再让他们同时继承<code>item</code>类就失去了意义，既不能方便冒险者对他们的管理，也不能减少代码量，于是我删除了<code>item</code>，让他们各自为安。</p>
+<h1 id="二、使用JUnit的心得体会"><a href="#二、使用JUnit的心得体会" class="headerlink" title="二、使用JUnit的心得体会"></a>二、使用<code>JUnit</code>的心得体会</h1><p>​	直观上很不好用！！！但是确实很重要<del>（悲）</del></p>
+<p>​	因为覆盖率检测的问题，我选择从<code>CP</code>转到测试代码，这样的话可以通过给予<code>cp</code>指令来测试整个项目，不仅方便编写测试代码，还符合强侧规则，一举两得。</p>
+<p>​	相比于使用<code>assert</code>来判断代码正确性，我更倾向于对比标准输出，这样更加直观，但是这样的行为是有代价的，我的代码可能会产生一些意料不到的错误，所以我会选择在所有指令的最后针对每一个冒险者的状态进行<code>assert</code>判断，保证每一个数值都正确。</p>
+<p>​	<code>JUnit</code>使用最为重要的是测试数据的生成，很多时候某些极端的数据更能体现出程序内部的错误，下例就是我通过<code>JUnit</code>测试出来的<code>Bug</code></p>
+<pre><code>condition：某个冒险者的`mana`值跟某个法术的消耗值相等时，该法术应当使用成功
+output:使用失败
+reason:判断时使用&gt;而非&gt;=
+</code></pre>
+<p>​	总而言之，<code>JUnit</code>最大的挑战在于构造巧妙地数据以测试自己代码的完备性，在未来我们搭建评测机时，除了用随机生成的方式产生数据，还应当针对代码内容生成极端数据或者陷阱数据，而现在<code>JUnit</code>的使用就是在为这一部分奠定基础。</p>
+<h1 id="三、学习OOPre的心得体会"><a href="#三、学习OOPre的心得体会" class="headerlink" title="三、学习OOPre的心得体会"></a>三、学习<code>OOPre</code>的心得体会</h1><p>​	据我所知，<code>OOPre</code>课程仅仅是一个小小的过渡，与其说是在学习<code>OOPre</code>，不如说我们在学习<code>Java</code>。这段时间的学习更像是在学习古诗鉴赏前的认字环节。虽然没有OO正课那样令人神往，但也是打好基础的关键步骤。在课程中我熟悉了<code>gitlab</code>的使用，学会了常见的<code>Java</code>语法，并且能用面向对象的方式实现微型项目的运行，但是更为重要的事，我用亲身的经历体验到了面向对象与面向过程两种编程方式的区别。</p>
+<p>​	相比于面向过程中的强调步骤和顺序，面向对象更加强调于行为和封装，每个类都各司其职，“高内聚低耦合”的实现方式让我们不再纠结于不同类不同方法之间的爱恨情仇，只要我们能够使他们的层次分明，避免循环调用，那么程序运行的逻辑将会无比清晰，在思考问题或者处理<code>bug</code>时能够更加得心应手。面向对象中的继承更加让我眼前一亮，这种规格化的管理方式极大程度上降低了代码重复率，使程序美观的同时也让思考的脉络更加清晰，同时父类指针对子类的调用更是让成员管理变得简单，子类对父类方法的重写让成员功能变得多元化。</p>
+<p>​	总而言之，<code>OOpre</code>的学习算是为我的OO生涯开了个好头，在学习到不少知识的同时让我体验到面向对象编程的愉快经历（总感觉自己在维护一件艺术品），希望未来我能用OO谱写更加辉煌的篇章。</p>
+<h1 id="四、对OOPre课程的简单建议"><a href="#四、对OOPre课程的简单建议" class="headerlink" title="四、对OOPre课程的简单建议"></a>四、对<code>OOPre</code>课程的简单建议</h1><p> 1、给出JUnit测试代码的模板，比如如何导入连续的输入，而不是将指令一行行地加入</p>
+<p> 2、在计算覆盖率的时候去除new方法</p>
+
+        </div>
+        <!-- .entry-content -->
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+      </section>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="www.flashkyogre.cn" class="profile gravatar">
+            <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg" itemprop="image" alt="FlashKyogre"
+              height="70" width="70">
+          </a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="www.flashkyogre.cn" itemprop="url" rel="author">FlashKyogre</a>
+            </h3>
           </div>
         </div>
-      </article>
-    </div>
-  </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>日月无眠，人间又是一天</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
 
     </div>    
     <div class="ins-search">
