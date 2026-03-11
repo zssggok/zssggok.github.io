@@ -286,29 +286,118 @@
       <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <style>
-  /* 针对 Hexo 默认的代码块结构 */
-  .entry-content .highlight,
-  .entry-content pre,
-  .entry-content code {
-    color: #ffffff !important;
-    background-color: #282c34 !important; 
-    border-radius: 4px; /* 可选：加一点圆角让内嵌代码更好看 */
-    padding: 2px 4px;   /* 可选：增加一点内边距，避免文字顶格 */
-  }
-  /* 针对某些特定主题或插件生成的代码行 */
-  .entry-content .highlight .code pre {
-    color: #ffffff !important;
-    background-color: #282c34 !important; /* 新增这一行：确保代码块内部也是深色背景 */
-  }
-  
-
-  /* 针对某些特定主题或插件生成的代码行 */
-  .entry-content .highlight .code pre {
-    color: #ffffff !important;
+  /* ========================================================= */
+  /* 1. 大代码块容器 (深色简约风，适合展示 Java/MIPS 等长代码)    */
+  /* ========================================================= */
+  .entry-content .highlight {
+    background-color: #282c34;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    padding-top: 10px;
+    margin: 20px 0;
+    overflow: hidden;
   }
 
-  /* 如果有具体的语法高亮使得某些文字变黑，可以使用以下通配符（可选，视情况而定） */
-  /* .entry-content .highlight span { color: #ffffff !important; } */
+  /* 基础文字设为纯白色 */
+  .entry-content .highlight pre,
+  .entry-content .highlight .code pre,
+  .entry-content pre code {
+    color: #ffffff;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    background: transparent;
+    border: none;
+    padding: 10px 15px;
+  }
+
+  /* --- 语法高亮配色 (One Dark 风格) --- */
+  .entry-content .highlight .keyword,
+  .entry-content .highlight .literal,
+  .entry-content .highlight .selector-tag,
+  .entry-content .highlight .type {
+    color: #c678dd;
+    /* 紫色 */
+  }
+
+  .entry-content .highlight .string {
+    color: #98c379;
+    /* 绿色 */
+  }
+
+  .entry-content .highlight .title,
+  .entry-content .highlight .built_in,
+  .entry-content .highlight .class .title {
+    color: #e5c07b;
+    /* 黄色 */
+  }
+
+  .entry-content .highlight .number {
+    color: #d19a66;
+    /* 橙色 */
+  }
+
+  .entry-content .highlight .comment {
+    color: #5c6370;
+    /* 护眼灰色 */
+    font-style: italic;
+  }
+
+  .entry-content .highlight .params,
+  .entry-content .highlight .variable,
+  .entry-content .highlight .attribute {
+    color: #e06c75;
+    /* 珊瑚红 */
+  }
+
+  /* 大代码块滚动条美化 */
+  .entry-content .highlight::-webkit-scrollbar {
+    height: 6px;
+    background: #282c34;
+  }
+
+  .entry-content .highlight::-webkit-scrollbar-thumb {
+    background: #4b5263;
+    border-radius: 3px;
+  }
+
+  /* ========================================================= */
+  /* 2. 行内小代码块样式 (浅灰色背景 + 珊瑚橙文字)               */
+  /* ========================================================= */
+  .entry-content p code,
+  .entry-content li code,
+  .entry-content table code {
+    color: #e96900;
+    background-color: rgba(27, 31, 35, 0.06);
+    border: 1px solid rgba(27, 31, 35, 0.1);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 0 3px;
+    vertical-align: middle;
+  }
+
+  /* ========================================================= */
+  /* 3. 引用块 (Blockquote) 样式优化                             */
+  /* ========================================================= */
+  .entry-content blockquote {
+    padding: 15px 20px;
+    margin: 20px 0;
+    color: #555;
+    background-color: #f8f9fa;
+    /* 极浅灰背景 */
+    border-left: 5px solid #e96900;
+    /* 与行内代码呼应的橙色边条 */
+    border-radius: 4px;
+    font-style: normal;
+  }
+
+  .entry-content blockquote p {
+    margin: 0;
+    line-height: 1.6;
+  }
 </style>
 <div class="pattern-center-blank"></div>
 

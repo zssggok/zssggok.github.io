@@ -773,9 +773,6 @@ hr {
     box-sizing:content-box;
     height:0
 }
-pre {
-    overflow:auto
-}
 code,kbd,pre,samp {
     font-family:monospace,monospace;
     font-size:1em
@@ -852,32 +849,6 @@ p {
 dfn,cite,em,i {
     font-style:italic
 }
-blockquote {
-    margin:0;
-    padding:30px 60px;
-    position:relative
-}
-blockquote:before {
-    content:"\f10d" !important;
-    font-size:3rem;
-    position:absolute;
-    top:-25px;
-    left:12px;
-    color:orange;
-    font-family:FontAwesome
-}
-blockquote:after {
-    content:'\f10e' !important;
-    font-size:3rem;
-    position:absolute;
-    bottom:-25px;
-    right:-5px;
-    color:orange;
-    font-family:FontAwesome
-}
-blockquote p {
-    margin:5px 0
-}
 address {
     margin:0 0 1.5em
 }
@@ -934,12 +905,6 @@ body {
     background:#fff;
     background-attachment:fixed;
     cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),auto
-}
-blockquote:before,blockquote:after,q:before,q:after {
-    content:""
-}
-blockquote,q {
-    quotes:"" ""
 }
 hr {
     background-color:#ccc;
@@ -2123,15 +2088,6 @@ i.iconfont.hotpost {
     left:0;
     position:absolute;
     color:#ff6d6d
-}
-.entry-content code {
-    background:rgba(254,250,199,1);
-    color:#e67474;
-    word-break:break-word;
-    font-family:'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
-    padding:2px;
-    text-shadow:none;
-    border-radius:5px
 }
 .entry-content a {
     color:#e67474;
@@ -7269,92 +7225,6 @@ to {
     -o-transform:translateX(0);
     transform:translateX(0)
 }
-.highlight-wrap:before {
-    content:" ";
-    position:absolute;
-    -webkit-border-radius:50%;
-    border-radius:50%;
-    background:#fc625d;
-    width:12px;
-    height:12px;
-    left:20px;
-    margin-top:-20px;
-    -webkit-box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;
-    box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;
-    z-index:2
-}
-.highlight-wrap {
-    position: relative;
-    background:#21252b;
-    border-radius:5px;
-    font:15px/22px "Microsoft YaHei","Arial",Sans-Serif;
-    line-height:1.6;
-    margin-bottom:1.6em;
-    max-width:100%;
-    overflow:auto;
-    text-shadow:none;
-    color:#000;
-    padding-top:30px;
-    box-shadow:0 10px 30px 0 rgba(0,0,0,.4)
-}
-.highlight .line span::-moz-selection,.line::-moz-selection {
-    background:#fff;
-    color:#21252b
-}
-.highlight .line span::selection,.line::selection {
-    background:#fff;
-    color:#21252b
-}
-.highlight-wrap code::-webkit-scrollbar {
-    height:10x !important;
-    width:10x !important;
-    background-color:#1d1f21 !important
-}
-.highlight-wrap code::-webkit-scrollbar-track {
-    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.3) !important;
-    border-radius:10px !important;
-    background-color:#21252b !important
-}
-.highlight-wrap code::-webkit-scrollbar-thumb {
-    border-radius:10px !important;
-    -webkit-box-shadow:inset 0 0 6px rgba(0,0,0,.5) !important;
-    background-color:#21252b !important
-}
-.highlight-wrap code {
-    background:#1d1f21;
-    color:#fff;
-    word-break:break-word;
-    font-family:'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
-    padding:2px;
-    text-shadow:none;
-    border-radius:0 0 5px 5px;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/texto.cur),auto
-}
-.highlight-wrap code[data-rel]:before {
-    color:#fff;
-    content:attr(data-rel);
-    height:38px;
-    line-height:38px;
-    background:#21252b;
-    font-size:16px;
-    position:absolute;
-    margin-top:-35px;
-    left:0;
-    width:100%;
-    font-family:'Ubuntu',sans-serif;
-    font-weight:bold;
-    padding:0 80px;
-    text-indent:15px;
-    text-align:center;
-    float:left;
-    z-index:1;
-    border-radius:5px 5px 0 0;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-    border-bottom-right-radius:0;
-    border-bottom-left-radius:0;
-    pointer-events:none
-}
 .hljs {
     display:block;
     overflow-x:auto;
@@ -7399,29 +7269,6 @@ to {
 }
 .hljs-ln {
     margin:6px 0 0 0 !important
-}
-.highlight td.numbers {
-    -webkit-touch-callout:none;
-    -webkit-user-select:none;
-    -khtml-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
-    text-align:center;
-    color:#888f96;
-    background:#1d1f21;
-    font-family:'Source Code Pro',monospace,Helvetica,Tahoma,Arial,STXihei,"STHeiti Light","Microsoft YaHei",sans-serif;
-    vertical-align:top;
-    position:absolute;
-    left:0;
-    width:30px
-}
-.highlight .code .line {
-    margin-left:25px;
-    padding-left:5px
-}
-.highlight .code .line:hover {
-    background-color:rgba(255,255,255,.1)
 }
 .code-block-fullscreen {
     position:fixed;
