@@ -720,13 +720,13 @@ audio:not([controls]) {
 a {
     background-color:transparent;
     text-decoration:none;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/ayuda.cur),auto
+    cursor:pointer
 }
 a:active,a:hover {
     outline:0
 }
 a:active {
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/work.cur),alias
+    cursor:pointer
 }
 abbr[title] {
     border-bottom:1px dotted
@@ -844,7 +844,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 p {
     margin-bottom:1.5em;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/texto.cur),auto
+    cursor:auto
 }
 dfn,cite,em,i {
     font-style:italic
@@ -904,7 +904,7 @@ html {
 body {
     background:#fff;
     background-attachment:fixed;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),auto
+    cursor:auto
 }
 hr {
     background-color:#ccc;
@@ -2193,7 +2193,7 @@ h1.page-title.mb- {
     background-size:contain;
     -webkit-transition:all .5s ease-in-out;
     transition:all .5s ease-in-out;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto;
+    cursor:pointer;
     opacity:1
 }
 .cd-top.cd-is-visible {
@@ -3909,7 +3909,7 @@ li.feature-2 {
     }
     .top-social_v2 li {
         margin-right: 0px !important; 
-        cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/ayuda.cur),auto !important;
+        cursor: pointer !important;
     }
 }
 #bgvideo {
@@ -5517,7 +5517,7 @@ i.iconfont.js-toggle-search.iconsearch {
     border:0;
     color:#fff;
     line-height:1;
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto;
+    cursor:pointer;
     font-size:14px;
     font-weight:500;
     padding:7px 15px;
@@ -5643,7 +5643,7 @@ button.botui-actions-buttons-button::-moz-focus-inner,input.botui-actions-text-i
     padding:0
 }
 button.botui-actions-buttons-button {
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto;
+    cursor:pointer;
     -webkit-appearance:button
 }
 .botui-app-container {
@@ -6883,7 +6883,7 @@ to {
     background-color:rgba(245,245,245,.8)
 }
 #emotion-toggle,.emotion-box,.on-hover,.emotion-item,.emoji-item,.tieba-container span {
-    cursor:url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/No_Disponible.cur),auto
+    cursor:pointer
 }
 .alignright {
     width:auto !important

@@ -287,96 +287,267 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <style>
   /* ========================================================= */
-  /* 1. 大代码块容器 (深色简约风，适合展示 Java/MIPS 等长代码)    */
+  /* 1. 大代码块容器：接近 Typora 默认浅色主题                 */
   /* ========================================================= */
   .entry-content .highlight {
-    background-color: #282c34;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #f7f7f7;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-shadow: none;
     position: relative;
-    padding-top: 10px;
+    padding-top: 0;
     margin: 20px 0;
-    overflow: hidden;
+    overflow: auto;
   }
 
-  /* 基础文字设为纯白色 */
   .entry-content .highlight pre,
-  .entry-content .highlight .code pre,
-  .entry-content pre code {
-    color: #ffffff;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  .entry-content .highlight .code pre {
+    color: #24292e;
+    font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 1.6;
     background: transparent;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 15px;
   }
 
-  /* --- 语法高亮配色 (One Dark 风格) --- */
+  .entry-content .highlight .hljs,
+  .entry-content .highlight pre code {
+    color: #24292e;
+    background: transparent;
+  }
+
+  /* Typora 风格浅色高亮 */
   .entry-content .highlight .keyword,
   .entry-content .highlight .literal,
   .entry-content .highlight .selector-tag,
   .entry-content .highlight .type {
-    color: #c678dd;
-    /* 紫色 */
+    color: #d73a49;
+    font-weight: 500;
   }
 
-  .entry-content .highlight .string {
-    color: #98c379;
-    /* 绿色 */
+  .entry-content .highlight .string,
+  .entry-content .highlight .regexp,
+  .entry-content .highlight .meta-string {
+    color: #032f62;
   }
 
   .entry-content .highlight .title,
   .entry-content .highlight .built_in,
-  .entry-content .highlight .class .title {
-    color: #e5c07b;
-    /* 黄色 */
+  .entry-content .highlight .class .title,
+  .entry-content .highlight .function .title,
+  .entry-content .highlight .section,
+  .entry-content .highlight .symbol,
+  .entry-content .highlight .bullet,
+  .entry-content .highlight .link {
+    color: #6f42c1;
   }
 
-  .entry-content .highlight .number {
-    color: #d19a66;
-    /* 橙色 */
+  .entry-content .highlight .number,
+  .entry-content .highlight .addition,
+  .entry-content .highlight .attr,
+  .entry-content .highlight .attribute,
+  .entry-content .highlight .selector-attr,
+  .entry-content .highlight .selector-class,
+  .entry-content .highlight .selector-pseudo,
+  .entry-content .highlight .template-variable {
+    color: #005cc5;
   }
 
   .entry-content .highlight .comment {
-    color: #5c6370;
-    /* 护眼灰色 */
+    color: #6a737d;
     font-style: italic;
   }
 
   .entry-content .highlight .params,
   .entry-content .highlight .variable,
-  .entry-content .highlight .attribute {
-    color: #e06c75;
-    /* 珊瑚红 */
+  .entry-content .highlight .subst,
+  .entry-content .highlight .tag,
+  .entry-content .highlight .name,
+  .entry-content .highlight .doctag,
+  .entry-content .highlight .meta {
+    color: #e36209;
   }
 
-  /* 大代码块滚动条美化 */
+  .entry-content td.hljs-ln-numbers {
+    color: #9aa3ad;
+    background: #f0f0f0;
+    border-right: 1px solid #e1e4e8;
+  }
+
+  .entry-content .highlight .copy-code {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    color: #7a828c;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(225, 228, 232, 0.9);
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 1.4;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    box-shadow: none;
+    opacity: 0.55;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    z-index: 5;
+  }
+
+  .entry-content .highlight:hover .copy-code,
+  .entry-content .highlight .copy-code.copied,
+  .entry-content .highlight .copy-code.copy-error {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .entry-content .highlight .copy-code:hover {
+    color: #57606a;
+    background: rgba(255, 255, 255, 0.94);
+    border-color: #d0d7de;
+  }
+
+  .entry-content .highlight .copy-code span {
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  .entry-content .highlight .copy-code.copied {
+    color: #2f6f44;
+    background: rgba(238, 249, 241, 0.95);
+    border-color: #b7dfc1;
+    opacity: 1;
+  }
+
+  .entry-content .highlight .copy-code.copy-error {
+    color: #b42318;
+    background: rgba(255, 241, 240, 0.96);
+    border-color: #f2c6c3;
+    opacity: 1;
+  }
+
   .entry-content .highlight::-webkit-scrollbar {
     height: 6px;
-    background: #282c34;
+    background: transparent;
   }
 
   .entry-content .highlight::-webkit-scrollbar-thumb {
-    background: #4b5263;
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
   }
 
   /* ========================================================= */
-  /* 2. 行内小代码块样式 (浅灰色背景 + 珊瑚橙文字)               */
+  /* 1.4 标题样式：回归朴素模式                                */
+  /* ========================================================= */
+  .entry-header h1.entry-title::before,
+  .entry-header h1.entry-title::after,
+  .entry-content h2::after,
+  .entry-content h3::after,
+  .entry-content h4::after,
+  .entry-content h5::after {
+    content: none;
+  }
+
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3,
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6 {
+    padding-left: 0;
+    border-bottom: none;
+    color: #2f2f2f;
+    letter-spacing: 0;
+  }
+
+  .entry-content h1 {
+    font-size: 1.9em;
+    font-weight: 700;
+  }
+
+  .entry-content h2 {
+    font-size: 1.55em;
+    font-weight: 700;
+  }
+
+  .entry-content h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    padding-bottom: 0;
+  }
+
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6 {
+    font-weight: 600;
+  }
+
+  /* ========================================================= */
+  /* 1.5 标题与正文缩进：接近 Typora 的阅读习惯                */
+  /* ========================================================= */
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3,
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6,
+  .entry-content p,
+  .entry-content li,
+  .entry-content blockquote p {
+    tab-size: 4;
+    -moz-tab-size: 4;
+  }
+
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3,
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6 {
+    text-indent: 0;
+  }
+
+  .entry-content > p,
+  .entry-content blockquote p {
+    text-indent: 2em;
+  }
+
+  .entry-content > p code,
+  .entry-content blockquote p code,
+  .entry-content > p a,
+  .entry-content blockquote p a,
+  .entry-content > p strong,
+  .entry-content blockquote p strong,
+  .entry-content > p em,
+  .entry-content blockquote p em {
+    text-indent: 0;
+  }
+
+  /* ========================================================= */
+  /* 2. 行内代码：接近 Typora 默认浅色主题                     */
   /* ========================================================= */
   .entry-content p code,
   .entry-content li code,
-  .entry-content table code {
-    color: #e96900;
-    background-color: rgba(27, 31, 35, 0.06);
-    border: 1px solid rgba(27, 31, 35, 0.1);
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 0.9em;
-    margin: 0 3px;
-    vertical-align: middle;
+  .entry-content table code,
+  .entry-content blockquote code,
+  .entry-content td code,
+  .entry-content th code {
+    color: #c7254e;
+    background: #f3f4f4;
+    border: none;
+    border-radius: 3px;
+    padding: 0.15em 0.35em;
+    font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.92em;
+    margin: 0 0.15em;
+    vertical-align: baseline;
+    word-break: break-word;
   }
 
   /* ========================================================= */
@@ -435,10 +606,14 @@
         <div class="entry-content">
           <hr>
 <h1 id="Unit1-表达式解析"><a href="#Unit1-表达式解析" class="headerlink" title="Unit1 表达式解析"></a>Unit1 表达式解析</h1><hr>
-<p>​	喜报喜报！<code>OO</code>正课它来了！<br>​	还在因为找不到对象发愁吗？还在因为刚充值<code>Gemini</code>找不到用武之地而彷徨吗？<br>​	这些都不是问题，因为<code>OO</code>足够劲爆！<br>​	那还等什么，就让我们拆开<code>OO</code>为我们送上的第一份大礼——<br>​	<strong>表达式解析</strong></p>
+<p>   喜报喜报！<code>OO</code>正课它来了！</p>
+<p>   还在因为找不到对象发愁吗？还在因为刚充值<code>Gemini</code>找不到用武之地而彷徨吗？</p>
+<p>​   这些都不是问题，因为<code>OO</code>足够劲爆！</p>
+<p>​   那还等什么，就让我们拆开<code>OO</code>为我们送上的第一份大礼——</p>
+<p>​	<strong>表达式解析</strong></p>
 <hr>
 <h2 id="第一次作业"><a href="#第一次作业" class="headerlink" title="第一次作业"></a>第一次作业</h2><h3 id="啊？表达式解析"><a href="#啊？表达式解析" class="headerlink" title="啊？表达式解析"></a>啊？表达式解析</h3><p>​	<strong>1、表达式解析的定义</strong></p>
-<p>​	在这里，我直接引入课程组对问题的描述。</p>
+<p>​   在这里，我直接引入课程组对问题的描述。</p>
 <blockquote>
 <p>读入一个包含加、减、乘、乘方以及括号（其中括号的深度<strong>至多为 3 层</strong>）的<strong>单变量</strong>表达式，输出<strong>恒等变形展开所有括号后</strong>的表达式。<br>在本次作业中，<strong>展开所有括号</strong>的定义是：对原输入表达式 <em>E</em> 做<strong>恒等变形</strong>，得到新表达式 <em>E</em>′，且 <em>E</em>′ 中不含有字符 <code>(</code> 、 <code>)</code>和空白字符</p>
 </blockquote>
@@ -449,7 +624,7 @@
 <p>​	<code>	-  (+-	x*x*3*x^+002	+12)^2*x</code></p>
 <p>​	是的，我们还需要面对莫名其妙的先导零、莫名其妙的空白符以及莫名其妙的+-组合。</p>
 <p>​	还有一件事，题目可没说常量有多大啊。</p>
-<p>​	<code>	-  (+-	x*x*3*x^+002+121321198935894131423343906544142341252513453578973487835410827587203471287180)^2*x</code></p>
+<p>​	<code>	-  (+-	x*x*3*x^+002+121321198935894123487835410827587203471287180)^2*x</code></p>
 <p>​    这个也是合法的。</p>
 <h3 id="噫，我找到对象了"><a href="#噫，我找到对象了" class="headerlink" title="噫，我找到对象了"></a>噫，我找到对象了</h3><p>​	好吧，问题的第一步在于，我们要怎么解析个又臭又长的字符串，我们要怎么根据文法规则把它划分为<code>Expr</code>、<code>Term</code>、<code>Factor</code>这几部分。</p>
 <p>​	就在我们一筹莫展的时候，我们敬爱的课程组送来了一份代码。<code>Unit1_training?</code>别搞啊，我这份作业还没写完呢，怎么还有新的。你千万不能这么想！因为这是本次作业有且仅有的提示（如果你不关注公众号的话）。文件夹中有两份代码，<code>basic</code>和<code>advance</code>。于此，我们的表达式解析之旅正式开始了。</p>
@@ -474,9 +649,9 @@
 <p>​	那么，真正的 OO 玩家到底应该怎么做？不要着急，让我们点开<code>advance</code>，步入 AST的奇妙世界。</p>
 <p>​	<strong>2、<code>advance</code>-递归下降</strong></p>
 <p>​		什么是递归下降？让我们翻出一张陈年老图。</p>
-<p><img src="C:\Users\lenovo\Pictures\博客图片\OO\AST.jpg" alt="image-20260310215029300"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/AST.jpg"></p>
 <p>​	这和我们的递归下降有什么关系，不要急，再看下面这张图。其中<code>Parser</code>是我们引入的新类，它负责将整个表达式进行划分。</p>
-<p>​	<img src="C:\Users\lenovo\Pictures\博客图片\OO\Diagram2.jpg"></p>
+<p>​<img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/Diagram2.jpg"></p>
 <p> <code>Parser</code> 的运作和周王朝的运作有什么相似之处？这就不得不提到本题最重要的三种类了<code>Expr</code>、<code>Term</code>、<code>Factor</code>。</p>
 <ul>
 <li><strong>我是 <code>Expr</code>（天子）</strong>：我高居庙堂，俯瞰整个帝国。在我眼里，天下无非就是被 <code>+</code> 或 <code>-</code> 这两条大河划开的几个大行省——也就是<strong>一堆 <code>Term</code>（项）</strong>。天子是不干粗活的，我不做任何具体的数学运算。我只负责宣旨，<code>new</code> 一个 <code>ArrayList&lt;Term&gt;</code>，然后把切出来的行省一个个装进去。</li>

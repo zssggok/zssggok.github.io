@@ -279,11 +279,60 @@ try {
 } catch (e) {}
 
 function copy_code_block () {
-  $('pre code').each(function (i, block) {
-    $(block).attr({ id: 'hljs-' + i })
-    $(this).after('<a class="copy-code" href="javascript:" data-clipboard-target="#hljs-' + i + '" title="拷贝代码"><i class="fa fa-clipboard" aria-hidden="true"></i></a>')
+  function set_copy_state ($button, text, className) {
+    $button.removeClass('copied copy-error').addClass(className).find('span').text(text)
+    setTimeout(function () {
+      $button.removeClass('copied copy-error').find('span').text('Copy')
+    }, 1500)
+  }
+
+  function fallback_copy (text) {
+    var textarea = document.createElement('textarea')
+    textarea.value = text
+    textarea.setAttribute('readonly', '')
+    textarea.style.position = 'absolute'
+    textarea.style.left = '-9999px'
+    document.body.appendChild(textarea)
+    textarea.select()
+    var copied = document.execCommand('copy')
+    document.body.removeChild(textarea)
+    if (!copied) throw new Error('copy failed')
+  }
+
+  $('.entry-content .highlight').each(function () {
+    var $highlight = $(this)
+    $highlight.find('.copy-code').remove()
+    $highlight.append('<a class="copy-code" href="javascript:" title="Copy code"><span>Copy</span></a>')
   })
-  var clipboard = new ClipboardJS('.copy-code')
+
+  $(document).off('click.sakuraCopy', '.entry-content .highlight .copy-code').on('click.sakuraCopy', '.entry-content .highlight .copy-code', function (e) {
+    e.preventDefault()
+    var $button = $(this)
+    var $highlight = $button.closest('.highlight')
+    var codeText = ''
+    var $codePre = $highlight.find('.code pre').first()
+    if ($codePre.length) {
+      codeText = $codePre.text()
+    } else {
+      codeText = $highlight.find('pre').last().text()
+    }
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(codeText).then(function () {
+          set_copy_state($button, 'Copied', 'copied')
+        }).catch(function () {
+          fallback_copy(codeText)
+          set_copy_state($button, 'Copied', 'copied')
+        })
+      } else {
+        fallback_copy(codeText)
+        set_copy_state($button, 'Copied', 'copied')
+      }
+    } catch (err) {
+      set_copy_state($button, 'Failed', 'copy-error')
+    }
+  })
 }
 
 function attach_image () {
