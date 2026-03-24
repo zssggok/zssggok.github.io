@@ -433,119 +433,53 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Unit1-表达式解析"><a href="#Unit1-表达式解析" class="headerlink" title="Unit1 表达式解析"></a>Unit1 表达式解析</h1><hr>
-<p>​	喜报喜报！<code>OO</code>正课它来了！<br>​	还在因为找不到对象发愁吗？还在因为刚充值<code>Gemini</code>找不到用武之地而彷徨吗？<br>​	这些都不是问题，因为<code>OO</code>足够劲爆！<br>​	那还等什么，就让我们拆开<code>OO</code>为我们送上的第一份大礼——<br>​	<strong>表达式解析</strong></p>
+          <h1 id="一、作业架构设计"><a href="#一、作业架构设计" class="headerlink" title="一、作业架构设计"></a>一、作业架构设计</h1><h2 id="1、作业最终架构"><a href="#1、作业最终架构" class="headerlink" title="1、作业最终架构"></a>1、作业最终架构</h2><p>​    下面将一一介绍架构中的各个部分以及其背后的思考</p>
+<h3 id="（1）指令处理模块"><a href="#（1）指令处理模块" class="headerlink" title="（1）指令处理模块"></a>（1）指令处理模块</h3><p>​    指令处理模块由三个类构成：</p>
+<p>​    <code>MainClass</code>类(以下简称<code>MC</code>)。<code>MC</code>的唯一功能是读取指令并且根据空白符划分为多个部分，存储于二维数组中，然后将这个二维数组传给指令处理模块。</p>
+<p>   <code>CommandProcessor</code>类（单例模式，以下简称<code>CP</code>)。<code>CP</code>的作用便是解读各个代码，并向各个冒险者个体发放命令（为了方便，我选择让CP来管理所有冒险者）。我将指令划分为四类：</p>
+<pre><code>a)单体命令，即单独一个冒险者可以执行的命令；
+b)use类指令，该指令存在使用者与被使用者；
+C)fight类指令，该指令存在攻击发出者与被攻击者；
+d)relation类指令，主要负责关系的构建与解除。
+</code></pre>
+<p>​    需要强调的是，每一条指令都仅仅是一种通知，真正的指令执行者是冒险者本身。</p>
+<p>   <code>Lexer</code>类(以下简称<code>LE</code>)。因为关系构建存在文法解析的部分，我创建了它来辅助<code>CP</code>。<code>LE</code>负责识别下一个语料的种类并将其整体返回给<code>CP</code>，<code>CP</code>中的递归下降方法将根据文法规则构建不同冒险者之间的关系。</p>
 <hr>
-<h2 id="第一次作业"><a href="#第一次作业" class="headerlink" title="第一次作业"></a>第一次作业</h2><h3 id="啊？表达式解析"><a href="#啊？表达式解析" class="headerlink" title="啊？表达式解析"></a>啊？表达式解析</h3><p>​	<strong>1、表达式解析的定义</strong></p>
-<p>​	在这里，我直接引入课程组对问题的描述。</p>
-<blockquote>
-<p>读入一个包含加、减、乘、乘方以及括号（其中括号的深度<strong>至多为 3 层</strong>）的<strong>单变量</strong>表达式，输出<strong>恒等变形展开所有括号后</strong>的表达式。<br>在本次作业中，<strong>展开所有括号</strong>的定义是：对原输入表达式 <em>E</em> 做<strong>恒等变形</strong>，得到新表达式 <em>E</em>′，且 <em>E</em>′ 中不含有字符 <code>(</code> 、 <code>)</code>和空白字符</p>
-</blockquote>
-<p>​	（有关单变量表达式的详细内容请见文末）</p>
-<p>​	 什么意思呢？拆括号+合并同类项，没了。</p>
-<p>​	<strong>2、难点重重</strong></p>
-<p>​	一看到题目，大脑就麻木了。最多嵌套三层的括号，还加入了令人头疼的乘方运算。此外，我们敬爱的课程组还引入了神秘的未知数<code>x</code>。高端如<code>Java</code>，也没有处理未知数乘法的现成函数。更离谱的是，他们仨还能打出组合技。让我们来直观感受一下这些东西有多头疼：</p>
-<p>​	<code>	-  (+-	x*x*3*x^+002	+12)^2*x</code></p>
-<p>​	是的，我们还需要面对莫名其妙的先导零、莫名其妙的空白符以及莫名其妙的+-组合。</p>
-<p>​	还有一件事，题目可没说常量有多大啊。</p>
-<p>​	<code>	-  (+-	x*x*3*x^+002+121321198935894131423343906544142341252513453578973487835410827587203471287180)^2*x</code></p>
-<p>​    这个也是合法的。</p>
-<h3 id="噫，我找到对象了"><a href="#噫，我找到对象了" class="headerlink" title="噫，我找到对象了"></a>噫，我找到对象了</h3><p>​	好吧，问题的第一步在于，我们要怎么解析个又臭又长的字符串，我们要怎么根据文法规则把它划分为<code>Expr</code>、<code>Term</code>、<code>Factor</code>这几部分。</p>
-<p>​	就在我们一筹莫展的时候，我们敬爱的课程组送来了一份代码。<code>Unit1_training?</code>别搞啊，我这份作业还没写完呢，怎么还有新的。你千万不能这么想！因为这是本次作业有且仅有的提示（如果你不关注公众号的话）。文件夹中有两份代码，<code>basic</code>和<code>advance</code>。于此，我们的表达式解析之旅正式开始了。</p>
-<p>​	<strong>1、<code>basic</code>-正则表达式</strong></p>
-<p>​		不难发现，表达式被 + &#x2F; - 划分，分为多个项。项由 * 划分，分为多个。项就更好说了，题目都给出了他们的形式化表达，直接转化为正则表达式就行了。（例：常量因子 [+-]?\d+）我们只需要配合<code>Java</code>中的<code>Matcher</code> 和 <code>Pattern</code>类就可以很轻松的划分出各个部分。</p>
-<p>主函数内部</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">patternTerm</span> <span class="operator">=</span> <span class="string">&quot;\\d+(\\*\\d+)*&quot;</span>; <span class="comment">//正则表达式，用来提取项</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Pattern</span> <span class="variable">re</span> <span class="operator">=</span> Pattern.compile(patternTerm);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">       <span class="type">String</span> <span class="variable">inputExpr</span> <span class="operator">=</span> scanner.next();</span><br><span class="line"></span><br><span class="line">       <span class="type">Matcher</span> <span class="variable">matcher</span> <span class="operator">=</span> re.matcher(inputExpr);</span><br><span class="line"></span><br><span class="line">       <span class="type">Expr</span> <span class="variable">expr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Expr</span>();</span><br><span class="line">       <span class="keyword">while</span> (matcher.find()) &#123;</span><br><span class="line">           <span class="type">String</span> <span class="variable">termStr</span> <span class="operator">=</span> matcher.group(<span class="number">0</span>);</span><br><span class="line">           <span class="type">Term</span> <span class="variable">term</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Term</span>(termStr); <span class="comment">//划分term</span></span><br><span class="line">           expr.addTerm(term);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>Expr</code>类内部</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Term</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        factors = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        String[] factorStrs = s.split(<span class="string">&quot;\\*&quot;</span>); <span class="comment">//划分factor</span></span><br><span class="line">        <span class="keyword">for</span> (String factorStr : factorStrs) &#123;</span><br><span class="line">            factors.add(Integer.parseInt(factorStr));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	至于计算部分，课程组也给了我们提示，利用函数递归先进后出的特点，我们可以先处理+&#x2F;-，然后是*</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (position != -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (expression.charAt(position) == <span class="string">&#x27;+&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Add</span>(parse(expression.substring(<span class="number">0</span>, position)),</span><br><span class="line">                    parse(expression.substring(position + <span class="number">1</span>)));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Sub</span>(parse(expression.substring(<span class="number">0</span>, position)),</span><br><span class="line">                    parse(expression.substring(position + <span class="number">1</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        position = findMul(expression);</span><br><span class="line">        <span class="keyword">if</span> (position != -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Mul</span>(parse(expression.substring(<span class="number">0</span>, position))</span><br><span class="line">                    , parse(expression.substring(position + <span class="number">1</span>)));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!expression.equals(<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                <span class="type">Matcher</span> <span class="variable">matcher</span> <span class="operator">=</span> numberPattern.matcher(expression);</span><br><span class="line">                <span class="keyword">if</span>(matcher.find()) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Num</span>(Integer.parseInt(expression));</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="type">int</span> <span class="variable">number</span> <span class="operator">=</span> parameters.get(expression);</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Num</span>(number);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Num</span>(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​	嗯？这不就是数据结构学的表达式树的计算方法吗？原来是老朋友，看来这次作业也没多难，……吗？不！千万不要忘了，我们还有乘方运算，我们还有嵌套的三层括号！你不妨想想，这样的情况下，处理函数会有多么复杂。</p>
-<p>​	等等，为什么要在<code>Java</code>中用“函数”这个术语，不应该是“方法”吗？恭喜你，你发现了华点。我们接着往后想，假设要把上面这一坨代码转化为C语言代码，有哪里需要改动呢？把<code>expr</code>改成以<code>term</code>为元素的数组！把<code>term</code>改为以<code>factor</code>为元素的数组！改<code>scanner</code>为<code>scanf</code>…怎么越想越不对劲啊，这和C语言没区别啊！</p>
-<p>​	对了，这是因为我们借着<strong>面向对象</strong>的幌子，写了一份很<strong>过程</strong>的代码。无异于找到<code>npy</code>但是牵不了手（悲</p>
-<blockquote>
-<p>以下内容由<code>Gemini</code>提供：<br>​	既然聊到了过程化，不如我们再往深挖一步，直接从计算机科学的底层理论上给正则表达式判个死刑。<br>在编译原理的乔姆斯基文法体系中，正则表达式属于<strong>3型文法（正则文法）</strong>。它在底层的数学模型叫做<strong>有限状态自动机（FSA）</strong>。这台机器有个致命的弱点：<strong>它没有记忆。(寄存器里面那个叫状态）</strong><br>​	遇到简单的连续加减乘除，状态机还能凑合跑。但一旦遇到我们题目中万恶的嵌套括号，比如 <code>(((x+1)^2))</code>，状态机就彻底懵了。它遇到第一个 <code>(</code> 切换状态，遇到第二个 <code>(</code> 还在那个状态，等遇到 <code>)</code> 的时候，它根本不知道前面到底配对了几个左括号，因为它内部压根就没有“计数器”或“栈”这种物理结构。<br>​	要想完美解析嵌套括号，在数学理论上我们必须跨越维度，使用带有栈结构的<strong>下推自动机（PDA）</strong>，这属于更高级的<strong>2型文法（上下文无关文法）</strong>。想要利用栈，我们就要调用函数递归，学过程序设计的同学都体验过递归的痛苦，这无疑加大了代码难度。<br>​	所以，用纯正则去解多项式嵌套，不仅是工程上的“代码坟墓”，更是数学理论上的“逆天而行”。</p>
-</blockquote>
-<p>  PS：并不是说不能用正则表达式做这道题，因为按照往年经验，第一次作业用正则表达式是主流，更何况这个世界上有正则仙人。</p>
-<p>​	那么，真正的 OO 玩家到底应该怎么做？不要着急，让我们点开<code>advance</code>，步入 AST的奇妙世界。</p>
-<p>​	<strong>2、<code>advance</code>-递归下降</strong></p>
-<p>​		什么是递归下降？让我们翻出一张陈年老图。</p>
-<p><img src="C:\Users\lenovo\Pictures\博客图片\OO\AST.jpg" alt="image-20260310215029300"></p>
-<p>​	这和我们的递归下降有什么关系，不要急，再看下面这张图。其中<code>Parser</code>是我们引入的新类，它负责将整个表达式进行划分。</p>
-<p>​	<img src="C:\Users\lenovo\Pictures\博客图片\OO\Diagram2.jpg"></p>
-<p> <code>Parser</code> 的运作和周王朝的运作有什么相似之处？这就不得不提到本题最重要的三种类了<code>Expr</code>、<code>Term</code>、<code>Factor</code>。</p>
-<ul>
-<li><strong>我是 <code>Expr</code>（天子）</strong>：我高居庙堂，俯瞰整个帝国。在我眼里，天下无非就是被 <code>+</code> 或 <code>-</code> 这两条大河划开的几个大行省——也就是<strong>一堆 <code>Term</code>（项）</strong>。天子是不干粗活的，我不做任何具体的数学运算。我只负责宣旨，<code>new</code> 一个 <code>ArrayList&lt;Term&gt;</code>，然后把切出来的行省一个个装进去。</li>
-<li><strong>我是 <code>Term</code>（诸侯&#x2F;士大夫）</strong>：我是天子任命的行省总督。在我眼里，我的辖区无非是被 <code>*</code> 划开的几个县城——也就是<strong>一堆 <code>Factor</code>（因子）</strong>。我也很懒，我只负责拿个 <code>ArrayList&lt;Factor&gt;</code> 把县城存起来。对了，作为一方诸侯，我还握有辖区的兵权（记录前面的正负号 <code>boolean negation</code>），毕竟到了最后清算的时候，整个行省是正还是负，得我这个“项”来兜底。</li>
-<li><strong>我是 <code>PowerFactor</code>（平民）</strong>：我是实干家。我可以是一个怀揣 c 两白银，但名下没有半亩土地（x^0）的商贾（常数c)。我也可以是一个兜里只有 1 两散银，但坐拥 n亩良田的自耕农（x^n)。但是你看，不管是带符号的常数c，还是带指数的 x，我们的本质都是一样的（c * x^n)。</li>
-<li><strong>我是 <code>ExprFactor</code>（平民）</strong>：我是一个白日幻想家。我可没有什么白银、什么土地。我负责管理我的王国，我的王国里也有天子、也有士大夫和平民。怎么来的？这你别管！你只要明白，这个王国的价值，就是我的价值。如果我想的话，我还能给它搞个平方(^+n)。</li>
-</ul>
-<p>​	<code>Expr</code>、<code>Term</code>、<code>Factor</code>，他们负责各自任务，对下属绝对信任。至于<code>Expr</code>、<code>Term</code>、<code>Factor</code>三者的域，可以自行思考（上文其实有提示）。</p>
-<p>​	至于<code>Parser</code>这个负责解析文法的上帝，创造了<code>Expr</code>、<code>Term</code>、<code>Factor</code>的实例化对象，并将他们衔接起来，<code>parseExpr</code>负责拆分出表达式中的各个项<code>term</code>，并将他们存入<code>Terms</code>这个容器中。<code>parseTerm</code>负责拆分出因子中的各个因子<code>factor</code>，并将他们存入<code>Factors</code>这个容器中。<code>parseFactor</code>则负责区分两种<code>factor</code>，并为他们分配相应的对象空间。</p>
-<p>​	终于，我们找到了真正的对象（还是三个，有点花心）。接下来，任务就变得轻松了。</p>
-<h3 id="哎，都是为了这个家"><a href="#哎，都是为了这个家" class="headerlink" title="哎，都是为了这个家"></a>哎，都是为了这个家</h3><p><strong>1、统一度量衡（预处理）</strong></p>
-<p>​	不知你是否还记得，我们有一些朋友不太安分：</p>
-<blockquote>
-<p> 莫名其妙的先导零、莫名其妙的空白符以及莫名其妙的+-组合</p>
-</blockquote>
-<p>​	想要处理他们，其实一点也不难。不难发现，空白符除了让字符串变得格外丑陋，基本没有任何作用，所以我们只需要无脑去掉所有空白符就可以了。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Step1:去除一切空白符</span></span><br><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> input.replaceAll(<span class="string">&quot;[ \\t]+&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>​	那么那些连续的+-号呢？题目说表达式前面可能有一个，项前面可能一个，常数因子前面也可能有一个，最多可能有三个连续的+&#x2F;-。但实际上，有几个都无所谓，因为只要是连续的+&#x2F;-，我们都可以把它化简为一个。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Step2: 去除连续的&quot;+&quot;和&quot;—&quot;</span></span><br><span class="line"><span class="keyword">while</span> (result.contains(<span class="string">&quot;++&quot;</span>) || result.contains(<span class="string">&quot;--&quot;</span>) ||</span><br><span class="line">        result.contains(<span class="string">&quot;+-&quot;</span>) || result.contains(<span class="string">&quot;-+&quot;</span>)) &#123;</span><br><span class="line">    result = result.replace(<span class="string">&quot;++&quot;</span>, <span class="string">&quot;+&quot;</span>);</span><br><span class="line">    result = result.replace(<span class="string">&quot;--&quot;</span>, <span class="string">&quot;+&quot;</span>); <span class="comment">// 负负得正</span></span><br><span class="line">    result = result.replace(<span class="string">&quot;+-&quot;</span>, <span class="string">&quot;-&quot;</span>);</span><br><span class="line">    result = result.replace(<span class="string">&quot;-+&quot;</span>, <span class="string">&quot;-&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	至于前导零和那个无限制的巨大的常量，其实就更简单了，因为<code>Java</code>提供了极其丰富的库。<code>BigInteger</code>类无疑是解决这个问题的不二之选，它自带的初始化方法能把字符串中前导零全部忽略。<code>Integer.parseInt(String input)</code>方法同样也可以解决前导零的问题，只不过它适用于<code>Integer</code>类（<code>int</code>的包装器类型）。</p>
-<p><strong>2、税收系统（<code>Poly</code>类与<code>evaluate</code>方法）</strong></p>
-<p>​	周王朝的运作当然离不开<code>money</code>，既然我们已经成功构建了基本的国家体系，那么是时候实现税收系统了。</p>
-<p>​	问题来了，既然加入了未知数<code>x</code>，那么我们就要不能用简单的<code>int</code>或者<code>BigInteger</code>来表示最终计算的数值。这个时候，就要引入Poly类了。之所以这么做，是因为本次作业所有的值都可以归纳为一个多项式。为了实现像<code>int</code>那样的计算，我们需要为<code>Poly</code>类补充相应的功能（加、减、乘、平方）。</p>
-<p>​	那么要怎么把<code>Expr</code>、<code>Term</code>、<code>Factor</code>转化为多项式呢？只需要为每个类设置一个<code>evaluate</code>方法就行了。需要注意的是，这里的<code>evaluate</code>方法调用是递归的，比如<code>Expr</code>的<code>evaluate</code>负责调用<code>Term</code>的<code>evaluate</code>方法，<code>Term</code>的<code>evaluate</code>负责调用<code>Factor</code>的<code>evaluate</code>方法。</p>
-<p><strong>3、启禀皇上</strong></p>
-<p>​	到了最后，我们通过调用<code>Expr</code>的<code>evaluate</code>方法，计算出来最终的<code>Poly</code>结果。万事俱备，我们只需要把最终的<code>Poly</code>打印出来，也就是覆写<code>Poly</code>的<code>toString</code>方法就可以了（之所以是覆写，是因为那个祖宗——<code>Object</code>类——自带此方法）。</p>
-<p>​	皇上的时间很宝贵，我们的最终输出也是越短越好（性能分对此有要求）。我相信以大家的智商，都能想到如何输出最短的结果吧。不过，我还是在此稍微提醒一下，<code>-2+x</code> 比 <code>x-2</code>要多一个字符。</p>
-<p>​	看到这里，你肯定已经胸有成竹了。加油，去谱写你的王国史诗吧！</p>
+<h3 id="（2）冒险者模块"><a href="#（2）冒险者模块" class="headerlink" title="（2）冒险者模块"></a>（2）冒险者模块</h3><p>   <code>Adventurer</code>类是本此任务中活动最频繁，也是最为重要的类，他是一切命令的实际执行者。我的冒险者拥由<strong>指令执行区</strong>、<strong>状态调整区</strong>、<strong>所属物管理区</strong></p>
+<p>​    指令执行区：<code>Adventurer</code>的执行区同样被我划分为四个部分，与上文中的<code>CP</code>指令类型一一对应</p>
+<pre><code>a)单元命令执行区
+b)use命令执行区
+c)fight命令执行区
+d)relation命令执行区
+</code></pre>
+<p>​    在执行指令的前后，冒险者还会检测指令的成功性。如果出现了违规操作（如攻击BOSS），那么冒险者会输出相应警告信息；如果操作成功，冒险者则会<del>大肆炫耀</del>，根据输出规则将自己做的事公之于众。</p>
+<p>​    状态调整区：冒险者在某一动作（<code>use</code>、<code>fight</code>、<code>relation</code>）执行时会做出相应的反应（主动会被迫），如相关参数的改变，求助信号的发出等等。与此同时，该区域也负责输出冒险者变化后的状态。</p>
+<p>​    所属物管理区：管理物品与关系。冒险者拥有三种“物品”——药水、装备与法术，以及两种“关系”——老板与手下，他们的管理都被放在这一个区域。有关“物品”的功能有加入背包、移除背包、随身携带等等；有关“关系”的功能有寻找下级、判断是否为同盟，判断是否为上级等等。</p>
 <hr>
-<h2 id="第二次作业"><a href="#第二次作业" class="headerlink" title="第二次作业"></a>第二次作业</h2><p>​	在第一次作业基础上，本次迭代作业<strong>增加</strong>了以下几点：</p>
-<ul>
-<li>本次作业支持嵌套多层括号。</li>
-<li>新增<strong>指数函数因子 <code>exp</code></strong>，其参数可以是任意因子。</li>
-<li>新增<strong>选择式因子</strong>，一种形如 <code>[(A==B)?C:D]</code> 的三目运算结构，要求程序具备判定因子 <code>A</code> 与 <code>B</code> <strong>数学恒等性</strong>的能力。</li>
-<li>新增<strong>自定义函数</strong>，支持 <code>f(x) = 表达式</code> 形式的函数定义与调用。</li>
-</ul>
-<p>​	因为新因子的添加过程和第一次作业基本一致，这里只讨论几个比较重要的问题。如何提升程序的速度是我们讨论的重点，尽管性能分与程序速度没有直接关系，但是<code>TLE</code>会公平地惩罚每一个忽视它的人。</p>
-<h3 id="哥们，你到底变不变啊？"><a href="#哥们，你到底变不变啊？" class="headerlink" title="哥们，你到底变不变啊？"></a>哥们，你到底变不变啊？</h3><p>​	本次作业还是需要我们沿用AST的思路，如果你在第一次作业使用的是正则表达式的写法，那么还是好好重构吧。如果你早就踏上了AST这条宏伟大道，那恭喜你，这次作业你应该很快就能做出来了。有多快呢？大概七个小时吧（本彩笔真的用了这么久，中饭都没吃）。我知道你想笑，但是你先别笑，因为后续的优化又消耗了我整整一天半，导致我压根没时间复习<code>OS</code>的<code>Lab0</code>实验，在<code>extra</code>中砍下了20分的高分。</p>
-<p>​	那么问题来了，到底是什么东西折磨了我这么久？哈哈，等会你就知道了。</p>
-<p>​	为了存储结果，我们不能再使用<code>c*x^n</code>这个模式了，要为它加上一个<code>exp</code>项<code>c * x^n* exp(poly)</code>。所以我们需要为这个新的新式准备一个新的数据结构。主流的数据结构有两种，一个是哈希表，另一个也是哈希表。我没有开玩笑，因为这两个哈希表有着本质上的不同——键值对的对象类型不同。前者的键是<code>Node</code>类，里面存放着<code>x</code>的幂值<code>int</code>和<code>exp</code>的幂值<code>poly</code>，我们将它暂且称为<code>NodeHash</code>表，它的值则是系数<code>coef</code>；后者则简单很多，键是<code>x</code>的幂值<code>int</code>，值是一个链表，链表的元素是<code>exp</code>的幂值<code>poly</code>和系数<code>coef</code>组成的类<code>Unit</code>，我们暂且称这个哈希表为<code>UnitHash</code> 表。</p>
-<p>​	正常人会选择前者，因为这样会减少对链表的遍历，速度快很多。事情真的是这样吗？你怎么知道<code>Java</code>是如何对待你的<code>hashmap</code>的？把键设置为一个新的类真的靠谱吗？我询问了<code>Gemini</code>，得到了一个惊人的答案——如果我们的<code>Node</code>类是可变对象，我们每次修改的时候都要将原先的<code>Node</code>去除，再插入新的<code>Node</code>，并且重新递归地计算<code>hash</code>值，这样速度反而更慢。仔细思考一下，我们的<code>Node</code>对象里面存放着<code>Poly</code>类，<code>Poly</code>类在初始化之后还要加、乘、乘方、取反，比<code>npy</code>(我还没有，悲）还善变！于是我恍然大悟，<code>UnitHash</code>表才是正解！<code>NodeHash</code>是死路一条！</p>
-<p>​	我悟了，然后耗时7小时写出了第一份代码，自信满满地跟同学对拍——结果却惨不忍睹，我的代码基本上全是<code>TLE</code>！于是我决定剖析同学的处理方式（我借用了同学的源代码，当然这是违规的），发现他们竟然采用了那个被我排除的方法<code>NodeHash</code>，这不科学。</p>
-<p>​	心灰意冷之下，我再次询问了<code>Gemini</code>，它这次给出了一个崭新的概念——事实不可变。我们不妨回忆一下<code>Poly</code>类的那些方法，除了<code>ptermAdd</code>之外，无论加、乘、乘方还是取反，无一不是在开头<code>new</code>了一个新的对象<code>result</code>，在方法的最后<code>return</code>了这个<code>result</code>。也就是说，这些方法并没有改变原先那个<code>poly</code>，而是制造一个新的对象，它们本质上是另一种初始化方式罢了，而<code>ptermAdd</code>，仅仅是这些初始化方法的辅助方法。在初始化之后，我们将不再有资格修改这个<code>poly</code>对象，这不就是不可变对象吗？为了彻底在代码层面保证这种不可变性，我将 <code>Node</code> 类中的所有属性都加上了 <code>final</code> 关键字，并且在构造器中一次性算好 <code>hash</code> 值并锁死在一个 <code>final int</code> 中。这样 <code>HashMap</code> 在发生碰撞寻址时直接返回常数，连重新计算哈希的开销都省了！所以，在这里，使用<code>NodeHash</code>表压根没有想象中那么危险。除此之外，我们还可以删除原来的深拷贝方法，进一步提升程序的效率。</p>
-<p>​	这样，我被折磨的原因很清楚了——这些看起来可变的“事实不可变”对象把我骗得团团转。	</p>
-<h3 id="哥们，你到底快不快啊？"><a href="#哥们，你到底快不快啊？" class="headerlink" title="哥们，你到底快不快啊？"></a>哥们，你到底快不快啊？</h3><p>​	当我更换完数据结构之后，速度虽然有所上升，但是还是比不过我的同学，对于上进（卷！）的我来说这肯定难以接受。我把同学的代码喂给<code>AI</code>，询问了原因。可是这次<code>AI</code>不买账了，它指出我的同学只是运气好，在面对有快速幂的我来说，比他们快才是正常现象。这下给我整不会了，明明是随机生成的测试点，我的同学怎么可能次次都运气好。鬼使神差之下，我删除了快速幂，然后奇迹发生了，我的代码快了10倍（5分钟到30秒）！显然，我被快速幂骗得团团转。</p>
-<p>​	为什么会这样？让我们从这两个方面来剖析一下：</p>
-<p><strong>1、隐藏代价</strong></p>
-<p>​	在算数字的快速幂（比如 2^8）时，无论是算 2* 2还是16 *16，<code>CPU</code>执行一次乘法指令的时间都是<code>O(1)</code>。此时，减少乘法次数（快速幂）就是唯一的王道。但在多项式中，执行一次 <code>A* B</code> 的时间复杂度是 <code>A</code>的项数 * <code>B</code> 的项数。</p>
-<p>​	随着指数的增大，快速幂会让两个体积巨大的中间结果互乘，导致单次乘法的开销呈<strong>平方级爆炸</strong>。这就好比普通连乘是拿一个庞大的结果去乘以最初那个微小且纯粹的底数（大象踩蚂蚁）；而多项式快速幂则是强制让两个极度膨胀的中间结果互相相乘（巨兽互殴），这注定会引发性能上的灾难。</p>
-<p><strong>2、哈希爆炸</strong></p>
-<p>​	上述讨论的仅仅是单次乘法的开销，快速幂可以用更少的乘法次数弥补这一点。真正的问题在于快速幂产生的庞大的中间量上面。</p>
-<p>​	多项式乘法不仅是循环相乘，还包含了极其耗时的合并同类项过程。快速幂在计算的过程中会产生很多中间量，合并化简的步骤将会多次进行哈希查找的工作，这其中的哈希冲突不计其数，一旦发生冲突，<code>Java</code>就会递归地调用<code>equals</code>操作，极大地增加了程序的复杂度。</p>
-<p>​	由此可见，快速幂并不适用于多项式运算，我们在使用算法的时候要多加思考，而不是把它当作盲盒随意地使用。</p>
-<h3 id="哥们，你到底算不算啊？"><a href="#哥们，你到底算不算啊？" class="headerlink" title="哥们，你到底算不算啊？"></a>哥们，你到底算不算啊？</h3><p>​	几天后的周五，面对被<code>hack</code>的千疮百孔的程序，肖杰瞎回忆起提交中测的那个夜晚，当时的他是多么自信，认为自己选择了一条最正确的路……现在，肖杰瞎修复了自己的程序，而行刑者正等待下一个莽撞的少年。那么行刑者究竟是如何突破重重关卡，一路杀到我们面前的呢？没错，他们跟课程组签订了秘密的协议（误闯天家）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">f(x)=(x+1)^8</span><br><span class="line">[(1==1)?1:f(f(f(f(f(f(f(f(x))))))))]</span><br></pre></td></tr></table></figure>
-
-<p>​	乍一看，这个样例的复杂度肯定过不了<code>cost</code>检测，但是课程组为我们准备了一个天坑：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Cost([(A==B)?C:D]) = Cost(A) + Cost(B) + choose(Cost(C), Cost(D)) + 5</span><br><span class="line">其中 choose(Cost(C), Cost(D)) 表示最终选择式子的 cost</span><br></pre></td></tr></table></figure>
-
-<p>​	没错，后面那一坨自定义函数的嵌套根本不会被算入<code>cost</code>，假设你的代码无脑计算了这一坨数据，那么无情的大刀就会落下，骇死我了。为了避免这恐怖的结局，我们必须在对选择因子<code>evaluate</code>的时候留个心眼——先判断真假，再决定选择哪一个因子去<code>evaluate</code>。</p>
-<p>​	其实，不只是选择因子的<code>evaluate</code>需要多加注意，我们在选择解析自定义函数的方式时更要留神。如果你选择了暴力宏展开，也就是把f(x)定义中的<code>x</code>（形参）全部替换为<code>realArg</code>（实参），你可能也会出现这样的问题——一些无关的因子被暴力展开了，导致消耗了过多的时间。除此之外，考虑到<code>String</code>是不可变对象，对于层层嵌套，每一次展开都会产生很多的<code>String</code>对象，这会使得<code>GC</code>回收器压力暴增，消耗过多的算力。</p>
-<p>​	正确的做法是先把<code>f(x)</code>解析成<code>expr</code>的形式，就像后面需要化简的表达式一样，一旦<code>f(x)</code>被调用，就把它<code>evaluate</code>成<code>Poly</code>，然后使用<code>Poly</code>内置的替换方法把<code>x</code>全部替换为<code>realArg</code>。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Poly <span class="title function_">polySubstitute</span><span class="params">(Poly argPoly)</span> &#123;</span><br><span class="line">        <span class="comment">//将x替换为实参(函数换值)</span></span><br><span class="line">        <span class="type">Poly</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Poly</span>();</span><br><span class="line">        <span class="keyword">for</span> (java.util.Map.Entry&lt;Node, BigInteger&gt; entry : terms.entrySet()) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">            <span class="type">BigInteger</span> <span class="variable">coef</span> <span class="operator">=</span> entry.getValue();</span><br><span class="line">            <span class="type">BigInteger</span> <span class="variable">power</span> <span class="operator">=</span> node.getPower();</span><br><span class="line">            <span class="type">Poly</span> <span class="variable">expPoly</span> <span class="operator">=</span> node.getExpPoly();</span><br><span class="line">            <span class="type">Poly</span> <span class="variable">termPoly</span> <span class="operator">=</span> Poly.varPolyGet(BigInteger.ZERO, coef);</span><br><span class="line">            <span class="comment">//替换x</span></span><br><span class="line">            <span class="keyword">if</span> (!power.equals(BigInteger.ZERO)) &#123;</span><br><span class="line">                termPoly = termPoly.polyMul(argPoly.polyExp(power.intValue()));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//递归地替换exp(里面的x)</span></span><br><span class="line">            <span class="keyword">if</span> (!expPoly.isEmpty()) &#123;</span><br><span class="line">                <span class="type">Poly</span> <span class="variable">subExp</span> <span class="operator">=</span> expPoly.polySubstitute(argPoly);</span><br><span class="line">                termPoly = termPoly.polyMul(Poly.expPolyGet(subExp));</span><br><span class="line">            &#125;</span><br><span class="line">            result = result.polyAdd(termPoly);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>​	实际上，我们还可以为每个<code>AST</code>成员创立一个<code>funcEvaluate</code>方法，对于除了<code>powerFator</code>之外的成员，它的功能和普通<code>evaluate</code>完全一致；但是在遇到<code>powerFator</code>的时候，它不会返回<code>x^n</code>，而是返回<code>argPoly^n</code>。这两种函数解析的方法各有优劣，我们在第三次作业再展开讨论。</p>
-<p>​	现在，本次作业最凶险的关卡已经暴露无疑了，加油，继续书写你的史诗吧。</p>
+<h3 id="（3）物品模块"><a href="#（3）物品模块" class="headerlink" title="（3）物品模块"></a>（3）物品模块</h3><p>​    该模块由药水、装备与法术构成（我将这三种类型成为大类）。三者并无共同父类，因为在我看来三者的功能有很大不同，放在同一个父级之下并不能简化我的工作。三者各自衍生，诞生了许多子类（将其成为小类），同样有着不同的功能。</p>
+<p>​    三者的产生都来源于工厂（抽象工厂模式），冒险者在调用工厂时需要知道物品的大类，工厂内部负责判断小类并生成相应对象返回给冒险者。</p>
+<p>​    药水和法术都可以当作被use的道具，因此我引入了接口<code>usable</code>，该接口内部方法<code>useTo</code>有最终执行<code>use</code>指令的能力，对use的被使用者造成实质性地影响，并返回布尔值给发出者，以反馈执行结果。</p>
+<h2 id="2、迭代中的架构调整和考虑"><a href="#2、迭代中的架构调整和考虑" class="headerlink" title="2、迭代中的架构调整和考虑"></a>2、迭代中的架构调整和考虑</h2><h3 id="（1）有关容器的使用"><a href="#（1）有关容器的使用" class="headerlink" title="（1）有关容器的使用"></a>（1）有关容器的使用</h3><p>​	<code>Java</code>中的<code>Arraylist</code>作为非常智能的容器，一定程度上实现了队列的功能，这使得它天生拥有“后进后出”的时序性（即后加入的元素一定拥有最大的标），同时它能释放被删除元素的内存，极大的节省了空间。于是我一开始便将所有容器都定义为<code>ArrayList</code>类型。但是后来学习了有关<code>HashMap</code>的知识，并决定将<code>CP</code>中管理冒险者的容器改为<code>HashMap</code>类型，这样可以减少很多<code>for</code>循环找人的过程，提高效率的同时降低了代码量。类似的，我也将冒险者的药水、装备、法术背包更改为此类型。我并未更改“被携带的药水”的容器类型，主要是考虑到上文中提到的时序性。</p>
 <hr>
-<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><p>​	未完待续</p>
+<h3 id="（2）有关工厂模式"><a href="#（2）有关工厂模式" class="headerlink" title="（2）有关工厂模式"></a>（2）有关工厂模式</h3><p>​	因为没有接触过工厂模式的思想，我起初选择让冒险者自身来创建新的对象，在这个过程中，冒险者需要自己判断对象的具体类型（精确到小类），然后进行类型转换放入容器中，这极大程度上增添了代码的复杂性。于是在学习工厂模式之后，我果断采用了抽象工厂，创建了<code>Factory</code>类，冒险者只需要将信息传递给工厂，工厂会自动判断类型然后以“大类”<br>的方式将指针返回给冒险者。</p>
+<hr>
+<h3 id="（3）有关单例模式"><a href="#（3）有关单例模式" class="headerlink" title="（3）有关单例模式"></a>（3）有关单例模式</h3><p>​	类似于工厂模式，单例模式的学习比较靠后，所以我一开始并未采用。后来随着命令种类的不断增加，<code>main</code>不再能容许更多的代码来进行种类识别于任务发放，于是单例的<code>CP</code>应运而生。对于单例模式，我认为最重要的是保证其存在的单一性，不然很容易产生错误解读指令的现象。</p>
+<hr>
+<h3 id="（4）有关继承"><a href="#（4）有关继承" class="headerlink" title="（4）有关继承"></a>（4）有关继承</h3><p>​    根据题目描述，药水与装备都应该是<code>item</code>类的子类，因为他们拥有共同的性质——有ID、可以被加入背包<del>（其实也就这些了）</del>。很不幸的是，越往后期迭代，他们的共性越来越小，分歧越来越大，管理方式也不尽相同，此时我认为再让他们同时继承<code>item</code>类就失去了意义，既不能方便冒险者对他们的管理，也不能减少代码量，于是我删除了<code>item</code>，让他们各自为安。</p>
+<h1 id="二、使用JUnit的心得体会"><a href="#二、使用JUnit的心得体会" class="headerlink" title="二、使用JUnit的心得体会"></a>二、使用<code>JUnit</code>的心得体会</h1><p>​	直观上很不好用！！！但是确实很重要<del>（悲）</del></p>
+<p>​	因为覆盖率检测的问题，我选择从<code>CP</code>转到测试代码，这样的话可以通过给予<code>cp</code>指令来测试整个项目，不仅方便编写测试代码，还符合强侧规则，一举两得。</p>
+<p>​	相比于使用<code>assert</code>来判断代码正确性，我更倾向于对比标准输出，这样更加直观，但是这样的行为是有代价的，我的代码可能会产生一些意料不到的错误，所以我会选择在所有指令的最后针对每一个冒险者的状态进行<code>assert</code>判断，保证每一个数值都正确。</p>
+<p>​	<code>JUnit</code>使用最为重要的是测试数据的生成，很多时候某些极端的数据更能体现出程序内部的错误，下例就是我通过<code>JUnit</code>测试出来的<code>Bug</code></p>
+<pre><code>condition：某个冒险者的`mana`值跟某个法术的消耗值相等时，该法术应当使用成功
+output:使用失败
+reason:判断时使用&gt;而非&gt;=
+</code></pre>
+<p>​	总而言之，<code>JUnit</code>最大的挑战在于构造巧妙地数据以测试自己代码的完备性，在未来我们搭建评测机时，除了用随机生成的方式产生数据，还应当针对代码内容生成极端数据或者陷阱数据，而现在<code>JUnit</code>的使用就是在为这一部分奠定基础。</p>
+<h1 id="三、学习OOPre的心得体会"><a href="#三、学习OOPre的心得体会" class="headerlink" title="三、学习OOPre的心得体会"></a>三、学习<code>OOPre</code>的心得体会</h1><p>​	据我所知，<code>OOPre</code>课程仅仅是一个小小的过渡，与其说是在学习<code>OOPre</code>，不如说我们在学习<code>Java</code>。这段时间的学习更像是在学习古诗鉴赏前的认字环节。虽然没有OO正课那样令人神往，但也是打好基础的关键步骤。在课程中我熟悉了<code>gitlab</code>的使用，学会了常见的<code>Java</code>语法，并且能用面向对象的方式实现微型项目的运行，但是更为重要的事，我用亲身的经历体验到了面向对象与面向过程两种编程方式的区别。</p>
+<p>​	相比于面向过程中的强调步骤和顺序，面向对象更加强调于行为和封装，每个类都各司其职，“高内聚低耦合”的实现方式让我们不再纠结于不同类不同方法之间的爱恨情仇，只要我们能够使他们的层次分明，避免循环调用，那么程序运行的逻辑将会无比清晰，在思考问题或者处理<code>bug</code>时能够更加得心应手。面向对象中的继承更加让我眼前一亮，这种规格化的管理方式极大程度上降低了代码重复率，使程序美观的同时也让思考的脉络更加清晰，同时父类指针对子类的调用更是让成员管理变得简单，子类对父类方法的重写让成员功能变得多元化。</p>
+<p>​	总而言之，<code>OOpre</code>的学习算是为我的OO生涯开了个好头，在学习到不少知识的同时让我体验到面向对象编程的愉快经历（总感觉自己在维护一件艺术品），希望未来我能用OO谱写更加辉煌的篇章。</p>
+<h1 id="四、对OOPre课程的简单建议"><a href="#四、对OOPre课程的简单建议" class="headerlink" title="四、对OOPre课程的简单建议"></a>四、对<code>OOPre</code>课程的简单建议</h1><p> 1、给出JUnit测试代码的模板，比如如何导入连续的输入，而不是将指令一行行地加入</p>
+<p> 2、在计算覆盖率的时候去除new方法</p>
 
         </div>
         <!-- .entry-content -->
