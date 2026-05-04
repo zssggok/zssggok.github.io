@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">OO_Unit2 | Kyogre&#39;s Ocean</title>
+  
+    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
+  <link rel="stylesheet" href="/css/zoom.css" media="all">
+  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+" type="text/css" media="all"> -->
+  <script>
+  /*Initial Variables*/
+  var mashiro_option = new Object();
+  var mashiro_global = new Object();
+  mashiro_option.NProgressON = true;
+  /* 
+   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+   */
+  mashiro_option.email_domain = "";
+  mashiro_option.email_name = "";
+  mashiro_option.cookie_version_control = "";
+  mashiro_option.qzone_autocomplete = false;
+  mashiro_option.site_name = "Kyogre'sOcean";
+  mashiro_option.author_name = "Ocean";
+  mashiro_option.site_url = "http://flashkyogre.cn/";
+  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
+  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
+  mashiro_option.mathjax = "0";
+  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+  // mashiro_option.float_player_on = true;
+
+  /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+  var bg = "https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark1.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark2.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark3.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark4.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark5.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark6.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark7.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark8.jpg".split(",");
+  var bgindex = Math.floor(Math.random()*bg.length);
+  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+    alert('朋友，IE浏览器未适配哦~');
+  }
+  </script>
+  <style type="text/css">
+  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+  </style>
+  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
+  </style>
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <section id="main-container">
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a href="http://flashkyogre.cn/">
+          <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>日月无眠，人间又是一天</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+            
+              
+                <li>
+                  <a href="https://github.com/zssggok" target="_blank" class="social-github" title="github">
+                    <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/github.jpg">
+                  </a>
+                </li>
+              
+            
+              
+                <li>
+                  <a href="mailto:Flashkyogre@outlook.com" target="_blank" class="social-github" title="email">
+                    <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/email.svg">
+                  </a>
+                </li>
+              
+            
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  <div id="video-container" style="">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+      <span class="site-title">
+        <span class="logolink moe-mashiro">
+          <a href="/">
+            <span class="sakurasono">Kyogre&#39;s</span>
+            <span class="shironeko">Ocean</span>
+          </a>
+        </span>
+      </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                          随想
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                          书单
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/music/">
+                          <i class="fa fa-headphones" aria-hidden="true"></i>
+                          歌单
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/comment/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+                    留言板
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+                    关于
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/about/">
+                          <i class="fa fa-meetup" aria-hidden="true"></i>
+                          我？
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/theme-sakura/">
+                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                          主题
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<style>
+  /* ========================================================= */
+  /* 1. 大代码块容器：接近 Typora 默认浅色主题                 */
+  /* ========================================================= */
+  .entry-content .highlight {
+    background: #f7f7f7;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    box-shadow: none;
+    position: relative;
+    padding-top: 0;
+    margin: 20px 0;
+    overflow: auto;
+  }
+
+  .entry-content .highlight pre,
+  .entry-content .highlight .code pre {
+    color: #24292e;
+    font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    background: transparent;
+    border: none;
+    padding: 12px 15px;
+  }
+
+  .entry-content .highlight .hljs,
+  .entry-content .highlight pre code {
+    color: #24292e;
+    background: transparent;
+  }
+
+  /* Typora 风格浅色高亮 */
+  .entry-content .highlight .keyword,
+  .entry-content .highlight .literal,
+  .entry-content .highlight .selector-tag,
+  .entry-content .highlight .type {
+    color: #d73a49;
+    font-weight: 500;
+  }
+
+  .entry-content .highlight .string,
+  .entry-content .highlight .regexp,
+  .entry-content .highlight .meta-string {
+    color: #032f62;
+  }
+
+  .entry-content .highlight .title,
+  .entry-content .highlight .built_in,
+  .entry-content .highlight .class .title,
+  .entry-content .highlight .function .title,
+  .entry-content .highlight .section,
+  .entry-content .highlight .symbol,
+  .entry-content .highlight .bullet,
+  .entry-content .highlight .link {
+    color: #6f42c1;
+  }
+
+  .entry-content .highlight .number,
+  .entry-content .highlight .addition,
+  .entry-content .highlight .attr,
+  .entry-content .highlight .attribute,
+  .entry-content .highlight .selector-attr,
+  .entry-content .highlight .selector-class,
+  .entry-content .highlight .selector-pseudo,
+  .entry-content .highlight .template-variable {
+    color: #005cc5;
+  }
+
+  .entry-content .highlight .comment {
+    color: #6a737d;
+    font-style: italic;
+  }
+
+  .entry-content .highlight .params,
+  .entry-content .highlight .variable,
+  .entry-content .highlight .subst,
+  .entry-content .highlight .tag,
+  .entry-content .highlight .name,
+  .entry-content .highlight .doctag,
+  .entry-content .highlight .meta {
+    color: #e36209;
+  }
+
+  .entry-content td.hljs-ln-numbers {
+    color: #9aa3ad;
+    background: #f0f0f0;
+    border-right: 1px solid #e1e4e8;
+  }
+
+  .entry-content .highlight .copy-code {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    color: #7a828c;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(225, 228, 232, 0.9);
+    border-radius: 3px;
+    font-size: 11px;
+    line-height: 1.4;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    box-shadow: none;
+    opacity: 0.55;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    z-index: 5;
+  }
+
+  .entry-content .highlight:hover .copy-code,
+  .entry-content .highlight .copy-code.copied,
+  .entry-content .highlight .copy-code.copy-error {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .entry-content .highlight .copy-code:hover {
+    color: #57606a;
+    background: rgba(255, 255, 255, 0.94);
+    border-color: #d0d7de;
+  }
+
+  .entry-content .highlight .copy-code span {
+    display: inline-block;
+    font-weight: 500;
+  }
+
+  .entry-content .highlight .copy-code.copied {
+    color: #2f6f44;
+    background: rgba(238, 249, 241, 0.95);
+    border-color: #b7dfc1;
+    opacity: 1;
+  }
+
+  .entry-content .highlight .copy-code.copy-error {
+    color: #b42318;
+    background: rgba(255, 241, 240, 0.96);
+    border-color: #f2c6c3;
+    opacity: 1;
+  }
+
+  .entry-content .highlight::-webkit-scrollbar {
+    height: 6px;
+    background: transparent;
+  }
+
+  .entry-content .highlight::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+  }
+
+  /* ========================================================= */
+  /* 1.4 标题样式：回归朴素模式                                */
+  /* ========================================================= */
+  .entry-header h1.entry-title::before,
+  .entry-header h1.entry-title::after,
+  .entry-content h2::after,
+  .entry-content h3::after,
+  .entry-content h4::after,
+  .entry-content h5::after {
+    content: none;
+  }
+
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3,
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6 {
+    padding-left: 0;
+    border-bottom: none;
+    color: #2f2f2f;
+    letter-spacing: 0;
+  }
+
+  .entry-content h1 {
+    font-size: 1.9em;
+    font-weight: 700;
+  }
+
+  .entry-content h2 {
+    font-size: 1.55em;
+    font-weight: 700;
+  }
+
+  .entry-content h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    padding-bottom: 0;
+  }
+
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6 {
+    font-weight: 600;
+  }
+
+  /* ========================================================= */
+  /* 1.5 标题与正文缩进：接近 Typora 的阅读习惯                */
+  /* ========================================================= */
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3,
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6,
+  .entry-content p,
+  .entry-content li,
+  .entry-content blockquote p {
+    tab-size: 4;
+    -moz-tab-size: 4;
+  }
+
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3,
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6 {
+    text-indent: 0;
+  }
+
+  .entry-content > p,
+  .entry-content blockquote p {
+    text-indent: 2em;
+  }
+
+  .entry-content > p code,
+  .entry-content blockquote p code,
+  .entry-content > p a,
+  .entry-content blockquote p a,
+  .entry-content > p strong,
+  .entry-content blockquote p strong,
+  .entry-content > p em,
+  .entry-content blockquote p em {
+    text-indent: 0;
+  }
+
+  /* ========================================================= */
+  /* 2. 行内代码：接近 Typora 默认浅色主题                     */
+  /* ========================================================= */
+  .entry-content p code,
+  .entry-content li code,
+  .entry-content table code,
+  .entry-content blockquote code,
+  .entry-content td code,
+  .entry-content th code {
+    color: #c7254e;
+    background: #f3f4f4;
+    border: none;
+    border-radius: 3px;
+    padding: 0.15em 0.35em;
+    font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.92em;
+    margin: 0 0.15em;
+    vertical-align: baseline;
+    word-break: break-word;
+  }
+
+  /* ========================================================= */
+  /* 3. 引用块 (Blockquote) 样式优化                             */
+  /* ========================================================= */
+  .entry-content blockquote {
+    padding: 15px 20px;
+    margin: 20px 0;
+    color: #555;
+    background-color: #f8f9fa;
+    /* 极浅灰背景 */
+    border-left: 5px solid #e96900;
+    /* 与行内代码呼应的橙色边条 */
+    border-radius: 4px;
+    font-style: normal;
+  }
+
+  .entry-content blockquote p {
+    margin: 0;
+    line-height: 1.6;
+  }
+</style>
+<div class="pattern-center-blank"></div>
+
+  <div class="pattern-center single-center">
+    <!-- 有配图默认渲染第一张 -->
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg">
+    </div>
+    <header class="pattern-header single-header">
+      <h1 class="entry-title">
+      OO_Unit2</h1>
+      <p class="entry-census">
+        <span>
+          <a href="www.flashkyogre.cn">
+            <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg">
+          </a>
+        </span>
+        <span>
+          <a href="www.flashkyogre.cn">FlashKyogre</a>
+        </span>
+        <span class="bull">
+        ·</span>
+        2026-5-4<span class="bull">
+        ·</span>
+      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+    </header>
+  </div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="Unit2电梯调度"><a href="#Unit2电梯调度" class="headerlink" title="Unit2电梯调度"></a>Unit2电梯调度</h1><hr>
+<p>​	不知从什么时候开始，电梯就成为了四月的冠名词，好像潋滟春光与我们无关。</p>
+<p>​	请你相信，计算机学院的大多数压力来自于学长的过度宣传。</p>
+<p>​	笑着迎接这个有趣的单元吧，然后去享受人间的四月天。</p>
+<hr>
+<h2 id="第一次作业"><a href="#第一次作业" class="headerlink" title="第一次作业"></a>第一次作业</h2><h3 id="你好，多线程"><a href="#你好，多线程" class="headerlink" title="你好，多线程"></a>你好，多线程</h3><p>​	多线程并不是面向对象语言的专利，我们之所以在OO课程中学习多线程，是因为<code>Java</code>作为高级语言，在多线程的封装上表现得很好。有关多线程的知识在OS课程中会重点讲述，但是显然我们在接触电梯的时候，它还没有正式露面。为了更好的了解多线程，我在这里补充一下相关知识。</p>
+<p>​	多线程的原型是多进程，而多进程是分时操作系统的核心机制之一，它的作用是保证各个进程（执行中的程序的代称）能够交替运行，也就是我们所说的并发性（在OO课程中我们不去分辨多线程与多进程的区别，在这篇文章里你可以把它们当作同一个东西），并发性的好处属实不少：一来是保证了程序的及时响应，其次是提升了CPU的工作效率。</p>
+<p>​	举个例子，如果我们的电脑只能顺序执行进程，那么你必须要等你的游戏打完才收到微信信息，而那条信息是室友通知你老师在点名，或者<code>crush</code>着急请你帮忙——那你基本上要找我买后悔药了（你完全可以这么做，因为我虽然没有后悔药卖，但是确实可以嘲笑你一阵）。不过好在我们的系统早就拥有了多进程的功能，在执行游戏程序的时候也能接受微信通知。</p>
+<p>​	上面那个例子是“及时响应”的体现，在我们的电梯程序里也有体现——在电梯运行的过程中调度器可以及时分配新的任务，保证了新任务的及时相应。至于提升效率其实也很好理解，如果一台电梯正在运动到另一层（通常耗时400ms），我们的程序就可以在这个期间去处理其它电梯的请求，或者去调度分配新乘客，极大地节省了时间。</p>
+<p>​	大部分操作系统实现多进程依靠的是信号量，这是个强大的工具，原始却高效，唯一的问题是它太过复杂，各种嵌套的PV操作让人头晕目眩，而且还很容易引发线程安全问题。所以人们开发了<strong>管程</strong>，它作为信号量的高度封装，简化了许多信号量操作，<code>Java</code>作为一种实现了管程的高级语言，自然是我们学习多线程的不二选择。</p>
+<p>​	多线程涉及很多专业术语，在课程中你很有可能产生不少疑问。我建议大家通过AI进行复习与回顾，关键词如下：<code>Thread</code>类和<code>Runable</code>接口，线程的启动（<code>start</code>），线程的暂停（<code>sleep</code>），线程的互斥（<code>synchronized</code>），线程的协作（<code>wait</code>与<code>notifyAll</code>），状态的转移。</p>
+<p>​	利用这些知识就可以顺利通关本单元了，骗你我周四吃<code>KFC</code>。</p>
+<h3 id="你好，分解者"><a href="#你好，分解者" class="headerlink" title="你好，分解者"></a>你好，分解者</h3><p>​	为什么我会提到分解者呢？因为我们的本单元要用到的模型是“生产者——消费者”模型，为了不让分解者受到排挤，我选择让它作为标题，然后，它就可以滚了。</p>
+<p>​	生产者——消费者模型是多线程的重要模型之一，顾名思义，它由生产者线程和消费者线程组成，除此之外还有数据和通道。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/pro_con_module.png"></p>
+<p>​	在本单元中，他们的角色由以下类扮演：</p>
+<blockquote>
+<ul>
+<li>Producer：生产者，如<code>InputThread</code>、<code>Dispatcher</code></li>
+<li>Consumer：消费者，如<code>Dispatcher</code>、<code>Elevator</code></li>
+<li>Channel：通道，如<code>RequestQueue</code>、<code>WaitQueue</code></li>
+<li>Data：数据，如<code>PersonRequest</code>等</li>
+</ul>
+</blockquote>
+<p>​	总的来说，由<code>InputThread</code>从输入里面提取各种信息，把它们封装成对应的请求放在<code>RequestQueue</code>这个总表里面，然后由<code>Dispatcher</code>提取请求分配给各个电梯，存放在<code>WaitQueue</code>里面，电梯则执行被分配的请求。如果你无法理解这个模型的运作方式，不用着急，等到实验课结束，一些都会迎刃而解。</p>
+<p>​	了解到这里，你完全可以实现第一次作业了。不用怀疑，就是这么简单。不过我得提醒一句，简单意味着大家的分都很高，性能分稍微差一点就会掉到B房，但这又有什么关系呢？别为了卷性能分走火入魔了。</p>
+<h2 id="第二次作业"><a href="#第二次作业" class="headerlink" title="第二次作业"></a>第二次作业</h2><p>​	本次迭代引入了临时调度请求，并且让我们全权掌控调度器的工作，这一点也不难，反正比起第一单元的首次迭代，我感觉电梯单元非常仁慈。</p>
+<p>​	考虑到临时调度请求没什么困难，除了接客之后的开门次数，似乎也没有什么可以优化的点，这里留给大家自己探索。我们将重点放在电梯调度上。</p>
+<h3 id="暗影君王"><a href="#暗影君王" class="headerlink" title="暗影君王"></a>暗影君王</h3><p>​	有关调度方法的选择众说纷纭，随机分配、启发式打分、影子电梯、自由竞争都可以完成本单元的任务，并不会有某个方法会引发<code>TLE</code>，如果有，那一定是考虑不到位，这一点我会在后面提及。</p>
+<p>​	在所有调度方法中，脱颖而出的是影子电梯。它会获取六部电梯的快照，然后用影子电梯来模拟新乘客进入电梯后的表现，最终计算出将新乘客带到目标楼层所需要的时间，将其当作打分依据选择分配目标。实现的方式非常简单，把电梯相关的类复制粘贴一遍就行了，你甚至可以删减一部分内容，因为在影子电梯里，不会再有其它新乘客了。当然，你必须把<code>sleep(400)</code>改为<code>time += 400</code>。</p>
+<p>​	遗憾的是，影子电梯之间亦有差距，其关键在于快照中的参数。除了电梯当前楼层、电梯运行方向、内部乘客列表和外部等候乘客列表之外，我们还要考虑一个关键点——电梯的运动状态。本人的电梯在<code>move</code>之后才会改变楼层号，这导致调度器误以为电梯正在等候，就把那一楼层的乘客分配了出去，但是实际上，电梯已经离开了当前楼层并且很长时间内难以掉头了。为了解决整个问题，我们可以为电梯快照添加<code>isMoving</code>关键字和<code>remainTime</code>值——用来记录电梯还要运行多久才能抵达下一层。如果还是觉得太麻烦了，你甚至可以在move的一开始就修改<code>floor</code>的值，我想这应该没什么问题。</p>
+<p>​	在进行影子电梯打分之前，我们其实要需要一层筛选，比如要剔除那些已经进入临时调度期的电梯，根据题意他们是无法<code>receive</code>新乘客的。除此之外，我还剔除了那些已经有大量乘客的电梯，避免一辆电梯<code>receive</code>过多的乘客。为什么这么做呢？因为有人会这么hack你，真不知道是谁这么阴毒，诅咒他大学<strong>找得到</strong>对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[49.0]MAINT-1-2001-F2</span><br><span class="line">[49.0]MAINT-2-2002-F2</span><br><span class="line">[49.0]MAINT-3-2003-F2</span><br><span class="line">[49.0]MAINT-4-2004-F2</span><br><span class="line">[49.0]MAINT-5-2005-F2</span><br><span class="line">[50.0]1-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]2-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]3-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]4-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]5-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]6-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]7-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]8-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]9-WEI-100-FROM-F7-TO-B4</span><br><span class="line">[50.0]10-WEI-100-FROM-F7-TO-B4</span><br><span class="line">...</span><br><span class="line">[50.0]59-WEI-100-FROM-F7-TO-B4</span><br></pre></td></tr></table></figure>
+
+<p>​	但是这样的“剔除”就会引发一个新的问题——如果六部电梯都被临时调度了，那么我们的调度器将无事可做，一种方法是轮询——这似乎不会<code>TLE</code>，我看学长的“优秀”代码里面有这么一段。其次就是让调度器在总表里面等待<code>(wait)</code>，等到电梯临时调度结束<code>notifyAll</code>一声（实际上不仅仅是电梯会<code>notifyAll</code>，具体细节自己想），再重新工作。</p>
+<p>​	但是这样的“等待”就会引发一个新的问题——如果某部电梯在打分后和执行<code>wait</code>之间突然完成了临时调度，那么<code>notifyAll</code>就会被忽略，为此我们可以引入一个版本号，在每次<code>notifyAll</code>之后就改变版本号，并在<code>wait</code>之前判断当前版本号是否和打分之前的相同，如果不同，就重新打分调度。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">waitDispatch</span><span class="params">(<span class="type">int</span> oldVersion)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (dispatchVersion == oldVersion) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!maintRequests.isEmpty()</span><br><span class="line">                    || !updateRequests.isEmpty()</span><br><span class="line">                    || !recycleRequests.isEmpty()) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	以上是第二次迭代的全部内容，我感觉写的有点少，但是确实没什么好分享的了，大家加油！</p>
+<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><p>​	第三次作业引入了双轿升级，在我看来这是三次作业中最困难的一部分。但是只要我们正确的处理了双轿系统，一切困难将迎刃而解。</p>
+<h3 id="金屋藏轿"><a href="#金屋藏轿" class="headerlink" title="金屋藏轿"></a>金屋藏轿</h3><p>​	为了实现双轿升级，当务之急是拥有双轿，实际上我们一共有三种电梯——主电梯、副电梯和普通电梯，与其生产三种不同的电梯线程类，不如更换电梯的大脑（也就是<code>Strategy</code>类，相信你在指导书的建议下写了这个类）。这种更换大脑的方法就是“策略模式”。在写新的策略类时，我们需要考虑换乘这种情况，也就是某些乘客的出发楼层在F2以上，但是目的地在F2以下；同时还要考虑防装机制，我在此选择让主副电梯无脑地逃离F2层，为另一部电梯让开空间。</p>
+<p>​	一旦你已经准备好了三个大脑，我们就可以进行下一步了——管理双轿电梯。回忆一下我们第二次作业中地调度类，它可以直接给电梯分配任务，直接获取电梯的快照而不需要什么额外的判断，为了达到“高内聚，低耦合”的目标，我们需要新增一个管理器来管理主副电梯，它向调度类暴露相同的接口，把一切逻辑判断交给自己。这就是我们新增的<code>Shaft</code>类。也就是说，我们的<code>Shaft</code>类会根据乘客的出发层与目的层划分责任，把请求分配给主副电梯。<code>Shaft</code>类的属性如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> shaftId;</span><br><span class="line"><span class="comment">//主电梯</span></span><br><span class="line"><span class="keyword">private</span> Elevator mainElevator;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> WaitQueue mainQueue;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ElevatorTable mainTable;</span><br><span class="line"><span class="comment">//副电梯</span></span><br><span class="line"><span class="keyword">private</span> Elevator spareElevator;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ElevatorTable spareTable;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> WaitQueue spareQueue;</span><br><span class="line"><span class="comment">//总表</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> RequestQueue globalRequestQueue;</span><br><span class="line"><span class="comment">//公共楼层</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="type">ReentrantLock</span> <span class="variable">transferLock</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ReentrantLock</span>();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Condition</span> <span class="variable">transferCondition</span> <span class="operator">=</span> transferLock.newCondition();</span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> <span class="variable">isOccupied</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"><span class="comment">//状态标志符</span></span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> isNormal;</span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> isMainting;</span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> isUpdating;</span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> isDouble;</span><br><span class="line"><span class="keyword">private</span> <span class="type">boolean</span> isRecycling;</span><br></pre></td></tr></table></figure>
+
+<p>​	那么问题来了，“公共楼层”和“状态标识符”是干什么吃的？这就涉及电梯仓的第二个作用——通信。在F2层的使用上，主副电梯需要通信，否则将会产生碰撞；在升级与回收的问题上，主副电梯同样需要通信，方便二者执行状态的转换。这其中最特殊的点，就是<code>transferLock</code>，我没有选择使用电梯仓本身作为锁，而是引入了显式锁<code>ReentrantLock</code>是为了将其它数据的写入读取与这个“耗时”的防撞机制放在一起，来提升效率。</p>
+<pre><code>	### 危梯四伏
+</code></pre>
+<p>​	虽然第二次作业的<code>hack</code>成功率很高，但大多数是因为没有考虑到上面提到过的“爆满”的情况。相比之下，第三次作业的错误倒是五花八门，我在此总结了几种常见错误：</p>
+<p>​	1、状态改变与输出存在窗口：请注意输出与状态改变的原子性，如果实在无法原子化，请仔细思考先后关系。比如请在输出了“Recycle end”之后再调整主电梯策略，否则很有可能你的主电梯会先一步闯入F1楼层；再比如请在输出“Arrive”之后再放开F2的锁，否则评测机会误认为你的主副电梯碰撞了。</p>
+<p>​	2、决策与动作存在窗口：请注意决策产生与动作执行之间的原子性，如果无法保证请加上防御措施。比如在电梯<code>wait</code>之前检查是否真的没有请求了。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title function_">waitForReq</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//等待更新</span></span><br><span class="line">        <span class="keyword">while</span> (isEmpty() &amp;&amp; !isEnd) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                wait(); <span class="comment">// 释放当前的锁，进入等待池</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="type">boolean</span> <span class="title function_">isEmpty</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//是不是暂时没任务</span></span><br><span class="line">        <span class="keyword">return</span> waits.isEmpty() &amp;&amp; maintRequest == <span class="literal">null</span></span><br><span class="line">                &amp;&amp; updateRequest == <span class="literal">null</span> &amp;&amp; recycleRequest == <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>​	3、电梯相应检修、升级、回收请求存在时间限制（如果你们还有的话），请不要盲目开门让乘客下电梯，频繁的开门与关门会导致电梯超时。为了解决这个问题，我们可以选择设置一个最大开门次数，3是一个比较靠谱的选择。如果你想知道自己的程序会不会出现这样的问题，下面这个数据点是个不错的测试样例。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[1.0]1-WEI-100-FROM-F1-TO-F7</span><br><span class="line">[1.0]2-WEI-100-FROM-F1-TO-B4</span><br><span class="line">[1.0]3-WEI-100-FROM-F1-TO-B4</span><br><span class="line">[1.0]4-WEI-100-FROM-F1-TO-B4</span><br><span class="line">[1.0]5-WEI-100-FROM-F1-TO-B4</span><br><span class="line">[1.0]6-WEI-100-FROM-F1-TO-B4</span><br><span class="line">[4.0]7-WEI-100-FROM-F7-TO-F6</span><br><span class="line">[4.0]8-WEI-100-FROM-F7-TO-F5</span><br><span class="line">[4.0]9-WEI-100-FROM-F7-TO-F4</span><br><span class="line">[4.0]10-WEI-100-FROM-F7-TO-F3</span><br><span class="line">[4.0]10-WEI-100-FROM-F7-TO-F2</span><br><span class="line">[4.0]MAINT-1-100-F3</span><br></pre></td></tr></table></figure>
+
+<p>​	无奖竞猜，设计出上面这种数据点的学长会面临什么惩罚？</p>
+<p>​	答案是开心一整天！哈哈哈哈。</p>
+<pre><code>4、未完待续
+</code></pre>
+
+        </div>
+        <!-- .entry-content -->
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+          
+            <div class="post-nepre full next">
+          
+            <a href="/2026/03/11/OO_Unit1/" rel="next">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg">
+              </div>
+              <span class="label">
+              Next Post</span>
+              <div class="info">
+                <h3>
+                OO_Unit1</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+        
+      </section>
+      <section class="author-profile">
+        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+          <a href="www.flashkyogre.cn" class="profile gravatar">
+            <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg" itemprop="image" alt="FlashKyogre"
+              height="70" width="70">
+          </a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="www.flashkyogre.cn" itemprop="url" rel="author">FlashKyogre</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>日月无眠，人间又是一天</p>
+      </section>
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+
+    </div>    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2026 FlashKyogre<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer> -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+  <div class="site-info">
+    <div class="footertext">
+      <div class="img-preload">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+      </div>
+      <p style="color: #666666;">&copy 2026</p>
+    </div>
+    <div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        FlashKyogre</a>, Powered by Hexo, Hosted by GitHub Pages</a>
+        </span>
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</footer>
+
+
+
+<!-- <script src="/js/tocbot.js"></script> -->
+<script type="text/javascript" src="/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="/js/InsightSearch.js"></script>
+<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="/js/zoom.min.js"></script>
+<script type="text/javascript" src="/js/sakura-app.js"></script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
+<script src="/js/botui.js"></script>
+<!-- 不蒜子 网页计数器 -->
+<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
+<script type="text/javascript">
+/* <![CDATA[ */
+if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/vedio","name":"pocket.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+} else {
+  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/vedio","name":"pocket.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+}
+/* ]]> */
+
+</script>
+<script>
+$(document).ready(function() {
+  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+    if ($(".pattern-center").length > 0) { //有图的情况
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -400,
+          scrollSmoothOffset: -85
+      });
+    } else {
+      tocbot.init({
+          // Where to render the table of contents.
+          tocSelector: '.toc', // 放置目录的容器
+          // Where to grab the headings to build the table of contents.
+          contentSelector: '.entry-content', // 正文内容所在
+          // Which headings to grab inside of the contentSelector element.
+          scrollSmooth: true,
+          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+          headingsOffset: -85,
+          scrollSmoothOffset: -85
+      });
+    }
+    var offsetTop = $('.toc').offset().top - 95;
+    window.onscroll = function() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop >= offsetTop) {
+        $('.toc').addClass('toc-fixed');
+      } else {
+        $('.toc').removeClass('toc-fixed');
+      }
+    }
+  }
+});
+</script>
+
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Kyogre'sOcean</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+      
+        <a href="https://github.com/zssggok" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+      
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E9%9A%8F%E6%83%B3/">
+                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
+                  随想
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags/%E6%82%A6%E8%AF%BB/">
+                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
+                  书单
+                </a>
+              </li>
+            
+              <li>
+                <a href="/music/">
+                  <i class="fa fa-headphones" aria-hidden="true"></i>
+                  歌单
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/comment/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
+            留言板
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
+            关于
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/about/">
+                  <i class="fa fa-meetup" aria-hidden="true"></i>
+                  我？
+                </a>
+              </li>
+            
+              <li>
+                <a href="/theme-sakura/">
+                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
+                  主题
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    id="7412718431"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+</body>
+</html>
