@@ -287,34 +287,91 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <style>
   /* ========================================================= */
-  /* 1. 大代码块容器：接近 Typora 默认浅色主题                 */
+  /* 1. 大代码块容器：更柔和的编辑器风格                       */
   /* ========================================================= */
   .entry-content .highlight {
-    background: #f7f7f7;
-    border: 1px solid #e1e4e8;
-    border-radius: 6px;
-    box-shadow: none;
+    background: #1e1e1e;
+    border: 1px solid #2d2d30;
+    border-radius: 14px;
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
     position: relative;
-    padding-top: 0;
-    margin: 20px 0;
-    overflow: auto;
+    padding-top: 42px;
+    margin: 24px 0;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .entry-content .highlight:hover {
+    transform: translateY(-2px);
+    border-color: #3e3e42;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.34);
+  }
+
+  .entry-content .highlight::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 72px 0 68px;
+    color: #cccccc;
+    background: #252526;
+    border-bottom: 1px solid #2d2d30;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  .entry-content .highlight::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ff5f57;
+    box-shadow: 18px 0 0 #febc2e, 36px 0 0 #28c840;
+    z-index: 2;
+  }
+
+  .entry-content .highlight table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+  }
+
+  .entry-content .highlight td {
+    border: none;
   }
 
   .entry-content .highlight pre,
   .entry-content .highlight .code pre {
-    color: #24292e;
+    color: #d4d4d4;
     font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13.5px;
+    line-height: 1.75;
     background: transparent;
     border: none;
-    padding: 12px 15px;
+    padding: 16px 18px 18px;
+    margin: 0;
   }
 
   .entry-content .highlight .hljs,
   .entry-content .highlight pre code {
-    color: #24292e;
+    color: #d4d4d4;
     background: transparent;
+  }
+
+  .entry-content .highlight .code {
+    width: 100%;
   }
 
   /* Typora 风格浅色高亮 */
@@ -322,14 +379,14 @@
   .entry-content .highlight .literal,
   .entry-content .highlight .selector-tag,
   .entry-content .highlight .type {
-    color: #d73a49;
+    color: #569cd6;
     font-weight: 500;
   }
 
   .entry-content .highlight .string,
   .entry-content .highlight .regexp,
   .entry-content .highlight .meta-string {
-    color: #032f62;
+    color: #ce9178;
   }
 
   .entry-content .highlight .title,
@@ -340,7 +397,7 @@
   .entry-content .highlight .symbol,
   .entry-content .highlight .bullet,
   .entry-content .highlight .link {
-    color: #6f42c1;
+    color: #dcdcaa;
   }
 
   .entry-content .highlight .number,
@@ -351,11 +408,11 @@
   .entry-content .highlight .selector-class,
   .entry-content .highlight .selector-pseudo,
   .entry-content .highlight .template-variable {
-    color: #005cc5;
+    color: #b5cea8;
   }
 
   .entry-content .highlight .comment {
-    color: #6a737d;
+    color: #6a9955;
     font-style: italic;
   }
 
@@ -366,13 +423,15 @@
   .entry-content .highlight .name,
   .entry-content .highlight .doctag,
   .entry-content .highlight .meta {
-    color: #e36209;
+    color: #4ec9b0;
   }
 
   .entry-content td.hljs-ln-numbers {
-    color: #9aa3ad;
-    background: #f0f0f0;
-    border-right: 1px solid #e1e4e8;
+    color: #858585;
+    background: #1e1e1e;
+    border-right: 1px solid #2d2d30;
+    padding: 16px 10px 18px;
+    min-width: 44px;
   }
 
   .entry-content .highlight .copy-code {
@@ -382,21 +441,21 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 2px 8px;
-    color: #7a828c;
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid rgba(225, 228, 232, 0.9);
-    border-radius: 3px;
+    padding: 4px 11px;
+    color: #d4d4d4;
+    background: rgba(51, 51, 51, 0.96);
+    border: 1px solid #454545;
+    border-radius: 999px;
     font-size: 11px;
     line-height: 1.4;
     text-decoration: none;
     letter-spacing: 0.02em;
-    box-shadow: none;
-    opacity: 0.55;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+    opacity: 0.88;
     transform: translateY(0);
     pointer-events: auto;
     transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-    z-index: 5;
+    z-index: 3;
   }
 
   .entry-content .highlight:hover .copy-code,
@@ -408,9 +467,9 @@
   }
 
   .entry-content .highlight .copy-code:hover {
-    color: #57606a;
-    background: rgba(255, 255, 255, 0.94);
-    border-color: #d0d7de;
+    color: #ffffff;
+    background: #0e639c;
+    border-color: #1177bb;
   }
 
   .entry-content .highlight .copy-code span {
@@ -419,27 +478,28 @@
   }
 
   .entry-content .highlight .copy-code.copied {
-    color: #2f6f44;
-    background: rgba(238, 249, 241, 0.95);
-    border-color: #b7dfc1;
+    color: #ffffff;
+    background: #2d7d46;
+    border-color: #3d9a5a;
     opacity: 1;
   }
 
   .entry-content .highlight .copy-code.copy-error {
-    color: #b42318;
-    background: rgba(255, 241, 240, 0.96);
-    border-color: #f2c6c3;
+    color: #ffffff;
+    background: #a1260d;
+    border-color: #c43e1c;
     opacity: 1;
   }
 
   .entry-content .highlight::-webkit-scrollbar {
-    height: 6px;
+    width: 8px;
+    height: 8px;
     background: transparent;
   }
 
   .entry-content .highlight::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
+    background: #424242;
+    border-radius: 999px;
   }
 
   /* ========================================================= */
@@ -513,18 +573,18 @@
     text-indent: 0;
   }
 
-  .entry-content > p,
+  .entry-content>p,
   .entry-content blockquote p {
     text-indent: 2em;
   }
 
-  .entry-content > p code,
+  .entry-content>p code,
   .entry-content blockquote p code,
-  .entry-content > p a,
+  .entry-content>p a,
   .entry-content blockquote p a,
-  .entry-content > p strong,
+  .entry-content>p strong,
   .entry-content blockquote p strong,
-  .entry-content > p em,
+  .entry-content>p em,
   .entry-content blockquote p em {
     text-indent: 0;
   }
@@ -554,31 +614,82 @@
   /* 3. 引用块 (Blockquote) 样式优化                             */
   /* ========================================================= */
   .entry-content blockquote {
-    padding: 15px 20px;
-    margin: 20px 0;
-    color: #555;
-    background-color: #f8f9fa;
-    /* 极浅灰背景 */
-    border-left: 5px solid #e96900;
-    /* 与行内代码呼应的橙色边条 */
-    border-radius: 4px;
+    position: relative;
+    padding: 18px 22px;
+    margin: 24px 0;
+    color: #475569;
+    background: linear-gradient(135deg, rgba(255, 247, 237, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.18);
+    border-left: 4px solid #f59e0b;
+    border-radius: 12px;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
     font-style: normal;
+  }
+
+  .entry-content blockquote::before {
+    content: '“';
+    position: absolute;
+    top: 6px;
+    right: 14px;
+    color: rgba(245, 158, 11, 0.2);
+    font-size: 44px;
+    line-height: 1;
+    font-family: Georgia, serif;
   }
 
   .entry-content blockquote p {
     margin: 0;
     line-height: 1.6;
   }
+
+  .entry-content blockquote p+p {
+    margin-top: 10px;
+  }
+
+  .entry-content blockquote ul,
+  .entry-content blockquote ol {
+    margin: 10px 0 0 1.2em;
+  }
+
+  @media (max-width: 860px) {
+    .entry-content .highlight {
+      border-radius: 12px;
+      padding-top: 38px;
+    }
+
+    .entry-content .highlight::before {
+      height: 38px;
+      padding: 0 62px 0 60px;
+      font-size: 11px;
+    }
+
+    .entry-content .highlight::after {
+      top: 14px;
+      left: 14px;
+      width: 9px;
+      height: 9px;
+      box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
+    }
+
+    .entry-content .highlight pre,
+    .entry-content .highlight .code pre,
+    .entry-content td.hljs-ln-numbers {
+      padding-top: 14px;
+      padding-bottom: 16px;
+    }
+  }
 </style>
 <div class="pattern-center-blank"></div>
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg);" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg);"
+      src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      OO_Unit1</h1>
+        OO_Unit1
+      </h1>
       <p class="entry-census">
         <span>
           <a href="www.flashkyogre.cn">
@@ -589,22 +700,24 @@
           <a href="www.flashkyogre.cn">FlashKyogre</a>
         </span>
         <span class="bull">
-        ·</span>
+          ·</span>
         2026-3-11<span class="bull">
-        ·</span>
-      <span id="busuanzi_value_page_pv"></span>次阅读</p>
+            ·</span>
+          <span id="busuanzi_value_page_pv"></span>次阅读
+      </p>
     </header>
   </div>
-
-<div id="content" class="site-content">
-  <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="Unit1-表达式解析"><a href="#Unit1-表达式解析" class="headerlink" title="Unit1 表达式解析"></a>Unit1 表达式解析</h1><hr>
+  
+    <div id="content" class="site-content">
+      <div id="primary" class="content-area">
+        <main id="main" class="site-main" role="main">
+          <article id="post-1"
+            class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+            <div class="toc"></div>
+            <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+            
+                <div class="entry-content">
+                  <h1 id="Unit1-表达式解析"><a href="#Unit1-表达式解析" class="headerlink" title="Unit1 表达式解析"></a>Unit1 表达式解析</h1><hr>
 <p>   喜报喜报！<code>OO</code>正课它来了！</p>
 <p>   还在因为找不到对象发愁吗？还在因为刚充值<code>Gemini</code>找不到用武之地而彷徨吗？</p>
 <p>​   这些都不是问题，因为<code>OO</code>足够劲爆！</p>
@@ -722,72 +835,79 @@
 <hr>
 <h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><p>​	未完待续</p>
 
-        </div>
-        <!-- .entry-content -->
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2026/05/04/OO_Unit2/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg">
+                </div>
+                <!-- .entry-content -->
+                <div style="text-align:center; width: 100%" class="social-share share-mobile"
+                  data-disabled="diandian, tencent"></div>
+          </article>
+          <!-- #post-## -->
+          <div class="toc" style="background: none;"></div>
+          <section class="post-squares nextprev">
+            
+              
+                <div class="post-nepre half previous">
+                  
+                        <a href="/2026/05/04/OO_Unit2/" rel="prev">
+                          <div class="background">
+                            <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg"
+                              style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                              onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg">
+                          </div>
+                          <span class="label">
+                            Previous Post</span>
+                          <div class="info">
+                            <h3>
+                              OO_Unit2
+                            </h3>
+                            <hr>
+                          </div>
+                        </a>
+                    </div>
+                    
+                      
+                        
+                          <div class="post-nepre half next">
+                            
+                                  <a href="/2026/02/22/oopre_conclusion/" rel="next">
+                                    <div class="background">
+                                      <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg"
+                                        data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg"
+                                        style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                                        onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg">
+                                    </div>
+                                    <span class="label">
+                                      Next Post</span>
+                                    <div class="info">
+                                      <h3>
+                                        我挥一挥衣袖,作别OO的云彩
+                                      </h3>
+                                      <hr>
+                                    </div>
+                                  </a>
+                              </div>
+                              
+          </section>
+          <section class="author-profile">
+            <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
+              <a href="www.flashkyogre.cn" class="profile gravatar">
+                <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg" itemprop="image"
+                  alt="FlashKyogre" height="70" width="70">
+              </a>
+              <div class="meta">
+                <span class="title">Author</span>
+                <h3 itemprop="name">
+                  <a href="www.flashkyogre.cn" itemprop="url" rel="author">FlashKyogre</a>
+                </h3>
               </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                OO_Unit2</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2026/02/22/oopre_conclusion/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                我挥一挥衣袖,作别OO的云彩</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="www.flashkyogre.cn" class="profile gravatar">
-            <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg" itemprop="image" alt="FlashKyogre"
-              height="70" width="70">
-          </a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-              <a href="www.flashkyogre.cn" itemprop="url" rel="author">FlashKyogre</a>
-            </h3>
-          </div>
-        </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>日月无眠，人间又是一天</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
-</div>
+            </div>
+            <hr>
+            <p><i class="iconfont icon-write"></i>日月无眠，人间又是一天</p>
+          </section>
+        </main><!-- #main -->
+      </div><!-- #primary -->
+    </div>
 
-
-
+    
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
