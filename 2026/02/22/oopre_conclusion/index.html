@@ -374,56 +374,103 @@
     width: 100%;
   }
 
-  /* Typora 风格浅色高亮 */
+  /* VS Code Dark+ 风格语法高亮 */
   .entry-content .highlight .keyword,
+  .entry-content .highlight .hljs-keyword,
   .entry-content .highlight .literal,
+  .entry-content .highlight .hljs-literal,
   .entry-content .highlight .selector-tag,
-  .entry-content .highlight .type {
+  .entry-content .highlight .hljs-selector-tag,
+  .entry-content .highlight .operator,
+  .entry-content .highlight .hljs-operator {
     color: #569cd6;
     font-weight: 500;
   }
 
+  .entry-content .highlight .type,
+  .entry-content .highlight .hljs-type,
+  .entry-content .highlight .class .title,
+  .entry-content .highlight .hljs-class .hljs-title,
+  .entry-content .highlight .class_,
+  .entry-content .highlight .hljs-class_,
+  .entry-content .highlight .built_in,
+  .entry-content .highlight .hljs-built_in {
+    color: #4ec9b0;
+  }
+
   .entry-content .highlight .string,
+  .entry-content .highlight .hljs-string,
   .entry-content .highlight .regexp,
-  .entry-content .highlight .meta-string {
+  .entry-content .highlight .hljs-regexp,
+  .entry-content .highlight .meta-string,
+  .entry-content .highlight .hljs-meta-string {
     color: #ce9178;
   }
 
   .entry-content .highlight .title,
-  .entry-content .highlight .built_in,
-  .entry-content .highlight .class .title,
   .entry-content .highlight .function .title,
+  .entry-content .highlight .title.function_,
+  .entry-content .highlight .hljs-title,
+  .entry-content .highlight .hljs-function .hljs-title,
+  .entry-content .highlight .hljs-title.function_,
   .entry-content .highlight .section,
+  .entry-content .highlight .hljs-section,
   .entry-content .highlight .symbol,
+  .entry-content .highlight .hljs-symbol,
   .entry-content .highlight .bullet,
+  .entry-content .highlight .hljs-bullet,
   .entry-content .highlight .link {
     color: #dcdcaa;
   }
 
   .entry-content .highlight .number,
+  .entry-content .highlight .hljs-number,
   .entry-content .highlight .addition,
+  .entry-content .highlight .hljs-addition,
   .entry-content .highlight .attr,
+  .entry-content .highlight .hljs-attr,
   .entry-content .highlight .attribute,
+  .entry-content .highlight .hljs-attribute,
   .entry-content .highlight .selector-attr,
+  .entry-content .highlight .hljs-selector-attr,
   .entry-content .highlight .selector-class,
+  .entry-content .highlight .hljs-selector-class,
   .entry-content .highlight .selector-pseudo,
+  .entry-content .highlight .hljs-selector-pseudo,
   .entry-content .highlight .template-variable {
     color: #b5cea8;
   }
 
-  .entry-content .highlight .comment {
+  .entry-content .highlight .comment,
+  .entry-content .highlight .hljs-comment,
+  .entry-content .highlight .quote,
+  .entry-content .highlight .hljs-quote {
     color: #6a9955;
-    font-style: italic;
+    font-style: normal;
   }
 
   .entry-content .highlight .params,
+  .entry-content .highlight .hljs-params,
   .entry-content .highlight .variable,
+  .entry-content .highlight .hljs-variable,
   .entry-content .highlight .subst,
+  .entry-content .highlight .hljs-subst,
   .entry-content .highlight .tag,
+  .entry-content .highlight .hljs-tag,
   .entry-content .highlight .name,
+  .entry-content .highlight .hljs-name,
   .entry-content .highlight .doctag,
-  .entry-content .highlight .meta {
-    color: #4ec9b0;
+  .entry-content .highlight .hljs-doctag,
+  .entry-content .highlight .meta,
+  .entry-content .highlight .hljs-meta,
+  .entry-content .highlight .property,
+  .entry-content .highlight .hljs-property {
+    color: #9cdcfe;
+  }
+
+  .entry-content .highlight .punctuation,
+  .entry-content .highlight .hljs-punctuation {
+    color: #d4d4d4;
   }
 
   .entry-content td.hljs-ln-numbers {
@@ -522,8 +569,16 @@
   .entry-content h6 {
     padding-left: 0;
     border-bottom: none;
-    color: #2f2f2f;
+    color: #111111;
     letter-spacing: 0;
+  }
+
+  .entry-content,
+  .entry-content p,
+  .entry-content li,
+  .entry-content td,
+  .entry-content th {
+    color: #111111;
   }
 
   .entry-content h1 {
@@ -590,7 +645,7 @@
   }
 
   /* ========================================================= */
-  /* 2. 行内代码：接近 Typora 默认浅色主题                     */
+  /* 2. 行内代码：更柔和、和正文更协调                         */
   /* ========================================================= */
   .entry-content p code,
   .entry-content li code,
@@ -598,11 +653,12 @@
   .entry-content blockquote code,
   .entry-content td code,
   .entry-content th code {
-    color: #c7254e;
-    background: #f3f4f4;
-    border: none;
-    border-radius: 3px;
-    padding: 0.15em 0.35em;
+    color: #334155;
+    background: rgba(241, 245, 249, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 1px 2px rgba(15, 23, 42, 0.04);
+    padding: 0.16em 0.42em;
     font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 0.92em;
     margin: 0 0.15em;
@@ -648,7 +704,18 @@
 
   .entry-content blockquote ul,
   .entry-content blockquote ol {
-    margin: 10px 0 0 1.2em;
+    margin: 12px 0 0;
+    padding: 0 0 0 1.4em;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+  }
+
+  .entry-content blockquote li {
+    padding: 6px 0;
+    color: inherit;
   }
 
   @media (max-width: 860px) {

@@ -374,56 +374,103 @@
     width: 100%;
   }
 
-  /* Typora 风格浅色高亮 */
+  /* VS Code Dark+ 风格语法高亮 */
   .entry-content .highlight .keyword,
+  .entry-content .highlight .hljs-keyword,
   .entry-content .highlight .literal,
+  .entry-content .highlight .hljs-literal,
   .entry-content .highlight .selector-tag,
-  .entry-content .highlight .type {
+  .entry-content .highlight .hljs-selector-tag,
+  .entry-content .highlight .operator,
+  .entry-content .highlight .hljs-operator {
     color: #569cd6;
     font-weight: 500;
   }
 
+  .entry-content .highlight .type,
+  .entry-content .highlight .hljs-type,
+  .entry-content .highlight .class .title,
+  .entry-content .highlight .hljs-class .hljs-title,
+  .entry-content .highlight .class_,
+  .entry-content .highlight .hljs-class_,
+  .entry-content .highlight .built_in,
+  .entry-content .highlight .hljs-built_in {
+    color: #4ec9b0;
+  }
+
   .entry-content .highlight .string,
+  .entry-content .highlight .hljs-string,
   .entry-content .highlight .regexp,
-  .entry-content .highlight .meta-string {
+  .entry-content .highlight .hljs-regexp,
+  .entry-content .highlight .meta-string,
+  .entry-content .highlight .hljs-meta-string {
     color: #ce9178;
   }
 
   .entry-content .highlight .title,
-  .entry-content .highlight .built_in,
-  .entry-content .highlight .class .title,
   .entry-content .highlight .function .title,
+  .entry-content .highlight .title.function_,
+  .entry-content .highlight .hljs-title,
+  .entry-content .highlight .hljs-function .hljs-title,
+  .entry-content .highlight .hljs-title.function_,
   .entry-content .highlight .section,
+  .entry-content .highlight .hljs-section,
   .entry-content .highlight .symbol,
+  .entry-content .highlight .hljs-symbol,
   .entry-content .highlight .bullet,
+  .entry-content .highlight .hljs-bullet,
   .entry-content .highlight .link {
     color: #dcdcaa;
   }
 
   .entry-content .highlight .number,
+  .entry-content .highlight .hljs-number,
   .entry-content .highlight .addition,
+  .entry-content .highlight .hljs-addition,
   .entry-content .highlight .attr,
+  .entry-content .highlight .hljs-attr,
   .entry-content .highlight .attribute,
+  .entry-content .highlight .hljs-attribute,
   .entry-content .highlight .selector-attr,
+  .entry-content .highlight .hljs-selector-attr,
   .entry-content .highlight .selector-class,
+  .entry-content .highlight .hljs-selector-class,
   .entry-content .highlight .selector-pseudo,
+  .entry-content .highlight .hljs-selector-pseudo,
   .entry-content .highlight .template-variable {
     color: #b5cea8;
   }
 
-  .entry-content .highlight .comment {
+  .entry-content .highlight .comment,
+  .entry-content .highlight .hljs-comment,
+  .entry-content .highlight .quote,
+  .entry-content .highlight .hljs-quote {
     color: #6a9955;
-    font-style: italic;
+    font-style: normal;
   }
 
   .entry-content .highlight .params,
+  .entry-content .highlight .hljs-params,
   .entry-content .highlight .variable,
+  .entry-content .highlight .hljs-variable,
   .entry-content .highlight .subst,
+  .entry-content .highlight .hljs-subst,
   .entry-content .highlight .tag,
+  .entry-content .highlight .hljs-tag,
   .entry-content .highlight .name,
+  .entry-content .highlight .hljs-name,
   .entry-content .highlight .doctag,
-  .entry-content .highlight .meta {
-    color: #4ec9b0;
+  .entry-content .highlight .hljs-doctag,
+  .entry-content .highlight .meta,
+  .entry-content .highlight .hljs-meta,
+  .entry-content .highlight .property,
+  .entry-content .highlight .hljs-property {
+    color: #9cdcfe;
+  }
+
+  .entry-content .highlight .punctuation,
+  .entry-content .highlight .hljs-punctuation {
+    color: #d4d4d4;
   }
 
   .entry-content td.hljs-ln-numbers {
@@ -522,8 +569,16 @@
   .entry-content h6 {
     padding-left: 0;
     border-bottom: none;
-    color: #2f2f2f;
+    color: #111111;
     letter-spacing: 0;
+  }
+
+  .entry-content,
+  .entry-content p,
+  .entry-content li,
+  .entry-content td,
+  .entry-content th {
+    color: #111111;
   }
 
   .entry-content h1 {
@@ -590,7 +645,7 @@
   }
 
   /* ========================================================= */
-  /* 2. 行内代码：接近 Typora 默认浅色主题                     */
+  /* 2. 行内代码：更柔和、和正文更协调                         */
   /* ========================================================= */
   .entry-content p code,
   .entry-content li code,
@@ -598,11 +653,12 @@
   .entry-content blockquote code,
   .entry-content td code,
   .entry-content th code {
-    color: #c7254e;
-    background: #f3f4f4;
-    border: none;
-    border-radius: 3px;
-    padding: 0.15em 0.35em;
+    color: #334155;
+    background: rgba(241, 245, 249, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 1px 2px rgba(15, 23, 42, 0.04);
+    padding: 0.16em 0.42em;
     font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 0.92em;
     margin: 0 0.15em;
@@ -648,7 +704,18 @@
 
   .entry-content blockquote ul,
   .entry-content blockquote ol {
-    margin: 10px 0 0 1.2em;
+    margin: 12px 0 0;
+    padding: 0 0 0 1.4em;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+  }
+
+  .entry-content blockquote li {
+    padding: 6px 0;
+    color: inherit;
   }
 
   @media (max-width: 860px) {
@@ -788,7 +855,7 @@
 <p>​	至于前导零和那个无限制的巨大的常量，其实就更简单了，因为<code>Java</code>提供了极其丰富的库。<code>BigInteger</code>类无疑是解决这个问题的不二之选，它自带的初始化方法能把字符串中前导零全部忽略。<code>Integer.parseInt(String input)</code>方法同样也可以解决前导零的问题，只不过它适用于<code>Integer</code>类（<code>int</code>的包装器类型）。</p>
 <p><strong>2、税收系统（<code>Poly</code>类与<code>evaluate</code>方法）</strong></p>
 <p>​	周王朝的运作当然离不开<code>money</code>，既然我们已经成功构建了基本的国家体系，那么是时候实现税收系统了。</p>
-<p>​	问题来了，既然加入了未知数<code>x</code>，那么我们就要不能用简单的<code>int</code>或者<code>BigInteger</code>来表示最终计算的数值。这个时候，就要引入Poly类了。之所以这么做，是因为本次作业所有的值都可以归纳为一个多项式。为了实现像<code>int</code>那样的计算，我们需要为<code>Poly</code>类补充相应的功能（加、减、乘、平方）。</p>
+<p>​	问题来了，既然加入了未知数<code>x</code>，那么我们就不能用简单的<code>int</code>或者<code>BigInteger</code>来表示最终计算的数值。这个时候，就要引入Poly类了。之所以这么做，是因为本次作业所有的值都可以归纳为一个多项式。为了实现像<code>int</code>那样的计算，我们需要为<code>Poly</code>类补充相应的功能（加、减、乘、平方）。</p>
 <p>​	那么要怎么把<code>Expr</code>、<code>Term</code>、<code>Factor</code>转化为多项式呢？只需要为每个类设置一个<code>evaluate</code>方法就行了。需要注意的是，这里的<code>evaluate</code>方法调用是递归的，比如<code>Expr</code>的<code>evaluate</code>负责调用<code>Term</code>的<code>evaluate</code>方法，<code>Term</code>的<code>evaluate</code>负责调用<code>Factor</code>的<code>evaluate</code>方法。</p>
 <p><strong>3、启禀皇上</strong></p>
 <p>​	到了最后，我们通过调用<code>Expr</code>的<code>evaluate</code>方法，计算出来最终的<code>Poly</code>结果。万事俱备，我们只需要把最终的<code>Poly</code>打印出来，也就是覆写<code>Poly</code>的<code>toString</code>方法就可以了（之所以是覆写，是因为那个祖宗——<code>Object</code>类——自带此方法）。</p>
@@ -805,7 +872,7 @@
 <p>​	因为新因子的添加过程和第一次作业基本一致，这里只讨论几个比较重要的问题。如何提升程序的速度是我们讨论的重点，尽管性能分与程序速度没有直接关系，但是<code>TLE</code>会公平地惩罚每一个忽视它的人。</p>
 <h3 id="哥们，你到底变不变啊？"><a href="#哥们，你到底变不变啊？" class="headerlink" title="哥们，你到底变不变啊？"></a>哥们，你到底变不变啊？</h3><p>​	本次作业还是需要我们沿用AST的思路，如果你在第一次作业使用的是正则表达式的写法，那么还是好好重构吧。如果你早就踏上了AST这条宏伟大道，那恭喜你，这次作业你应该很快就能做出来了。有多快呢？大概七个小时吧（本彩笔真的用了这么久，中饭都没吃）。我知道你想笑，但是你先别笑，因为后续的优化又消耗了我整整一天半，导致我压根没时间复习<code>OS</code>的<code>Lab0</code>实验，在<code>extra</code>中砍下了20分的高分。</p>
 <p>​	那么问题来了，到底是什么东西折磨了我这么久？哈哈，等会你就知道了。</p>
-<p>​	为了存储结果，我们不能再使用<code>c*x^n</code>这个模式了，要为它加上一个<code>exp</code>项<code>c * x^n* exp(poly)</code>。所以我们需要为这个新的新式准备一个新的数据结构。主流的数据结构有两种，一个是哈希表，另一个也是哈希表。我没有开玩笑，因为这两个哈希表有着本质上的不同——键值对的对象类型不同。前者的键是<code>Node</code>类，里面存放着<code>x</code>的幂值<code>int</code>和<code>exp</code>的幂值<code>poly</code>，我们将它暂且称为<code>NodeHash</code>表，它的值则是系数<code>coef</code>；后者则简单很多，键是<code>x</code>的幂值<code>int</code>，值是一个链表，链表的元素是<code>exp</code>的幂值<code>poly</code>和系数<code>coef</code>组成的类<code>Unit</code>，我们暂且称这个哈希表为<code>UnitHash</code> 表。</p>
+<p>​	为了存储结果，我们不能再使用<code>c*x^n</code>这个模式了，要为它加上一个<code>exp</code>项<code>c * x^n* exp(poly)</code>。所以我们需要为这个新的形式准备一个新的数据结构。主流的数据结构有两种，一个是哈希表，另一个也是哈希表。我没有开玩笑，因为这两个哈希表有着本质上的不同——键值对的对象类型不同。前者的键是<code>Node</code>对象，里面存放着<code>x</code>的幂值<code>int</code>和<code>exp</code>的幂值<code>poly</code>，我们将它暂且称为<code>NodeHash</code>表，它的值则是系数<code>coef</code>；后者则简单很多，键是<code>x</code>的幂值<code>int</code>，值是一个链表，链表的元素是<code>exp</code>的幂值<code>poly</code>和系数<code>coef</code>组成的类<code>Unit</code>，我们暂且称这个哈希表为<code>UnitHash</code> 表。</p>
 <p>​	正常人会选择前者，因为这样会减少对链表的遍历，速度快很多。事情真的是这样吗？你怎么知道<code>Java</code>是如何对待你的<code>hashmap</code>的？把键设置为一个新的类真的靠谱吗？我询问了<code>Gemini</code>，得到了一个惊人的答案——如果我们的<code>Node</code>类是可变对象，我们每次修改的时候都要将原先的<code>Node</code>去除，再插入新的<code>Node</code>，并且重新递归地计算<code>hash</code>值，这样速度反而更慢。仔细思考一下，我们的<code>Node</code>对象里面存放着<code>Poly</code>类，<code>Poly</code>类在初始化之后还要加、乘、乘方、取反，比<code>npy</code>(我还没有，悲）还善变！于是我恍然大悟，<code>UnitHash</code>表才是正解！<code>NodeHash</code>是死路一条！</p>
 <p>​	我悟了，然后耗时7小时写出了第一份代码，自信满满地跟同学对拍——结果却惨不忍睹，我的代码基本上全是<code>TLE</code>！于是我决定剖析同学的处理方式（我借用了同学的源代码，当然这是违规的），发现他们竟然采用了那个被我排除的方法<code>NodeHash</code>，这不科学。</p>
 <p>​	心灰意冷之下，我再次询问了<code>Gemini</code>，它这次给出了一个崭新的概念——事实不可变。我们不妨回忆一下<code>Poly</code>类的那些方法，除了<code>ptermAdd</code>之外，无论加、乘、乘方还是取反，无一不是在开头<code>new</code>了一个新的对象<code>result</code>，在方法的最后<code>return</code>了这个<code>result</code>。也就是说，这些方法并没有改变原先那个<code>poly</code>，而是制造一个新的对象，它们本质上是另一种初始化方式罢了，而<code>ptermAdd</code>，仅仅是这些初始化方法的辅助方法。在初始化之后，我们将不再有资格修改这个<code>poly</code>对象，这不就是不可变对象吗？为了彻底在代码层面保证这种不可变性，我将 <code>Node</code> 类中的所有属性都加上了 <code>final</code> 关键字，并且在构造器中一次性算好 <code>hash</code> 值并锁死在一个 <code>final int</code> 中。这样 <code>HashMap</code> 在发生碰撞寻址时直接返回常数，连重新计算哈希的开销都省了！所以，在这里，使用<code>NodeHash</code>表压根没有想象中那么危险。除此之外，我们还可以删除原来的深拷贝方法，进一步提升程序的效率。</p>
@@ -819,21 +886,39 @@
 <p>​	上述讨论的仅仅是单次乘法的开销，快速幂可以用更少的乘法次数弥补这一点。真正的问题在于快速幂产生的庞大的中间量上面。</p>
 <p>​	多项式乘法不仅是循环相乘，还包含了极其耗时的合并同类项过程。快速幂在计算的过程中会产生很多中间量，合并化简的步骤将会多次进行哈希查找的工作，这其中的哈希冲突不计其数，一旦发生冲突，<code>Java</code>就会递归地调用<code>equals</code>操作，极大地增加了程序的复杂度。</p>
 <p>​	由此可见，快速幂并不适用于多项式运算，我们在使用算法的时候要多加思考，而不是把它当作盲盒随意地使用。</p>
-<h3 id="哥们，你到底算不算啊？"><a href="#哥们，你到底算不算啊？" class="headerlink" title="哥们，你到底算不算啊？"></a>哥们，你到底算不算啊？</h3><p>​	几天后的周五，面对被<code>hack</code>的千疮百孔的程序，肖杰瞎回忆起提交中测的那个夜晚，当时的他是多么自信，认为自己选择了一条最正确的路……现在，肖杰瞎修复了自己的程序，而行刑者正等待下一个莽撞的少年。那么行刑者究竟是如何突破重重关卡，一路杀到我们面前的呢？没错，他们跟课程组签订了秘密的协议（误闯天家）：</p>
+<h3 id="哥们，你到底算不算啊？"><a href="#哥们，你到底算不算啊？" class="headerlink" title="哥们，你到底算不算啊？"></a>哥们，你到底算不算啊？</h3><p>​	几天后的周五，面对被<code>hack</code>的千疮百孔的程序，<code>XJX</code>回忆起提交中测的那个夜晚，当时的他是多么自信，认为自己选择了一条最正确的路……现在，<code>XJX</code>修复了自己的程序，而行刑者正等待下一个莽撞的少年。那么行刑者究竟是如何突破重重关卡，一路杀到我们面前的呢？没错，他们跟课程组签订了秘密的协议（误闯天家）：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">f(x)=(x+1)^8</span><br><span class="line">[(1==1)?1:f(f(f(f(f(f(f(f(x))))))))]</span><br></pre></td></tr></table></figure>
 
 <p>​	乍一看，这个样例的复杂度肯定过不了<code>cost</code>检测，但是课程组为我们准备了一个天坑：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Cost([(A==B)?C:D]) = Cost(A) + Cost(B) + choose(Cost(C), Cost(D)) + 5</span><br><span class="line">其中 choose(Cost(C), Cost(D)) 表示最终选择式子的 cost</span><br></pre></td></tr></table></figure>
 
 <p>​	没错，后面那一坨自定义函数的嵌套根本不会被算入<code>cost</code>，假设你的代码无脑计算了这一坨数据，那么无情的大刀就会落下，骇死我了。为了避免这恐怖的结局，我们必须在对选择因子<code>evaluate</code>的时候留个心眼——先判断真假，再决定选择哪一个因子去<code>evaluate</code>。</p>
-<p>​	其实，不只是选择因子的<code>evaluate</code>需要多加注意，我们在选择解析自定义函数的方式时更要留神。如果你选择了暴力宏展开，也就是把f(x)定义中的<code>x</code>（形参）全部替换为<code>realArg</code>（实参），你可能也会出现这样的问题——一些无关的因子被暴力展开了，导致消耗了过多的时间。除此之外，考虑到<code>String</code>是不可变对象，对于层层嵌套，每一次展开都会产生很多的<code>String</code>对象，这会使得<code>GC</code>回收器压力暴增，消耗过多的算力。</p>
+<p>​	其实，不只是选择因子的<code>evaluate</code>需要多加注意，我们在选择解析自定义函数的方式时更要留神。如果你选择了暴力宏展开，也就是把f(x)定义中的<code>x</code>（形参）全部替换为<code>realArg</code>（实参），你可能也会出现这样的问题——一些无关的因子被暴力展开了，消耗了过多的时间。除此之外，考虑到<code>String</code>是不可变对象，对于层层嵌套，每一次展开都会产生很多的<code>String</code>对象，这会使得<code>GC</code>回收器压力暴增，消耗过多的算力。</p>
 <p>​	正确的做法是先把<code>f(x)</code>解析成<code>expr</code>的形式，就像后面需要化简的表达式一样，一旦<code>f(x)</code>被调用，就把它<code>evaluate</code>成<code>Poly</code>，然后使用<code>Poly</code>内置的替换方法把<code>x</code>全部替换为<code>realArg</code>。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Poly <span class="title function_">polySubstitute</span><span class="params">(Poly argPoly)</span> &#123;</span><br><span class="line">        <span class="comment">//将x替换为实参(函数换值)</span></span><br><span class="line">        <span class="type">Poly</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Poly</span>();</span><br><span class="line">        <span class="keyword">for</span> (java.util.Map.Entry&lt;Node, BigInteger&gt; entry : terms.entrySet()) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">            <span class="type">BigInteger</span> <span class="variable">coef</span> <span class="operator">=</span> entry.getValue();</span><br><span class="line">            <span class="type">BigInteger</span> <span class="variable">power</span> <span class="operator">=</span> node.getPower();</span><br><span class="line">            <span class="type">Poly</span> <span class="variable">expPoly</span> <span class="operator">=</span> node.getExpPoly();</span><br><span class="line">            <span class="type">Poly</span> <span class="variable">termPoly</span> <span class="operator">=</span> Poly.varPolyGet(BigInteger.ZERO, coef);</span><br><span class="line">            <span class="comment">//替换x</span></span><br><span class="line">            <span class="keyword">if</span> (!power.equals(BigInteger.ZERO)) &#123;</span><br><span class="line">                termPoly = termPoly.polyMul(argPoly.polyExp(power.intValue()));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//递归地替换exp(里面的x)</span></span><br><span class="line">            <span class="keyword">if</span> (!expPoly.isEmpty()) &#123;</span><br><span class="line">                <span class="type">Poly</span> <span class="variable">subExp</span> <span class="operator">=</span> expPoly.polySubstitute(argPoly);</span><br><span class="line">                termPoly = termPoly.polyMul(Poly.expPolyGet(subExp));</span><br><span class="line">            &#125;</span><br><span class="line">            result = result.polyAdd(termPoly);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>​	实际上，我们还可以为每个<code>AST</code>成员创立一个<code>funcEvaluate</code>方法，对于除了<code>powerFator</code>之外的成员，它的功能和普通<code>evaluate</code>完全一致；但是在遇到<code>powerFator</code>的时候，它不会返回<code>x^n</code>，而是返回<code>argPoly^n</code>。这两种函数解析的方法各有优劣，我们在第三次作业再展开讨论。</p>
+<p>​	实际上，我们还可以为每个<code>AST</code>成员创立一个<code>funcEvaluate</code>方法，对于除了<code>powerFactor</code>之外的成员，它的功能和普通<code>evaluate</code>完全一致；但是在遇到<code>powerFactor</code>的时候，它不会返回<code>x^n</code>，而是返回<code>argPoly^n</code>。这两种函数解析的方法各有优劣，我们在第三次作业再展开讨论。</p>
 <p>​	现在，本次作业最凶险的关卡已经暴露无疑了，加油，继续书写你的史诗吧。</p>
 <hr>
-<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><p>​	未完待续</p>
+<h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><p>​​	因为不可抗因素（懒），第三次作业的分享延后了一个多月，内容并不全面，还请见谅。</p>
+<h3 id="进化吧，我的函数"><a href="#进化吧，我的函数" class="headerlink" title="进化吧，我的函数"></a>进化吧，我的函数</h3><p>​	在第三次作业中，我们的普通函数摇身一变，变成了递归函数。然而这并没有什么影响，我们依旧可以根据前面使用过的方法来实现这个递归函数。为了避免<code>TLE</code>，大多数同学会选择使用记忆化的方法来处理递归函数，为可能出现的递归函数设置一个存储池。存储池中的内容就因人而异了，如果你选择的是将<code>x</code>替换为<code>argPoly</code>这一方法，那么你完全可以存储一个展开后的<code>Poly</code>值；如果你选择的是<code>funcEvaluate</code>那种方法，你存储的就是一个仍需<code>evaluate</code>的表达式树。这两种方法都可以通过测试，但是前者速度更快，后者可扩展性更好。为什么前者速度更快呢？大家可以从“大数乘方”的角度考虑，和“快速幂不快”（详见“哥们，你到底快不快啊？”）在本质上是一个问题。后者可扩展性更好是因为它保留了表达式的结构，试想一下，如果未来函数中可以引入求导算子，把f(x)计算成多项式再替换x的方法还行得通吗？显然不行：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定义 f(x) = dx((x + x^2))</span><br><span class="line">表达式 f(y) = dx((y + y^2)) = 0</span><br></pre></td></tr></table></figure>
+
+<p>​	在我们这一届，助教为了避免歧义限制了自定义函数内的算子，但是这不代表在未来的课程中，又或者是未来的工作中，你不会面临这个问题。（如果我当上了助教，我会极力劝说课程组修改的，哈哈哈哈哈哈哈哈哈）除此之外，我认为还有一个很失败的设计：</p>
+<blockquote>
+<p>除此之外，为了限制<strong>不合理</strong>的hack，我们要求输入表达式的代价 <code>Cost(Expr) &lt;= 5000</code>，同时要求自定义递推函数的代价<code>Cost(Func)&lt;=2000</code>。注意，对于递推函数 <code>f{n}</code>，需要保证对于任意 0≤i≤5，<code>cost(f{i})&lt;=2000</code>。</p>
+</blockquote>
+<p>​	题目中<code>f{n}</code>的<code>cost</code>限制对于<code>0≤i≤5</code>全部成立，丝毫没有考虑到表达式中或许根本不存在<code>f{5}</code>的调用，计算<code>f{5}</code>完全是多余的步骤，既然选择表达式中未被选择的那个因子不算在<code>cost</code>里面，凭什么<code>f{5}</code>要被限制呢？如果日后设计程序的时候，用户的最大需求是<code>f{100}</code>，我们也要在每次计算表达式之前把100个递归函数都计算一遍吗？所以，真正可靠的做法是“惰性求值”，也就是在<code>f{5}</code>真正被调用的那一刻才去计算这个递归函数，然后把它储存在记忆池子里。样例如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Poly <span class="title function_">getRfDpPoly</span><span class="params">(Integer funcId)</span> &#123;</span><br><span class="line">        <span class="comment">// 存储递归函数展开后的Poly值，方便直接替换x</span></span><br><span class="line">        <span class="keyword">if</span> (!rfDpPoly.containsKey(funcId)) &#123;</span><br><span class="line">            <span class="comment">//惰性求值</span></span><br><span class="line">            <span class="type">Expr</span> <span class="variable">expr</span> <span class="operator">=</span> rfDp.get(funcId);</span><br><span class="line">            rfDpPoly.put(funcId, expr.evaluate());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rfDpPoly.get(funcId);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="进化吧，我的GCD"><a href="#进化吧，我的GCD" class="headerlink" title="进化吧，我的GCD"></a>进化吧，我的GCD</h3><p>​	为了追求性能分，很多同学会选择提取<code>exp</code>因子中的公因式，然后通过比较选择出最短的形式。而这，成为了第三次作业中被<code>hack</code>最多的点。如果你不知道<code>hack</code>的方法是什么，请测试下面这个数据点：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">f(x)=exp(exp(exp(exp(exp(exp(x)^2)^2)^2)^2)^2)^2</span><br><span class="line">0</span><br><span class="line">f(f(f(f(x))))</span><br></pre></td></tr></table></figure>
+
+<p>​	这个数据点生效的原因是，每一次<code>^2</code>都会产生两种不同的情况，为了比较长短，你的代码会生成两种情况对应的字符串，在生成字符串的过程中，你又会遇见新的<code>^2</code>，代码又会生成两种字符串比较长短。就这样，大量的<code>^2</code>叠加引发了指数爆炸，造成<code>CPU</code>超时。</p>
+<p>​	解决的办法很简单，我们把每一个已经计算过的字符串记忆下来就行了，也就是为每一个<code>Poly</code>维护一个<code>String strCache</code>变量。</p>
+<p>​	本单元的分享就到此为止了，感谢您的阅读。</p>
 
                 </div>
                 <!-- .entry-content -->
