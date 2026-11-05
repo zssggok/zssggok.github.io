@@ -1,790 +1,427 @@
+
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  
-  <title itemprop="name">OO_Unit1 | Kyogre&#39;s Ocean</title>
-  
-    <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/favicon.ico">
-  
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
-  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/lib.min.css" media="all">
-  <link rel="stylesheet" href="/css/font.css" media="all">
-  <link rel="stylesheet" href="/css/insight.css" media="all">
-  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
-  <link rel="stylesheet" href="/css/zoom.css" media="all">
-  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
-" type="text/css" media="all"> -->
-  <script>
-  /*Initial Variables*/
-  var mashiro_option = new Object();
-  var mashiro_global = new Object();
-  mashiro_option.NProgressON = true;
-  /* 
-   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
-   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
-   */
-  mashiro_option.email_domain = "";
-  mashiro_option.email_name = "";
-  mashiro_option.cookie_version_control = "";
-  mashiro_option.qzone_autocomplete = false;
-  mashiro_option.site_name = "Kyogre'sOcean";
-  mashiro_option.author_name = "Ocean";
-  mashiro_option.site_url = "http://flashkyogre.cn/";
-  mashiro_option.v_appId = "GyC3NzMvd0hT9Yyd2hYIC0MN-gzGzoHsz";
-  mashiro_option.v_appKey = "mgOpfzbkHYqU92CV4IDlAUHQ";
-  mashiro_option.mathjax = "0";
-  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
-  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+  <meta charset="UTF-8">
 
-  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
-  // mashiro_option.float_player_on = true;
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/favicon.ico">
+  
 
-  /*End of Initial Variables*/
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#173e55">
+  <meta name="author" content="FlashKyogre">
+  <meta name="keywords" content="面向对象编程">
+  
+    <meta name="description" content="oo第一单元作业心得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OO_Unit1">
+<meta property="og:url" content="https://flashkyogre.cn/2026/03/11/OO_Unit1/index.html">
+<meta property="og:site_name" content="Kyogre&#39;s Ocean">
+<meta property="og:description" content="oo第一单元作业心得">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg">
+<meta property="article:published_time" content="2026-03-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-05-05T04:04:33.476Z">
+<meta property="article:author" content="FlashKyogre">
+<meta property="article:tag" content="oo">
+<meta property="article:tag" content="学习心得">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg">
+  
+  
+  
+  <title>OO_Unit1 - Kyogre&#39;s Ocean</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"flashkyogre.cn","root":"/","version":"1.9.9","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":false,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":false,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
-  <script type="text/javascript">
-  var bg = "https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark1.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark2.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark3.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark4.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark5.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark6.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark7.jpg,https://raw.githubusercontent.com/zssggok/my-blog-imgs/main/bg/shark8.jpg".split(",");
-  var bgindex = Math.floor(Math.random()*bg.length);
-  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
-    alert('朋友，IE浏览器未适配哦~');
-  }
-  </script>
-  <style type="text/css">
-  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
-  </style>
-  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
-  </style>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 8.1.1"></head>
 
-<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
-  <div class="scrollbar" id="bar">
-  </div>
-  <a href="#" class="cd-top faa-float animated"></a>
-  <section id="main-container">
-    <div class="headertop filter-dot">
-  <div id="banner_wave_1"></div>
-  <div id="banner_wave_2"></div>
-  <figure id="centerbg" class="centerbg">
-    <div class="focusinfo no-select">
-      <div class="header-tou">
-        <a href="http://flashkyogre.cn/">
-          <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg">
-        </a>
-      </div>
-      <div class="header-info">
-        <p>日月无眠，人间又是一天</p>
-        <div class="top-social_v2">
-          <li id="bg-pre">
-            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 42vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Kyogre&#39;s Ocean</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/comment/" target="_self">
+                
+                <span>留言板</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
           </li>
           
-            
-              
-                <li>
-                  <a href="https://github.com/zssggok" target="_blank" class="social-github" title="github">
-                    <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/github.jpg">
-                  </a>
-                </li>
-              
-            
-              
-                <li>
-                  <a href="mailto:Flashkyogre@outlook.com" target="_blank" class="social-github" title="email">
-                    <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/email.svg">
-                  </a>
-                </li>
-              
-            
-          
-          <li id="bg-next">
-            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
-        </div>
-      </div>
-    </div>
-  </figure>
-  <div id="video-container" style="">
-    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
-    </video>
-    <div id="video-btn" class="loadvideo videolive">
-    </div>
-    <div id="video-add">
-    </div>
-    <div class="video-stu">
+        
+      </ul>
     </div>
   </div>
-  <div class="headertop-down faa-float animated" onclick="headertop_down()">
-    <span>
-      <i class="fa fa-chevron-down" aria-hidden="true">
-      </i>
-    </span>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/links/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>友链</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/comment/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>留言板</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-link-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
   </div>
 </div>
-    <div id="page" class="site wrapper">
-      <header class="site-header no-select gizle sabit" role="banner">
-  <div class="site-top">
-    <div class="site-branding">
-      <span class="site-title">
-        <span class="logolink moe-mashiro">
-          <a href="/">
-            <span class="sakurasono">Kyogre&#39;s</span>
-            <span class="shironeko">Ocean</span>
-          </a>
-        </span>
-      </span>
-    </div>
-    <div class="searchbox search-form-submit">
-      <i class="iconfont js-toggle-search iconsearch icon-search">
-      </i>
-    </div>
-    <div id="show-nav" class="showNav mobile-fit">
-      <div class="line line1">
-      </div>
-      <div class="line line2">
-      </div>
-      <div class="line line3">
-      </div>
-    </div>
-    <div class="lower-cantiner">
-      <div class="lower">
-        <nav class="mobile-fit-control hide">
-          <ul id="menu-new" class="menu">
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-                    首页
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-                    归档
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
-                          <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                          生活
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
-                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                          随想
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="javascript:;">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
-                    清单
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/tags/%E6%82%A6%E8%AF%BB/">
-                          <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
-                          书单
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/music/">
-                          <i class="fa fa-headphones" aria-hidden="true"></i>
-                          歌单
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言板
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/links/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-                    友人帐
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
-                    关于
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          我？
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/theme-sakura/">
-                          <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
-                          主题
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-<style>
-  /* ========================================================= */
-  /* 1. 大代码块容器：更柔和的编辑器风格                       */
-  /* ========================================================= */
-  .entry-content .highlight {
-    background: #1e1e1e;
-    border: 1px solid #2d2d30;
-    border-radius: 14px;
-    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
-    position: relative;
-    padding-top: 42px;
-    margin: 24px 0;
-    overflow: hidden;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-
-  .entry-content .highlight:hover {
-    transform: translateY(-2px);
-    border-color: #3e3e42;
-    box-shadow: 0 20px 42px rgba(0, 0, 0, 0.34);
-  }
-
-  .entry-content .highlight::before {
-    content: attr(data-lang);
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0 72px 0 68px;
-    color: #cccccc;
-    background: #252526;
-    border-bottom: 1px solid #2d2d30;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    box-sizing: border-box;
-    z-index: 1;
-  }
-
-  .entry-content .highlight::after {
-    content: '';
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #ff5f57;
-    box-shadow: 18px 0 0 #febc2e, 36px 0 0 #28c840;
-    z-index: 2;
-  }
-
-  .entry-content .highlight table {
-    width: 100%;
-    margin: 0;
-    border-collapse: collapse;
-  }
-
-  .entry-content .highlight td {
-    border: none;
-  }
-
-  .entry-content .highlight pre,
-  .entry-content .highlight .code pre {
-    color: #d4d4d4;
-    font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 13.5px;
-    line-height: 1.75;
-    background: transparent;
-    border: none;
-    padding: 16px 18px 18px;
-    margin: 0;
-  }
-
-  .entry-content .highlight .hljs,
-  .entry-content .highlight pre code {
-    color: #d4d4d4;
-    background: transparent;
-  }
-
-  .entry-content .highlight .code {
-    width: 100%;
-  }
-
-  /* VS Code Dark+ 风格语法高亮 */
-  .entry-content .highlight .keyword,
-  .entry-content .highlight .hljs-keyword,
-  .entry-content .highlight .literal,
-  .entry-content .highlight .hljs-literal,
-  .entry-content .highlight .selector-tag,
-  .entry-content .highlight .hljs-selector-tag,
-  .entry-content .highlight .operator,
-  .entry-content .highlight .hljs-operator {
-    color: #569cd6;
-    font-weight: 500;
-  }
-
-  .entry-content .highlight .type,
-  .entry-content .highlight .hljs-type,
-  .entry-content .highlight .class .title,
-  .entry-content .highlight .hljs-class .hljs-title,
-  .entry-content .highlight .class_,
-  .entry-content .highlight .hljs-class_,
-  .entry-content .highlight .built_in,
-  .entry-content .highlight .hljs-built_in {
-    color: #4ec9b0;
-  }
-
-  .entry-content .highlight .string,
-  .entry-content .highlight .hljs-string,
-  .entry-content .highlight .regexp,
-  .entry-content .highlight .hljs-regexp,
-  .entry-content .highlight .meta-string,
-  .entry-content .highlight .hljs-meta-string {
-    color: #ce9178;
-  }
-
-  .entry-content .highlight .title,
-  .entry-content .highlight .function .title,
-  .entry-content .highlight .title.function_,
-  .entry-content .highlight .hljs-title,
-  .entry-content .highlight .hljs-function .hljs-title,
-  .entry-content .highlight .hljs-title.function_,
-  .entry-content .highlight .section,
-  .entry-content .highlight .hljs-section,
-  .entry-content .highlight .symbol,
-  .entry-content .highlight .hljs-symbol,
-  .entry-content .highlight .bullet,
-  .entry-content .highlight .hljs-bullet,
-  .entry-content .highlight .link {
-    color: #dcdcaa;
-  }
-
-  .entry-content .highlight .number,
-  .entry-content .highlight .hljs-number,
-  .entry-content .highlight .addition,
-  .entry-content .highlight .hljs-addition,
-  .entry-content .highlight .attr,
-  .entry-content .highlight .hljs-attr,
-  .entry-content .highlight .attribute,
-  .entry-content .highlight .hljs-attribute,
-  .entry-content .highlight .selector-attr,
-  .entry-content .highlight .hljs-selector-attr,
-  .entry-content .highlight .selector-class,
-  .entry-content .highlight .hljs-selector-class,
-  .entry-content .highlight .selector-pseudo,
-  .entry-content .highlight .hljs-selector-pseudo,
-  .entry-content .highlight .template-variable {
-    color: #b5cea8;
-  }
-
-  .entry-content .highlight .comment,
-  .entry-content .highlight .hljs-comment,
-  .entry-content .highlight .quote,
-  .entry-content .highlight .hljs-quote {
-    color: #6a9955;
-    font-style: normal;
-  }
-
-  .entry-content .highlight .params,
-  .entry-content .highlight .hljs-params,
-  .entry-content .highlight .variable,
-  .entry-content .highlight .hljs-variable,
-  .entry-content .highlight .subst,
-  .entry-content .highlight .hljs-subst,
-  .entry-content .highlight .tag,
-  .entry-content .highlight .hljs-tag,
-  .entry-content .highlight .name,
-  .entry-content .highlight .hljs-name,
-  .entry-content .highlight .doctag,
-  .entry-content .highlight .hljs-doctag,
-  .entry-content .highlight .meta,
-  .entry-content .highlight .hljs-meta,
-  .entry-content .highlight .property,
-  .entry-content .highlight .hljs-property {
-    color: #9cdcfe;
-  }
-
-  .entry-content .highlight .punctuation,
-  .entry-content .highlight .hljs-punctuation {
-    color: #d4d4d4;
-  }
-
-  .entry-content td.hljs-ln-numbers {
-    color: #858585;
-    background: #1e1e1e;
-    border-right: 1px solid #2d2d30;
-    padding: 16px 10px 18px;
-    min-width: 44px;
-  }
-
-  .entry-content .highlight .copy-code {
-    position: absolute;
-    right: 12px;
-    top: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 11px;
-    color: #d4d4d4;
-    background: rgba(51, 51, 51, 0.96);
-    border: 1px solid #454545;
-    border-radius: 999px;
-    font-size: 11px;
-    line-height: 1.4;
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
-    opacity: 0.88;
-    transform: translateY(0);
-    pointer-events: auto;
-    transition: opacity 0.18s ease, transform 0.18s ease, color 0.18s ease, background 0.18s ease, border-color 0.18s ease;
-    z-index: 3;
-  }
-
-  .entry-content .highlight:hover .copy-code,
-  .entry-content .highlight .copy-code.copied,
-  .entry-content .highlight .copy-code.copy-error {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .entry-content .highlight .copy-code:hover {
-    color: #ffffff;
-    background: #0e639c;
-    border-color: #1177bb;
-  }
-
-  .entry-content .highlight .copy-code span {
-    display: inline-block;
-    font-weight: 500;
-  }
-
-  .entry-content .highlight .copy-code.copied {
-    color: #ffffff;
-    background: #2d7d46;
-    border-color: #3d9a5a;
-    opacity: 1;
-  }
-
-  .entry-content .highlight .copy-code.copy-error {
-    color: #ffffff;
-    background: #a1260d;
-    border-color: #c43e1c;
-    opacity: 1;
-  }
-
-  .entry-content .highlight::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    background: transparent;
-  }
-
-  .entry-content .highlight::-webkit-scrollbar-thumb {
-    background: #424242;
-    border-radius: 999px;
-  }
-
-  /* ========================================================= */
-  /* 1.4 标题样式：回归朴素模式                                */
-  /* ========================================================= */
-  .entry-header h1.entry-title::before,
-  .entry-header h1.entry-title::after,
-  .entry-content h2::after,
-  .entry-content h3::after,
-  .entry-content h4::after,
-  .entry-content h5::after {
-    content: none;
-  }
-
-  .entry-content h1,
-  .entry-content h2,
-  .entry-content h3,
-  .entry-content h4,
-  .entry-content h5,
-  .entry-content h6 {
-    padding-left: 0;
-    border-bottom: none;
-    color: #111111;
-    letter-spacing: 0;
-  }
-
-  .entry-content,
-  .entry-content p,
-  .entry-content li,
-  .entry-content td,
-  .entry-content th {
-    color: #111111;
-  }
-
-  .entry-content h1 {
-    font-size: 1.9em;
-    font-weight: 700;
-  }
-
-  .entry-content h2 {
-    font-size: 1.55em;
-    font-weight: 700;
-  }
-
-  .entry-content h3 {
-    font-size: 1.3em;
-    font-weight: 600;
-    padding-bottom: 0;
-  }
-
-  .entry-content h4,
-  .entry-content h5,
-  .entry-content h6 {
-    font-weight: 600;
-  }
-
-  /* ========================================================= */
-  /* 1.5 标题与正文缩进：接近 Typora 的阅读习惯                */
-  /* ========================================================= */
-  .entry-content h1,
-  .entry-content h2,
-  .entry-content h3,
-  .entry-content h4,
-  .entry-content h5,
-  .entry-content h6,
-  .entry-content p,
-  .entry-content li,
-  .entry-content blockquote p {
-    tab-size: 4;
-    -moz-tab-size: 4;
-  }
-
-  .entry-content h1,
-  .entry-content h2,
-  .entry-content h3,
-  .entry-content h4,
-  .entry-content h5,
-  .entry-content h6 {
-    text-indent: 0;
-  }
-
-  .entry-content>p,
-  .entry-content blockquote p {
-    text-indent: 2em;
-  }
-
-  .entry-content>p code,
-  .entry-content blockquote p code,
-  .entry-content>p a,
-  .entry-content blockquote p a,
-  .entry-content>p strong,
-  .entry-content blockquote p strong,
-  .entry-content>p em,
-  .entry-content blockquote p em {
-    text-indent: 0;
-  }
-
-  /* ========================================================= */
-  /* 2. 行内代码：更柔和、和正文更协调                         */
-  /* ========================================================= */
-  .entry-content p code,
-  .entry-content li code,
-  .entry-content table code,
-  .entry-content blockquote code,
-  .entry-content td code,
-  .entry-content th code {
-    color: #334155;
-    background: rgba(241, 245, 249, 0.88);
-    border: 1px solid rgba(148, 163, 184, 0.22);
-    border-radius: 8px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72), 0 1px 2px rgba(15, 23, 42, 0.04);
-    padding: 0.16em 0.42em;
-    font-family: 'Source Code Pro', 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 0.92em;
-    margin: 0 0.15em;
-    vertical-align: baseline;
-    word-break: break-word;
-  }
-
-  /* ========================================================= */
-  /* 3. 引用块 (Blockquote) 样式优化                             */
-  /* ========================================================= */
-  .entry-content blockquote {
-    position: relative;
-    padding: 18px 22px;
-    margin: 24px 0;
-    color: #475569;
-    background: linear-gradient(135deg, rgba(255, 247, 237, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
-    border: 1px solid rgba(245, 158, 11, 0.18);
-    border-left: 4px solid #f59e0b;
-    border-radius: 12px;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
-    font-style: normal;
-  }
-
-  .entry-content blockquote::before {
-    content: '“';
-    position: absolute;
-    top: 6px;
-    right: 14px;
-    color: rgba(245, 158, 11, 0.2);
-    font-size: 44px;
-    line-height: 1;
-    font-family: Georgia, serif;
-  }
-
-  .entry-content blockquote p {
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .entry-content blockquote p+p {
-    margin-top: 10px;
-  }
-
-  .entry-content blockquote ul,
-  .entry-content blockquote ol {
-    margin: 12px 0 0;
-    padding: 0 0 0 1.4em;
-    border: none;
-    border-radius: 0;
-    background: transparent;
-    color: inherit;
-    box-shadow: none;
-  }
-
-  .entry-content blockquote li {
-    padding: 6px 0;
-    color: inherit;
-  }
-
-  @media (max-width: 860px) {
-    .entry-content .highlight {
-      border-radius: 12px;
-      padding-top: 38px;
-    }
-
-    .entry-content .highlight::before {
-      height: 38px;
-      padding: 0 62px 0 60px;
-      font-size: 11px;
-    }
-
-    .entry-content .highlight::after {
-      top: 14px;
-      left: 14px;
-      width: 9px;
-      height: 9px;
-      box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
-    }
-
-    .entry-content .highlight pre,
-    .entry-content .highlight .code pre,
-    .entry-content td.hljs-ln-numbers {
-      padding-top: 14px;
-      padding-bottom: 16px;
-    }
-  }
-</style>
-<div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg);"
-      src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover.jpg">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-        OO_Unit1
-      </h1>
-      <p class="entry-census">
-        <span>
-          <a href="www.flashkyogre.cn">
-            <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="www.flashkyogre.cn">FlashKyogre</a>
-        </span>
-        <span class="bull">
-          ·</span>
-        2026-3-11<span class="bull">
-            ·</span>
-          <span id="busuanzi_value_page_pv"></span>次阅读
-      </p>
-    </header>
-  </div>
   
-    <div id="content" class="site-content">
-      <div id="primary" class="content-area">
-        <main id="main" class="site-main" role="main">
-          <article id="post-1"
-            class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-            <div class="toc"></div>
-            <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
+
+<div id="banner" class="banner"
+     style="background: url('/img/ocean-cover.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.42)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">OO_Unit1</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        FlashKyogre
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-03-11 00:00" pubdate>
+          2026-03-11
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          96 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">OO_Unit1</h1>
             
-                <div class="entry-content">
-                  <h1 id="Unit1-表达式解析"><a href="#Unit1-表达式解析" class="headerlink" title="Unit1 表达式解析"></a>Unit1 表达式解析</h1><hr>
+            
+              <div class="markdown-body">
+                
+                <h1 id="Unit1-表达式解析"><a href="#Unit1-表达式解析" class="headerlink" title="Unit1 表达式解析"></a>Unit1 表达式解析</h1><hr>
 <p>   喜报喜报！<code>OO</code>正课它来了！</p>
 <p>   还在因为找不到对象发愁吗？还在因为刚充值<code>Gemini</code>找不到用武之地而彷徨吗？</p>
 <p>​   这些都不是问题，因为<code>OO</code>足够劲爆！</p>
@@ -810,13 +447,13 @@
 <p>​	<strong>1、<code>basic</code>-正则表达式</strong></p>
 <p>​		不难发现，表达式被 + &#x2F; - 划分，分为多个项。项由 * 划分，分为多个。项就更好说了，题目都给出了他们的形式化表达，直接转化为正则表达式就行了。（例：常量因子 [+-]?\d+）我们只需要配合<code>Java</code>中的<code>Matcher</code> 和 <code>Pattern</code>类就可以很轻松的划分出各个部分。</p>
 <p>主函数内部</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">patternTerm</span> <span class="operator">=</span> <span class="string">&quot;\\d+(\\*\\d+)*&quot;</span>; <span class="comment">//正则表达式，用来提取项</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Pattern</span> <span class="variable">re</span> <span class="operator">=</span> Pattern.compile(patternTerm);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">       <span class="type">String</span> <span class="variable">inputExpr</span> <span class="operator">=</span> scanner.next();</span><br><span class="line"></span><br><span class="line">       <span class="type">Matcher</span> <span class="variable">matcher</span> <span class="operator">=</span> re.matcher(inputExpr);</span><br><span class="line"></span><br><span class="line">       <span class="type">Expr</span> <span class="variable">expr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Expr</span>();</span><br><span class="line">       <span class="keyword">while</span> (matcher.find()) &#123;</span><br><span class="line">           <span class="type">String</span> <span class="variable">termStr</span> <span class="operator">=</span> matcher.group(<span class="number">0</span>);</span><br><span class="line">           <span class="type">Term</span> <span class="variable">term</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Term</span>(termStr); <span class="comment">//划分term</span></span><br><span class="line">           expr.addTerm(term);</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">patternTerm</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;\\d+(\\*\\d+)*&quot;</span>; <span class="hljs-comment">//正则表达式，用来提取项</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Pattern</span> <span class="hljs-variable">re</span> <span class="hljs-operator">=</span> Pattern.compile(patternTerm);<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>       <span class="hljs-type">Scanner</span> <span class="hljs-variable">scanner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Scanner</span>(System.in);<br>       <span class="hljs-type">String</span> <span class="hljs-variable">inputExpr</span> <span class="hljs-operator">=</span> scanner.next();<br><br>       <span class="hljs-type">Matcher</span> <span class="hljs-variable">matcher</span> <span class="hljs-operator">=</span> re.matcher(inputExpr);<br><br>       <span class="hljs-type">Expr</span> <span class="hljs-variable">expr</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Expr</span>();<br>       <span class="hljs-keyword">while</span> (matcher.find()) &#123;<br>           <span class="hljs-type">String</span> <span class="hljs-variable">termStr</span> <span class="hljs-operator">=</span> matcher.group(<span class="hljs-number">0</span>);<br>           <span class="hljs-type">Term</span> <span class="hljs-variable">term</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Term</span>(termStr); <span class="hljs-comment">//划分term</span><br>           expr.addTerm(term);<br>       &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p><code>Expr</code>类内部</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Term</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        factors = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        String[] factorStrs = s.split(<span class="string">&quot;\\*&quot;</span>); <span class="comment">//划分factor</span></span><br><span class="line">        <span class="keyword">for</span> (String factorStr : factorStrs) &#123;</span><br><span class="line">            factors.add(Integer.parseInt(factorStr));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-title function_">Term</span><span class="hljs-params">(String s)</span> &#123;<br>        factors = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        String[] factorStrs = s.split(<span class="hljs-string">&quot;\\*&quot;</span>); <span class="hljs-comment">//划分factor</span><br>        <span class="hljs-keyword">for</span> (String factorStr : factorStrs) &#123;<br>            factors.add(Integer.parseInt(factorStr));<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p>​	至于计算部分，课程组也给了我们提示，利用函数递归先进后出的特点，我们可以先处理+&#x2F;-，然后是*</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (position != -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (expression.charAt(position) == <span class="string">&#x27;+&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Add</span>(parse(expression.substring(<span class="number">0</span>, position)),</span><br><span class="line">                    parse(expression.substring(position + <span class="number">1</span>)));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Sub</span>(parse(expression.substring(<span class="number">0</span>, position)),</span><br><span class="line">                    parse(expression.substring(position + <span class="number">1</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        position = findMul(expression);</span><br><span class="line">        <span class="keyword">if</span> (position != -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Mul</span>(parse(expression.substring(<span class="number">0</span>, position))</span><br><span class="line">                    , parse(expression.substring(position + <span class="number">1</span>)));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (!expression.equals(<span class="string">&quot;&quot;</span>)) &#123;</span><br><span class="line">                <span class="type">Matcher</span> <span class="variable">matcher</span> <span class="operator">=</span> numberPattern.matcher(expression);</span><br><span class="line">                <span class="keyword">if</span>(matcher.find()) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Num</span>(Integer.parseInt(expression));</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="type">int</span> <span class="variable">number</span> <span class="operator">=</span> parameters.get(expression);</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Num</span>(number);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Num</span>(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (position != -<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">if</span> (expression.charAt(position) == <span class="hljs-string">&#x27;+&#x27;</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Add</span>(parse(expression.substring(<span class="hljs-number">0</span>, position)),<br>                    parse(expression.substring(position + <span class="hljs-number">1</span>)));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Sub</span>(parse(expression.substring(<span class="hljs-number">0</span>, position)),<br>                    parse(expression.substring(position + <span class="hljs-number">1</span>)));<br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        position = findMul(expression);<br>        <span class="hljs-keyword">if</span> (position != -<span class="hljs-number">1</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Mul</span>(parse(expression.substring(<span class="hljs-number">0</span>, position))<br>                    , parse(expression.substring(position + <span class="hljs-number">1</span>)));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">if</span> (!expression.equals(<span class="hljs-string">&quot;&quot;</span>)) &#123;<br>                <span class="hljs-type">Matcher</span> <span class="hljs-variable">matcher</span> <span class="hljs-operator">=</span> numberPattern.matcher(expression);<br>                <span class="hljs-keyword">if</span>(matcher.find()) &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Num</span>(Integer.parseInt(expression));<br>                &#125;<br>                <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-type">int</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> parameters.get(expression);<br>                    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Num</span>(number);<br>                &#125;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Num</span>(<span class="hljs-number">0</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br><br></code></pre></td></tr></table></figure>
 
 <p>​	嗯？这不就是数据结构学的表达式树的计算方法吗？原来是老朋友，看来这次作业也没多难，……吗？不！千万不要忘了，我们还有乘方运算，我们还有嵌套的三层括号！你不妨想想，这样的情况下，处理函数会有多么复杂。</p>
 <p>​	等等，为什么要在<code>Java</code>中用“函数”这个术语，不应该是“方法”吗？恭喜你，你发现了华点。我们接着往后想，假设要把上面这一坨代码转化为C语言代码，有哪里需要改动呢？把<code>expr</code>改成以<code>term</code>为元素的数组！把<code>term</code>改为以<code>factor</code>为元素的数组！改<code>scanner</code>为<code>scanf</code>…怎么越想越不对劲啊，这和C语言没区别啊！</p>
@@ -847,10 +484,10 @@
 <p> 莫名其妙的先导零、莫名其妙的空白符以及莫名其妙的+-组合</p>
 </blockquote>
 <p>​	想要处理他们，其实一点也不难。不难发现，空白符除了让字符串变得格外丑陋，基本没有任何作用，所以我们只需要无脑去掉所有空白符就可以了。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Step1:去除一切空白符</span></span><br><span class="line"><span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> input.replaceAll(<span class="string">&quot;[ \\t]+&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Step1:去除一切空白符</span><br><span class="hljs-type">String</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> input.replaceAll(<span class="hljs-string">&quot;[ \\t]+&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br></code></pre></td></tr></table></figure>
 
 <p>​	那么那些连续的+-号呢？题目说表达式前面可能有一个，项前面可能一个，常数因子前面也可能有一个，最多可能有三个连续的+&#x2F;-。但实际上，有几个都无所谓，因为只要是连续的+&#x2F;-，我们都可以把它化简为一个。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Step2: 去除连续的&quot;+&quot;和&quot;—&quot;</span></span><br><span class="line"><span class="keyword">while</span> (result.contains(<span class="string">&quot;++&quot;</span>) || result.contains(<span class="string">&quot;--&quot;</span>) ||</span><br><span class="line">        result.contains(<span class="string">&quot;+-&quot;</span>) || result.contains(<span class="string">&quot;-+&quot;</span>)) &#123;</span><br><span class="line">    result = result.replace(<span class="string">&quot;++&quot;</span>, <span class="string">&quot;+&quot;</span>);</span><br><span class="line">    result = result.replace(<span class="string">&quot;--&quot;</span>, <span class="string">&quot;+&quot;</span>); <span class="comment">// 负负得正</span></span><br><span class="line">    result = result.replace(<span class="string">&quot;+-&quot;</span>, <span class="string">&quot;-&quot;</span>);</span><br><span class="line">    result = result.replace(<span class="string">&quot;-+&quot;</span>, <span class="string">&quot;-&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Step2: 去除连续的&quot;+&quot;和&quot;—&quot;</span><br><span class="hljs-keyword">while</span> (result.contains(<span class="hljs-string">&quot;++&quot;</span>) || result.contains(<span class="hljs-string">&quot;--&quot;</span>) ||<br>        result.contains(<span class="hljs-string">&quot;+-&quot;</span>) || result.contains(<span class="hljs-string">&quot;-+&quot;</span>)) &#123;<br>    result = result.replace(<span class="hljs-string">&quot;++&quot;</span>, <span class="hljs-string">&quot;+&quot;</span>);<br>    result = result.replace(<span class="hljs-string">&quot;--&quot;</span>, <span class="hljs-string">&quot;+&quot;</span>); <span class="hljs-comment">// 负负得正</span><br>    result = result.replace(<span class="hljs-string">&quot;+-&quot;</span>, <span class="hljs-string">&quot;-&quot;</span>);<br>    result = result.replace(<span class="hljs-string">&quot;-+&quot;</span>, <span class="hljs-string">&quot;-&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>​	至于前导零和那个无限制的巨大的常量，其实就更简单了，因为<code>Java</code>提供了极其丰富的库。<code>BigInteger</code>类无疑是解决这个问题的不二之选，它自带的初始化方法能把字符串中前导零全部忽略。<code>Integer.parseInt(String input)</code>方法同样也可以解决前导零的问题，只不过它适用于<code>Integer</code>类（<code>int</code>的包装器类型）。</p>
 <p><strong>2、税收系统（<code>Poly</code>类与<code>evaluate</code>方法）</strong></p>
@@ -887,444 +524,425 @@
 <p>​	多项式乘法不仅是循环相乘，还包含了极其耗时的合并同类项过程。快速幂在计算的过程中会产生很多中间量，合并化简的步骤将会多次进行哈希查找的工作，这其中的哈希冲突不计其数，一旦发生冲突，<code>Java</code>就会递归地调用<code>equals</code>操作，极大地增加了程序的复杂度。</p>
 <p>​	由此可见，快速幂并不适用于多项式运算，我们在使用算法的时候要多加思考，而不是把它当作盲盒随意地使用。</p>
 <h3 id="哥们，你到底算不算啊？"><a href="#哥们，你到底算不算啊？" class="headerlink" title="哥们，你到底算不算啊？"></a>哥们，你到底算不算啊？</h3><p>​	几天后的周五，面对被<code>hack</code>的千疮百孔的程序，<code>XJX</code>回忆起提交中测的那个夜晚，当时的他是多么自信，认为自己选择了一条最正确的路……现在，<code>XJX</code>修复了自己的程序，而行刑者正等待下一个莽撞的少年。那么行刑者究竟是如何突破重重关卡，一路杀到我们面前的呢？没错，他们跟课程组签订了秘密的协议（误闯天家）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">f(x)=(x+1)^8</span><br><span class="line">[(1==1)?1:f(f(f(f(f(f(f(f(x))))))))]</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stata">1<br><span class="hljs-built_in">f</span>(x)=(x+1)^8<br>[(1==1)?1:<span class="hljs-built_in">f</span>(<span class="hljs-built_in">f</span>(<span class="hljs-built_in">f</span>(<span class="hljs-built_in">f</span>(<span class="hljs-built_in">f</span>(<span class="hljs-built_in">f</span>(<span class="hljs-built_in">f</span>(<span class="hljs-built_in">f</span>(x))))))))]<br></code></pre></td></tr></table></figure>
 
 <p>​	乍一看，这个样例的复杂度肯定过不了<code>cost</code>检测，但是课程组为我们准备了一个天坑：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Cost([(A==B)?C:D]) = Cost(A) + Cost(B) + choose(Cost(C), Cost(D)) + 5</span><br><span class="line">其中 choose(Cost(C), Cost(D)) 表示最终选择式子的 cost</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-built_in">Cost</span>([(A==B)?C:D]) = <span class="hljs-built_in">Cost</span>(A) + <span class="hljs-built_in">Cost</span>(B) + <span class="hljs-built_in">choose</span>(<span class="hljs-built_in">Cost</span>(C), <span class="hljs-built_in">Cost</span>(D)) + <span class="hljs-number">5</span><br>其中 <span class="hljs-built_in">choose</span>(<span class="hljs-built_in">Cost</span>(C), <span class="hljs-built_in">Cost</span>(D)) 表示最终选择式子的 cost<br></code></pre></td></tr></table></figure>
 
 <p>​	没错，后面那一坨自定义函数的嵌套根本不会被算入<code>cost</code>，假设你的代码无脑计算了这一坨数据，那么无情的大刀就会落下，骇死我了。为了避免这恐怖的结局，我们必须在对选择因子<code>evaluate</code>的时候留个心眼——先判断真假，再决定选择哪一个因子去<code>evaluate</code>。</p>
 <p>​	其实，不只是选择因子的<code>evaluate</code>需要多加注意，我们在选择解析自定义函数的方式时更要留神。如果你选择了暴力宏展开，也就是把f(x)定义中的<code>x</code>（形参）全部替换为<code>realArg</code>（实参），你可能也会出现这样的问题——一些无关的因子被暴力展开了，消耗了过多的时间。除此之外，考虑到<code>String</code>是不可变对象，对于层层嵌套，每一次展开都会产生很多的<code>String</code>对象，这会使得<code>GC</code>回收器压力暴增，消耗过多的算力。</p>
 <p>​	正确的做法是先把<code>f(x)</code>解析成<code>expr</code>的形式，就像后面需要化简的表达式一样，一旦<code>f(x)</code>被调用，就把它<code>evaluate</code>成<code>Poly</code>，然后使用<code>Poly</code>内置的替换方法把<code>x</code>全部替换为<code>realArg</code>。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Poly <span class="title function_">polySubstitute</span><span class="params">(Poly argPoly)</span> &#123;</span><br><span class="line">        <span class="comment">//将x替换为实参(函数换值)</span></span><br><span class="line">        <span class="type">Poly</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Poly</span>();</span><br><span class="line">        <span class="keyword">for</span> (java.util.Map.Entry&lt;Node, BigInteger&gt; entry : terms.entrySet()) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> entry.getKey();</span><br><span class="line">            <span class="type">BigInteger</span> <span class="variable">coef</span> <span class="operator">=</span> entry.getValue();</span><br><span class="line">            <span class="type">BigInteger</span> <span class="variable">power</span> <span class="operator">=</span> node.getPower();</span><br><span class="line">            <span class="type">Poly</span> <span class="variable">expPoly</span> <span class="operator">=</span> node.getExpPoly();</span><br><span class="line">            <span class="type">Poly</span> <span class="variable">termPoly</span> <span class="operator">=</span> Poly.varPolyGet(BigInteger.ZERO, coef);</span><br><span class="line">            <span class="comment">//替换x</span></span><br><span class="line">            <span class="keyword">if</span> (!power.equals(BigInteger.ZERO)) &#123;</span><br><span class="line">                termPoly = termPoly.polyMul(argPoly.polyExp(power.intValue()));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//递归地替换exp(里面的x)</span></span><br><span class="line">            <span class="keyword">if</span> (!expPoly.isEmpty()) &#123;</span><br><span class="line">                <span class="type">Poly</span> <span class="variable">subExp</span> <span class="operator">=</span> expPoly.polySubstitute(argPoly);</span><br><span class="line">                termPoly = termPoly.polyMul(Poly.expPolyGet(subExp));</span><br><span class="line">            &#125;</span><br><span class="line">            result = result.polyAdd(termPoly);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> Poly <span class="hljs-title function_">polySubstitute</span><span class="hljs-params">(Poly argPoly)</span> &#123;<br>        <span class="hljs-comment">//将x替换为实参(函数换值)</span><br>        <span class="hljs-type">Poly</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Poly</span>();<br>        <span class="hljs-keyword">for</span> (java.util.Map.Entry&lt;Node, BigInteger&gt; entry : terms.entrySet()) &#123;<br>            <span class="hljs-type">Node</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> entry.getKey();<br>            <span class="hljs-type">BigInteger</span> <span class="hljs-variable">coef</span> <span class="hljs-operator">=</span> entry.getValue();<br>            <span class="hljs-type">BigInteger</span> <span class="hljs-variable">power</span> <span class="hljs-operator">=</span> node.getPower();<br>            <span class="hljs-type">Poly</span> <span class="hljs-variable">expPoly</span> <span class="hljs-operator">=</span> node.getExpPoly();<br>            <span class="hljs-type">Poly</span> <span class="hljs-variable">termPoly</span> <span class="hljs-operator">=</span> Poly.varPolyGet(BigInteger.ZERO, coef);<br>            <span class="hljs-comment">//替换x</span><br>            <span class="hljs-keyword">if</span> (!power.equals(BigInteger.ZERO)) &#123;<br>                termPoly = termPoly.polyMul(argPoly.polyExp(power.intValue()));<br>            &#125;<br>            <span class="hljs-comment">//递归地替换exp(里面的x)</span><br>            <span class="hljs-keyword">if</span> (!expPoly.isEmpty()) &#123;<br>                <span class="hljs-type">Poly</span> <span class="hljs-variable">subExp</span> <span class="hljs-operator">=</span> expPoly.polySubstitute(argPoly);<br>                termPoly = termPoly.polyMul(Poly.expPolyGet(subExp));<br>            &#125;<br>            result = result.polyAdd(termPoly);<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 <p>​	实际上，我们还可以为每个<code>AST</code>成员创立一个<code>funcEvaluate</code>方法，对于除了<code>powerFactor</code>之外的成员，它的功能和普通<code>evaluate</code>完全一致；但是在遇到<code>powerFactor</code>的时候，它不会返回<code>x^n</code>，而是返回<code>argPoly^n</code>。这两种函数解析的方法各有优劣，我们在第三次作业再展开讨论。</p>
 <p>​	现在，本次作业最凶险的关卡已经暴露无疑了，加油，继续书写你的史诗吧。</p>
 <hr>
 <h2 id="第三次作业"><a href="#第三次作业" class="headerlink" title="第三次作业"></a>第三次作业</h2><p>​​	因为不可抗因素（懒），第三次作业的分享延后了一个多月，内容并不全面，还请见谅。</p>
 <h3 id="进化吧，我的函数"><a href="#进化吧，我的函数" class="headerlink" title="进化吧，我的函数"></a>进化吧，我的函数</h3><p>​	在第三次作业中，我们的普通函数摇身一变，变成了递归函数。然而这并没有什么影响，我们依旧可以根据前面使用过的方法来实现这个递归函数。为了避免<code>TLE</code>，大多数同学会选择使用记忆化的方法来处理递归函数，为可能出现的递归函数设置一个存储池。存储池中的内容就因人而异了，如果你选择的是将<code>x</code>替换为<code>argPoly</code>这一方法，那么你完全可以存储一个展开后的<code>Poly</code>值；如果你选择的是<code>funcEvaluate</code>那种方法，你存储的就是一个仍需<code>evaluate</code>的表达式树。这两种方法都可以通过测试，但是前者速度更快，后者可扩展性更好。为什么前者速度更快呢？大家可以从“大数乘方”的角度考虑，和“快速幂不快”（详见“哥们，你到底快不快啊？”）在本质上是一个问题。后者可扩展性更好是因为它保留了表达式的结构，试想一下，如果未来函数中可以引入求导算子，把f(x)计算成多项式再替换x的方法还行得通吗？显然不行：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">定义 f(x) = dx((x + x^2))</span><br><span class="line">表达式 f(y) = dx((y + y^2)) = 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gml">定义 f(<span class="hljs-variable language_">x</span>) = dx((<span class="hljs-variable language_">x</span> + <span class="hljs-variable language_">x</span>^<span class="hljs-number">2</span>))<br>表达式 f(<span class="hljs-variable language_">y</span>) = dx((<span class="hljs-variable language_">y</span> + <span class="hljs-variable language_">y</span>^<span class="hljs-number">2</span>)) = <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 
 <p>​	在我们这一届，助教为了避免歧义限制了自定义函数内的算子，但是这不代表在未来的课程中，又或者是未来的工作中，你不会面临这个问题。（如果我当上了助教，我会极力劝说课程组修改的，哈哈哈哈哈哈哈哈哈）除此之外，我认为还有一个很失败的设计：</p>
 <blockquote>
 <p>除此之外，为了限制<strong>不合理</strong>的hack，我们要求输入表达式的代价 <code>Cost(Expr) &lt;= 5000</code>，同时要求自定义递推函数的代价<code>Cost(Func)&lt;=2000</code>。注意，对于递推函数 <code>f{n}</code>，需要保证对于任意 0≤i≤5，<code>cost(f{i})&lt;=2000</code>。</p>
 </blockquote>
 <p>​	题目中<code>f{n}</code>的<code>cost</code>限制对于<code>0≤i≤5</code>全部成立，丝毫没有考虑到表达式中或许根本不存在<code>f{5}</code>的调用，计算<code>f{5}</code>完全是多余的步骤，既然选择表达式中未被选择的那个因子不算在<code>cost</code>里面，凭什么<code>f{5}</code>要被限制呢？如果日后设计程序的时候，用户的最大需求是<code>f{100}</code>，我们也要在每次计算表达式之前把100个递归函数都计算一遍吗？所以，真正可靠的做法是“惰性求值”，也就是在<code>f{5}</code>真正被调用的那一刻才去计算这个递归函数，然后把它储存在记忆池子里。样例如下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Poly <span class="title function_">getRfDpPoly</span><span class="params">(Integer funcId)</span> &#123;</span><br><span class="line">        <span class="comment">// 存储递归函数展开后的Poly值，方便直接替换x</span></span><br><span class="line">        <span class="keyword">if</span> (!rfDpPoly.containsKey(funcId)) &#123;</span><br><span class="line">            <span class="comment">//惰性求值</span></span><br><span class="line">            <span class="type">Expr</span> <span class="variable">expr</span> <span class="operator">=</span> rfDp.get(funcId);</span><br><span class="line">            rfDpPoly.put(funcId, expr.evaluate());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> rfDpPoly.get(funcId);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Poly <span class="hljs-title function_">getRfDpPoly</span><span class="hljs-params">(Integer funcId)</span> &#123;<br>        <span class="hljs-comment">// 存储递归函数展开后的Poly值，方便直接替换x</span><br>        <span class="hljs-keyword">if</span> (!rfDpPoly.containsKey(funcId)) &#123;<br>            <span class="hljs-comment">//惰性求值</span><br>            <span class="hljs-type">Expr</span> <span class="hljs-variable">expr</span> <span class="hljs-operator">=</span> rfDp.get(funcId);<br>            rfDpPoly.put(funcId, expr.evaluate());<br>        &#125;<br>        <span class="hljs-keyword">return</span> rfDpPoly.get(funcId);<br>    &#125;<br></code></pre></td></tr></table></figure>
 
 
 
 <h3 id="进化吧，我的GCD"><a href="#进化吧，我的GCD" class="headerlink" title="进化吧，我的GCD"></a>进化吧，我的GCD</h3><p>​	为了追求性能分，很多同学会选择提取<code>exp</code>因子中的公因式，然后通过比较选择出最短的形式。而这，成为了第三次作业中被<code>hack</code>最多的点。如果你不知道<code>hack</code>的方法是什么，请测试下面这个数据点：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">f(x)=exp(exp(exp(exp(exp(exp(x)^2)^2)^2)^2)^2)^2</span><br><span class="line">0</span><br><span class="line">f(f(f(f(x))))</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-number">1</span><br><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(x)</span></span>=<span class="hljs-built_in">exp</span>(<span class="hljs-built_in">exp</span>(<span class="hljs-built_in">exp</span>(<span class="hljs-built_in">exp</span>(<span class="hljs-built_in">exp</span>(<span class="hljs-built_in">exp</span>(<span class="hljs-attribute">x</span>)^<span class="hljs-number">2</span>)^<span class="hljs-number">2</span>)^<span class="hljs-number">2</span>)^<span class="hljs-number">2</span>)^<span class="hljs-number">2</span>)^<span class="hljs-number">2</span><br><span class="hljs-number">0</span><br><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(f(f(f(x)</span></span>)))<br></code></pre></td></tr></table></figure>
 
 <p>​	这个数据点生效的原因是，每一次<code>^2</code>都会产生两种不同的情况，为了比较长短，你的代码会生成两种情况对应的字符串，在生成字符串的过程中，你又会遇见新的<code>^2</code>，代码又会生成两种字符串比较长短。就这样，大量的<code>^2</code>叠加引发了指数爆炸，造成<code>CPU</code>超时。</p>
 <p>​	解决的办法很简单，我们把每一个已经计算过的字符串记忆下来就行了，也就是为每一个<code>Poly</code>维护一个<code>String strCache</code>变量。</p>
 <p>​	本单元的分享就到此为止了，感谢您的阅读。</p>
 
-                </div>
-                <!-- .entry-content -->
-                <div style="text-align:center; width: 100%" class="social-share share-mobile"
-                  data-disabled="diandian, tencent"></div>
-          </article>
-          <!-- #post-## -->
-          <div class="toc" style="background: none;"></div>
-          <section class="post-squares nextprev">
-            
-              
-                <div class="post-nepre half previous">
-                  
-                        <a href="/2026/05/04/OO_Unit2/" rel="prev">
-                          <div class="background">
-                            <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg"
-                              style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
-                              onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/OO/cover_sharkGpt.jpg">
-                          </div>
-                          <span class="label">
-                            Previous Post</span>
-                          <div class="info">
-                            <h3>
-                              OO_Unit2
-                            </h3>
-                            <hr>
-                          </div>
-                        </a>
-                    </div>
-                    
-                      
-                        
-                          <div class="post-nepre half next">
-                            
-                                  <a href="/2026/02/22/oopre_conclusion/" rel="next">
-                                    <div class="background">
-                                      <img class="lazyload" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/loader/orange.progress-bar-stripe-loader.svg"
-                                        data-src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg"
-                                        style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
-                                        onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/oopre/oopre_conclusion.jpg">
-                                    </div>
-                                    <span class="label">
-                                      Next Post</span>
-                                    <div class="info">
-                                      <h3>
-                                        我挥一挥衣袖,作别OO的云彩
-                                      </h3>
-                                      <hr>
-                                    </div>
-                                  </a>
-                              </div>
-                              
-          </section>
-          <section class="author-profile">
-            <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-              <a href="www.flashkyogre.cn" class="profile gravatar">
-                <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg" itemprop="image"
-                  alt="FlashKyogre" height="70" width="70">
-              </a>
-              <div class="meta">
-                <span class="title">Author</span>
-                <h3 itemprop="name">
-                  <a href="www.flashkyogre.cn" itemprop="url" rel="author">FlashKyogre</a>
-                </h3>
+                
               </div>
-            </div>
-            <hr>
-            <p><i class="iconfont icon-write"></i>日月无眠，人间又是一天</p>
-          </section>
-        </main><!-- #main -->
-      </div><!-- #primary -->
-    </div>
-
-    
-    </div>    
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-    <!-- <footer id="footer">
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2026 FlashKyogre<br>
-      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer> -->
-<footer id="colophon" class="site-footer" role="contentinfo">
-  <div class="site-info">
-    <div class="footertext">
-      <div class="img-preload">
-        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
-        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
-      </div>
-      <p style="color: #666666;">&copy 2026</p>
-    </div>
-    <div class="footer-device">
-    <p style="font-family: 'Ubuntu', sans-serif;">
-        FlashKyogre</a>, Powered by Hexo, Hosted by GitHub Pages</a>
-        </span>
-      </p>
-    </div>
-  </div><!-- .site-info -->
-</footer>
-
-
-
-<!-- <script src="/js/tocbot.js"></script> -->
-<script type="text/javascript" src="/js/lib.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script type="text/javascript" src="/js/InsightSearch.js"></script>
-<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/zoom.min.js"></script>
-<script type="text/javascript" src="/js/sakura-app.js"></script>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
-<script src="/js/botui.js"></script>
-<!-- 不蒜子 网页计数器 -->
-<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
-<script type="text/javascript">
-/* <![CDATA[ */
-if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/vedio","name":"pocket.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
-} else {
-  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/social/vedio","name":"pocket.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
-}
-/* ]]> */
-
-</script>
-<script>
-$(document).ready(function() {
-  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
-    if ($(".pattern-center").length > 0) { //有图的情况
-      tocbot.init({
-          // Where to render the table of contents.
-          tocSelector: '.toc', // 放置目录的容器
-          // Where to grab the headings to build the table of contents.
-          contentSelector: '.entry-content', // 正文内容所在
-          // Which headings to grab inside of the contentSelector element.
-          scrollSmooth: true,
-          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
-          headingsOffset: -400,
-          scrollSmoothOffset: -85
-      });
-    } else {
-      tocbot.init({
-          // Where to render the table of contents.
-          tocSelector: '.toc', // 放置目录的容器
-          // Where to grab the headings to build the table of contents.
-          contentSelector: '.entry-content', // 正文内容所在
-          // Which headings to grab inside of the contentSelector element.
-          scrollSmooth: true,
-          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
-          headingsOffset: -85,
-          scrollSmoothOffset: -85
-      });
-    }
-    var offsetTop = $('.toc').offset().top - 95;
-    window.onscroll = function() {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      if (scrollTop >= offsetTop) {
-        $('.toc').addClass('toc-fixed');
-      } else {
-        $('.toc').removeClass('toc-fixed');
-      }
-    }
-  }
-});
-</script>
-
-    <div class="openNav no-select" style="height: 50px;">
-      <div class="iconflat no-select" style="width: 50px; height: 50px;">
-        <div class="icon"></div>
-      </div>
-      <div class="site-branding search-form-submit">
-        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
-      </div>
-    </div>
-  </section>
-  <div id="mo-nav" class="">
-  <div class="m-avatar">
-    <img src="https://cdn.jsdelivr.net/gh/zssggok/my-blog-imgs@main/avatar/avatar.jpg">
-  </div>
-  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">Kyogre'sOcean</p>
-  <p style="text-align: center; word-spacing: 20px;">
-    
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-        <a href="https://github.com/zssggok" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
       
-    
-  </p>
-  <ul id="menu-new-1" class="menu">
-    
-      <li>
-        <a href="/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-            首页
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/archives">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-            归档
-          </span>
-        </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/categories/%E6%8A%80%E6%9C%AF/">
-                  <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
-                </a>
-              </li>
-            
-              <li>
-                <a href="/categories/%E7%94%9F%E6%B4%BB/">
-                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  生活
-                </a>
-              </li>
-            
-              <li>
-                <a href="/categories/%E9%9A%8F%E6%83%B3/">
-                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                  随想
-                </a>
-              </li>
-            
-          </ul>
-        
-      </li>
-    
-      <li>
-        <a href="javascript:;">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
-            清单
-          </span>
-        </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/tags/%E6%82%A6%E8%AF%BB/">
-                  <i class="fa fa-th-list faa-bounce" aria-hidden="true"></i>
-                  书单
-                </a>
-              </li>
-            
-              <li>
-                <a href="/music/">
-                  <i class="fa fa-headphones" aria-hidden="true"></i>
-                  歌单
-                </a>
-              </li>
-            
-          </ul>
-        
-      </li>
-    
-      <li>
-        <a href="/comment/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-            留言板
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/links/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-            友人帐
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
-            关于
-          </span>
-        </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/about/">
-                  <i class="fa fa-meetup" aria-hidden="true"></i>
-                  我？
-                </a>
-              </li>
-            
-              <li>
-                <a href="/theme-sakura/">
-                  <i class="fa iconfont icon-sakura" aria-hidden="true"></i>
-                  主题
-                </a>
-              </li>
-            
-          </ul>
-        
-      </li>
-    
-  </ul>
-  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
+        <a href="/tags/oo/" class="print-no-link">#oo</a>
+      
+        <a href="/tags/%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" class="print-no-link">#学习心得</a>
+      
+    </div>
+  
 </div>
-<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<!-- require MetingJS -->
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<style>
-  .aplayer .aplayer-lrc {
-    height: 35px;
-  }
-  .aplayer .aplayer-lrc p{
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 18px !important;
-  }
-  .aplayer .aplayer-lrc p.aplayer-lrc-current{
-    color: #FF1493;
-  }
-  .aplayer.aplayer-narrow .aplayer-body{
-    left: -66px !important;
-  }
-  .aplayer.aplayer-fixed .aplayer-lrc {
-    display: none;
-  }
-  .aplayer .aplayer-lrc.aplayer-lrc-hide {
-      display:none !important;
-  }
-  .aplayer.aplayer-fixed .lrc-show {
-    display: block;
-    background: rgba(255, 255, 255, 0.8);
-  }
-</style>
-<meting-js
 
-    id="7412718431"
 
-    server="netease"
+              
+  
 
-    type="playlist"
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>OO_Unit1</div>
+      <div>https://flashkyogre.cn/2026/03/11/OO_Unit1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>FlashKyogre</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年3月11日</div>
+        </div>
+      
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
 
-    fixed="true"
 
-    autoplay="false"
 
-    loop="all"
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2026/05/04/OO_Unit2/" title="OO_Unit2">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OO_Unit2</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/02/22/oopre_conclusion/" title="我挥一挥衣袖,作别OO的云彩">
+                        <span class="hidden-mobile">我挥一挥衣袖,作别OO的云彩</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    order="random"
+            
 
-    preload="auto"
+          </article>
+        </div>
+      </div>
+    </div>
 
-    volume="0.7"
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
-    mutex="true"
 
-</meting-js>
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+      <span>© 2026 FlashKyogre · 日月无眠，人间又是一天</span><br><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> · <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="noopener">Fluid</a>
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+
+
+
+  
 <script>
-  $(function(){
-    $('body').on('click', '.aplayer', function(){
-      if($('.aplayer-button').hasClass('aplayer-play')) {
-        $('.aplayer-lrc').removeClass('lrc-show');
-      } else {
-        $('.aplayer-lrc').addClass('lrc-show');
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
       }
-    })
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
   });
 </script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

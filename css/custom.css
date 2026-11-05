@@ -1,0 +1,28 @@
+/* Ocean accents and readable spacing on top of Fluid. */
+.navbar .navbar-brand { font-weight: 650; letter-spacing: .025em; }
+#board { border-radius: 16px; }
+.index-card { padding-top: 1.65rem; padding-bottom: 1.65rem; border-bottom: 1px solid var(--line-color); }
+.index-card:last-of-type { border-bottom: 0; }
+.index-img img {
+  height: 11rem;
+  object-fit: contain;
+  padding: .5rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 25, 45, .1);
+}
+.index-header { font-size: 1.4rem; line-height: 1.55; }
+.index-excerpt { line-height: 1.9; }
+.markdown-body { line-height: 1.95; }
+.markdown-body h2 { margin-top: 2.2rem; }
+.markdown-body pre { line-height: 1.65; border-radius: 8px; }
+.banner-text .h2 { font-weight: 600; line-height: 1.6; text-shadow: 0 2px 12px rgba(0,25,45,.4); }
+.links .card-body { border-radius: 12px; }
+.about-content { max-width: 48rem; margin-left: auto; margin-right: auto; }
+@media (max-width: 767px) {
+  #board { border-radius: 12px; }
+  .index-header { font-size: 1.2rem; }
+  .banner-text .h2 { font-size: 1.4rem; padding: 0 1rem; }
+  .index-img { margin-bottom: 1rem !important; }
+  .index-img img { height: 12rem; max-width: 24rem; margin: 0 auto; }
+}
